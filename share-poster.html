@@ -156,6 +156,11 @@
             margin-bottom: 12px;
         }
         
+        .qr-frame svg {
+            width: 150px;
+            height: 150px;
+        }
+        
         .qr-hint {
             font-size: 13px;
             color: #7F8C8D;
@@ -251,9 +256,26 @@
             <div class="qr-area">
                 <div class="qr-title">🎁 扫码立即免费学习</div>
                 <div class="qr-frame">
-                    <canvas id="qrcode"></canvas>
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" fill="white"/>
+                        <rect x="0" y="0" width="25" height="25" fill="#E74C3C"/>
+                        <rect x="3" y="3" width="19" height="19" fill="white"/>
+                        <rect x="6" y="6" width="13" height="13" fill="#E74C3C"/>
+                        <rect x="75" y="0" width="25" height="25" fill="#E74C3C"/>
+                        <rect x="78" y="3" width="19" height="19" fill="white"/>
+                        <rect x="81" y="6" width="13" height="13" fill="#E74C3C"/>
+                        <rect x="0" y="75" width="25" height="25" fill="#E74C3C"/>
+                        <rect x="3" y="78" width="19" height="19" fill="white"/>
+                        <rect x="6" y="81" width="13" height="13" fill="#E74C3C"/>
+                        <rect x="28" y="28" width="44" height="44" fill="#E74C3C" rx="5"/>
+                        <rect x="32" y="32" width="36" height="36" fill="white" rx="3"/>
+                        <text x="50" y="55" text-anchor="middle" font-size="20" fill="#E74C3C">🐾</text>
+                    </svg>
                 </div>
                 <div class="qr-hint">微信/QQ/浏览器 扫一扫</div>
+                <div style="font-size: 11px; color: #7F8C8D; margin-top: 8px;">
+                    或输入: shuxiaobao1900.github.io/paw-patrol-english
+                </div>
             </div>
         </div>
         
@@ -263,22 +285,5 @@
     </div>
     
     <button class="save-btn" onclick="window.print()">📸 保存海报</button>
-    
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-    <script>
-        const websiteUrl = 'https://shuxiaobao1900.github.io/paw-patrol-english/';
-        
-        QRCode.toCanvas(document.getElementById('qrcode'), websiteUrl, {
-            width: 180,
-            margin: 2,
-            color: {
-                dark: '#E74C3C',
-                light: '#ffffff'
-            }
-        }, function (error) {
-            if (error) console.error(error);
-            console.log('海报二维码生成成功！');
-        });
-    </script>
 </body>
 </html>

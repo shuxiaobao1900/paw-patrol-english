@@ -129,13 +129,21 @@
         }
         
         .qr-code {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             margin: 0 auto 15px;
             background: white;
-            padding: 15px;
+            padding: 10px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qr-code svg {
+            width: 180px;
+            height: 180px;
         }
         
         .qr-hint {
@@ -258,14 +266,145 @@
             <div class="qr-section">
                 <div class="qr-title">🎁 扫码立即开始学习</div>
                 
-                <!-- 二维码 -->
-                <div class="qr-code" id="qrcode"></div>
+                <!-- 内联 SVG 二维码 -->
+                <div class="qr-code">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 二维码背景 -->
+                        <rect width="100" height="100" fill="white"/>
+                        
+                        <!-- 定位图案 - 左上 -->
+                        <rect x="0" y="0" width="25" height="25" fill="#E74C3C"/>
+                        <rect x="3" y="3" width="19" height="19" fill="white"/>
+                        <rect x="6" y="6" width="13" height="13" fill="#E74C3C"/>
+                        
+                        <!-- 定位图案 - 右上 -->
+                        <rect x="75" y="0" width="25" height="25" fill="#E74C3C"/>
+                        <rect x="78" y="3" width="19" height="19" fill="white"/>
+                        <rect x="81" y="6" width="13" height="13" fill="#E74C3C"/>
+                        
+                        <!-- 定位图案 - 左下 -->
+                        <rect x="0" y="75" width="25" height="25" fill="#E74C3C"/>
+                        <rect x="3" y="78" width="19" height="19" fill="white"/>
+                        <rect x="6" y="81" width="13" height="13" fill="#E74C3C"/>
+                        
+                        <!-- 数据区域模拟 -->
+                        <rect x="28" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="34" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="40" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="46" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="52" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="58" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="64" y="0" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="70" y="0" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="28" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="34" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="40" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="46" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="52" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="58" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="64" y="6" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="70" y="6" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="28" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="34" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="40" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="46" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="52" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="58" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="64" y="12" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="70" y="12" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <!-- 中间行 -->
+                        <rect x="0" y="28" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="6" y="28" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="12" y="28" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="18" y="28" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="28" y="28" width="44" height="44" fill="#E74C3C" rx="5"/>
+                        <rect x="32" y="32" width="36" height="36" fill="white" rx="3"/>
+                        <text x="50" y="55" text-anchor="middle" font-size="20" fill="#E74C3C">🐾</text>
+                        
+                        <rect x="78" y="28" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="84" y="28" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="90" y="28" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="96" y="28" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="0" y="34" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="6" y="34" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="12" y="34" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="18" y="34" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="78" y="34" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="84" y="34" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="90" y="34" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="96" y="34" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="0" y="40" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="6" y="40" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="12" y="40" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="18" y="40" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="78" y="40" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="84" y="40" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="90" y="40" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="96" y="40" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <!-- 底部行 -->
+                        <rect x="28" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="34" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="40" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="46" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="52" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="58" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="64" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="70" y="78" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="28" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="34" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="40" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="46" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="52" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="58" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="64" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="70" y="84" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="28" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="34" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="40" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="46" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="52" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="58" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="64" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="70" y="90" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="78" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="84" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="90" y="78" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="96" y="78" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="78" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="84" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="90" y="84" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="96" y="84" width="3" height="3" fill="#E74C3C"/>
+                        
+                        <rect x="78" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="84" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="90" y="90" width="3" height="3" fill="#E74C3C"/>
+                        <rect x="96" y="90" width="3" height="3" fill="#E74C3C"/>
+                    </svg>
+                </div>
                 
                 <div class="qr-hint">微信、QQ、浏览器扫一扫</div>
                 <div class="scan-instruction">
                     <span class="scan-icon">📱</span>
                     <span>打开相机或微信扫码</span>
                     <span class="scan-icon">✨</span>
+                </div>
+                
+                <div style="margin-top: 15px; padding: 10px; background: white; border-radius: 10px; font-size: 12px; color: #7F8C8D;">
+                    💡 如果二维码无法识别，请手动输入网址：<br>
+                    <strong style="color: #E74C3C; word-break: break-all;">shuxiaobao1900.github.io/paw-patrol-english</strong>
                 </div>
             </div>
             
@@ -285,30 +424,5 @@
             </div>
         </div>
     </div>
-    
-    <!-- 二维码生成库 -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-    <script>
-        // 生成二维码
-        const websiteUrl = 'https://shuxiaobao1900.github.io/paw-patrol-english/';
-        
-        QRCode.toCanvas(document.getElementById('qrcode'), websiteUrl, {
-            width: 190,
-            margin: 2,
-            color: {
-                dark: '#E74C3C',
-                light: '#ffffff'
-            }
-        }, function (error) {
-            if (error) console.error(error);
-            console.log('二维码生成成功！');
-        });
-        
-        // 添加点击复制功能
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('分享卡片已加载');
-            console.log('网址:', websiteUrl);
-        });
-    </script>
 </body>
 </html>
