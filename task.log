@@ -850,3 +850,11 @@ openai.PermissionDeniedError: Error code: 403 - {'error': {'code': 'insufficient
 2026-03-27 17:35:44 | INFO | Exec: <CodeBlock name=git_deploy, version=1, lang=python, path=blocks/git_deploy.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
 2026-03-27 17:35:44 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
 2026-03-27 17:35:44 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:35:45 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'git_deploy'}
+2026-03-27 17:35:45 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'git_deploy'}
+2026-03-27 17:36:11 | INFO | Updated context tokens from LLM usage: 66344 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:36:11 | INFO | Updated context tokens from LLM usage: 66344 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:36:11 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:36:11 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:36:11 | INFO | Exec: <CodeBlock name=organize_project, version=1, lang=python, path=blocks/organize_project.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:36:11 | INFO | Exec: <CodeBlock name=organize_project, version=1, lang=python, path=blocks/organize_project.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}

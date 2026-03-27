@@ -1,0 +1,13 @@
+# 临时文件
+*.log
+*.tmp
+*.pyc
+__pycache__/
+# 开发文件
+blocks/
+task.*
+content_library.json
+full_vocabulary.json
+# 系统文件
+.DS_Store
+Thumbs.db
