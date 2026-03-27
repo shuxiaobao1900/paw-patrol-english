@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐾 汪汪队英语乐园 - 海报版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', 'YouYuan', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .poster {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            width: 375px;
+            height: 667px;
+            position: relative;
+        }
+        
+        .poster-header {
+            background: linear-gradient(135deg, #E74C3C 0%, #E67E22 100%);
+            color: white;
+            padding: 40px 25px;
+            text-align: center;
+        }
+        
+        .poster-emoji {
+            font-size: 100px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .poster-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .poster-subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .poster-content {
+            padding: 30px 25px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef9e7 0%, #fcf3cf 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px dashed #F1C40F;
+        }
+        
+        .highlight-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #E74C3C;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #E74C3C;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #7F8C8D;
+        }
+        
+        .features-list {
+            margin-bottom: 25px;
+        }
+        
+        .feature-row {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498DB;
+        }
+        
+        .feature-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+        
+        .feature-text {
+            font-size: 14px;
+            color: #2C3E50;
+        }
+        
+        .qr-area {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .qr-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+        
+        .qr-frame {
+            display: inline-block;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+        
+        .qr-hint {
+            font-size: 13px;
+            color: #7F8C8D;
+        }
+        
+        .poster-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: #f8f9fa;
+            text-align: center;
+            font-size: 12px;
+            color: #7F8C8D;
+        }
+        
+        .save-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #E74C3C 0%, #E67E22 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .save-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="poster-header">
+            <div class="poster-emoji">🐾👋🐶</div>
+            <div class="poster-title">汪汪队英语乐园</div>
+            <div class="poster-subtitle">让孩子爱上学英语！</div>
+        </div>
+        
+        <div class="poster-content">
+            <!-- 数据统计 -->
+            <div class="highlight-box">
+                <div class="highlight-title">📊 学习内容</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">96</div>
+                        <div class="stat-label">个单词</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">大主题</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">句配音</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 特色功能 -->
+            <div class="features-list">
+                <div class="feature-row">
+                    <div class="feature-icon">🔊</div>
+                    <div class="feature-text"><strong>标准发音</strong> - 每个单词都有专业配音</div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-icon">🎮</div>
+                    <div class="feature-text"><strong>趣味互动</strong> - 游戏化学习更有趣</div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text"><strong>随时学习</strong> - 手机平板都能用</div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-text"><strong>徽章奖励</strong> - 激励孩子持续学习</div>
+                </div>
+            </div>
+            
+            <!-- 二维码 -->
+            <div class="qr-area">
+                <div class="qr-title">🎁 扫码立即免费学习</div>
+                <div class="qr-frame">
+                    <canvas id="qrcode"></canvas>
+                </div>
+                <div class="qr-hint">微信/QQ/浏览器 扫一扫</div>
+            </div>
+        </div>
+        
+        <div class="poster-footer">
+            适合年龄：3-8 岁 | 完全免费 | 无需下载 APP
+        </div>
+    </div>
+    
+    <button class="save-btn" onclick="window.print()">📸 保存海报</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        const websiteUrl = 'https://shuxiaobao1900.github.io/paw-patrol-english/';
+        
+        QRCode.toCanvas(document.getElementById('qrcode'), websiteUrl, {
+            width: 180,
+            margin: 2,
+            color: {
+                dark: '#E74C3C',
+                light: '#ffffff'
+            }
+        }, function (error) {
+            if (error) console.error(error);
+            console.log('海报二维码生成成功！');
+        });
+    </script>
+</body>
+</html>
