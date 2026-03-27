@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🐾 汪汪队英语乐园 - 增强版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* 汪汪队主题头部 */
+        .header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "🐾 🐶 🐱 🐰 🐘 🐟";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            font-size: 24px;
+            opacity: 0.3;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .header h1 {
+            font-size: 26px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 主题选择器 */
+        .theme-selector {
+            padding: 15px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            scrollbar-width: none;
+        }
+        
+        .theme-selector::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .theme-btn {
+            flex-shrink: 0;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .theme-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .theme-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* 主内容区 */
+        .content {
+            padding: 20px 15px;
+            min-height: 450px;
+        }
+        
+        /* 游戏模式选择 */
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px 0;
+        }
+        
+        .mode-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .mode-card:hover, .mode-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .mode-card.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+        }
+        
+        .mode-icon {
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+        
+        .mode-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .mode-desc {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* 闪卡样式 */
+        .flashcard {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flashcard-emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .flashcard-word {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .flashcard-translation {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        /* 配对游戏 */
+        .matching-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .matching-card {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+        
+        .matching-card.selected {
+            border-color: #667eea;
+            background: #f0f2f5;
+        }
+        
+        .matching-card.matched {
+            border-color: #43e97b;
+            background: #f0fff4;
+        }
+        
+        .matching-emoji {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        /* 拼写游戏 */
+        .spelling-area {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .spelling-hint {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .spelling-input {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .letter-tile {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .letter-tile.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .letter-tile.correct {
+            background: #43e97b;
+            color: white;
+            border-color: #43e97b;
+        }
+        
+        /* 按钮组 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+        
+        /* 进度和分数 */
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-top: 2px solid #e0e0e0;
+            font-size: 14px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 12px;
+        }
+        
+        /* 徽章系统 */
+        .badges-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 15px 0;
+            scrollbar-width: none;
+        }
+        
+        .badges-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .badge {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            opacity: 0.3;
+        }
+        
+        .badge.earned {
+            opacity: 1;
+            animation: badgePop 0.5s ease;
+        }
+        
+        @keyframes badgePop {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 380px) {
+            .header h1 { font-size: 22px; }
+            .mode-card { padding: 15px 10px; }
+            .mode-icon { font-size: 32px; }
+            .flashcard-word { font-size: 28px; }
+            .letter-tile { width: 40px; height: 40px; font-size: 20px; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🐾 汪汪队英语乐园</h1>
+            <p>和汪汪队一起快乐学英语！</p>
+        </div>
+        
+        <!-- 主题选择器 -->
+        <div class="theme-selector" id="themeSelector">
+            <!-- 动态生成主题按钮 -->
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content" id="gameContent">
+            <!-- 动态内容将在这里显示 -->
+        </div>
+        
+        <!-- 统计信息 -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="scoreDisplay">0</div>
+                <div class="stat-label">得分</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="streakDisplay">0</div>
+                <div class="stat-label">连胜</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="levelDisplay">1</div>
+                <div class="stat-label">关卡</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 游戏数据
+        let gameData = {
+            currentTheme: 'animals',
+            currentMode: 'flashcard',
+            score: 0,
+            streak: 0,
+            level: 1,
+            earnedBadges: [],
+            gameState: 'menu'
+        };
+        
+        // 内容库
+        const contentLibrary = {
+            themes: [
+                { id: 'animals', name: '动物世界', icon: '🐾', color: '#FF6B6B' },
+                { id: 'fruits', name: '水果乐园', icon: '🍎', color: '#43e97b' },
+                { id: 'colors', name: '颜色认知', icon: '🎨', color: '#667eea' },
+                { id: 'numbers', name: '数字王国', icon: '🔢', color: '#fa709a' }
+            ],
+            gameModes: [
+                { id: 'flashcard', name: '闪卡学习', icon: '📖', desc: '看图认单词' },
+                { id: 'matching', name: '配对游戏', icon: '🧩', desc: '英文中文配对' },
+                { id: 'spelling', name: '拼写练习', icon: '✍️', desc: '拼写单词' },
+                { id: 'listening', name: '听力测试', icon: '🎧', desc: '听音辨词' }
+            ],
+            words: {
+                animals: [
+                    { en: 'Cat', zh: '猫', emoji: '🐱', sound: 'meow' },
+                    { en: 'Dog', zh: '狗', emoji: '🐶', sound: 'woof' },
+                    { en: 'Bird', zh: '鸟', emoji: '🐦', sound: 'tweet' },
+                    { en: 'Fish', zh: '鱼', emoji: '🐟', sound: 'blub' },
+                    { en: 'Rabbit', zh: '兔子', emoji: '🐰', sound: 'hop' },
+                    { en: 'Elephant', zh: '大象', emoji: '🐘', sound: 'trumpet' }
+                ],
+                fruits: [
+                    { en: 'Apple', zh: '苹果', emoji: '🍎', color: 'red' },
+                    { en: 'Banana', zh: '香蕉', emoji: '🍌', color: 'yellow' },
+                    { en: 'Orange', zh: '橙子', emoji: '🍊', color: 'orange' },
+                    { en: 'Grape', zh: '葡萄', emoji: '🍇', color: 'purple' },
+                    { en: 'Watermelon', zh: '西瓜', emoji: '🍉', color: 'green' },
+                    { en: 'Strawberry', zh: '草莓', emoji: '🍓', color: 'red' }
+                ],
+                colors: [
+                    { en: 'Red', zh: '红色', emoji: '🔴', color: 'red' },
+                    { en: 'Blue', zh: '蓝色', emoji: '🔵', color: 'blue' },
+                    { en: 'Yellow', zh: '黄色', emoji: '🟡', color: 'yellow' },
+                    { en: 'Green', zh: '绿色', emoji: '🟢', color: 'green' },
+                    { en: 'Orange', zh: '橙色', emoji: '🟠', color: 'orange' },
+                    { en: 'Purple', zh: '紫色', emoji: '🟣', color: 'purple' }
+                ],
+                numbers: [
+                    { en: 'One', zh: '一', emoji: '1️⃣', count: 1 },
+                    { en: 'Two', zh: '二', emoji: '2️⃣', count: 2 },
+                    { en: 'Three', zh: '三', emoji: '3️⃣', count: 3 },
+                    { en: 'Four', zh: '四', emoji: '4️⃣', count: 4 },
+                    { en: 'Five', zh: '五', emoji: '5️⃣', count: 5 },
+                    { en: 'Six', zh: '六', emoji: '6️⃣', count: 6 }
+                ]
+            }
+        };
+        
+        // 初始化游戏
+        function initGame() {
+            renderThemeSelector();
+            showMainMenu();
+            updateStats();
+        }
+        
+        // 渲染主题选择器
+        function renderThemeSelector() {
+            const container = document.getElementById('themeSelector');
+            container.innerHTML = contentLibrary.themes.map(theme => `
+                <button class="theme-btn ${gameData.currentTheme === theme.id ? 'active' : ''}" 
+                        onclick="selectTheme('${theme.id}')">
+                    ${theme.icon} ${theme.name}
+                </button>
+            `).join('');
+        }
+        
+        // 选择主题
+        function selectTheme(themeId) {
+            gameData.currentTheme = themeId;
+            renderThemeSelector();
+            if (gameData.gameState === 'menu') {
+                showMainMenu();
+            } else {
+                startGame(gameData.currentMode);
+            }
+        }
+        
+        // 显示主菜单
+        function showMainMenu() {
+            gameData.gameState = 'menu';
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="game-modes">
+                    ${contentLibrary.gameModes.map(mode => `
+                        <div class="mode-card ${gameData.currentMode === mode.id ? 'active' : ''}" 
+                             onclick="selectMode('${mode.id}')">
+                            <div class="mode-icon">${mode.icon}</div>
+                            <div class="mode-name">${mode.name}</div>
+                            <div class="mode-desc">${mode.desc}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="startGame('${gameData.currentMode}')">
+                        🚀 开始游戏
+                    </button>
+                    <button class="btn btn-warning" onclick="showBadges()">
+                        🏆 查看徽章
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 选择游戏模式
+        function selectMode(modeId) {
+            gameData.currentMode = modeId;
+            showMainMenu();
+        }
+        
+        // 开始游戏
+        function startGame(mode) {
+            gameData.gameState = 'playing';
+            gameData.currentMode = mode;
+            
+            switch(mode) {
+                case 'flashcard':
+                    showFlashcardGame();
+                    break;
+                case 'matching':
+                    showMatchingGame();
+                    break;
+                case 'spelling':
+                    showSpellingGame();
+                    break;
+                case 'listening':
+                    showListeningGame();
+                    break;
+            }
+        }
+        
+        // 闪卡游戏
+        function showFlashcardGame() {
+            const words = contentLibrary.words[gameData.currentTheme];
+            const word = words[Math.floor(Math.random() * words.length)];
+            let hint = '';
+            if (gameData.currentTheme === 'colors') hint = `颜色：${word.color}`;
+            if (gameData.currentTheme === 'numbers') hint = `数量：${word.count}`;
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="flashcard">
+                    <div class="flashcard-emoji">${word.emoji}</div>
+                    <div class="flashcard-word">${word.en}</div>
+                    <div class="flashcard-translation">${word.zh}</div>
+                    ${hint ? `<div style="margin-top:10px;opacity:0.8;">${hint}</div>` : ''}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="answerFlashcard(true)">
+                        ✅ 我认识
+                    </button>
+                    <button class="btn btn-primary" onclick="answerFlashcard(false)">
+                        🔄 再学一次
+                    </button>
+                    <button class="btn" onclick="showMainMenu()">
+                        🏠 返回菜单
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 回答闪卡
+        function answerFlashcard(correct) {
+            if (correct) {
+                gameData.score += 10;
+                gameData.streak++;
+                if (gameData.streak >= 5) {
+                    awardBadge('streak_5');
+                }
+                if (gameData.score >= 100) {
+                    awardBadge('score_100');
+                }
+            } else {
+                gameData.streak = 0;
+            }
+            
+            gameData.level++;
+            updateStats();
+            showFlashcardGame();
+        }
+        
+        // 配对游戏
+        function showMatchingGame() {
+            const words = contentLibrary.words[gameData.currentTheme];
+            const selectedWords = [...words].sort(() => Math.random() - 0.5).slice(0, 4);
+            const pairs = [];
+            selectedWords.forEach(word => {
+                pairs.push({ type: 'english', value: word.en, match: word.zh, emoji: word.emoji });
+                pairs.push({ type: 'chinese', value: word.zh, match: word.en, emoji: word.emoji });
+            });
+            const shuffledPairs = [...pairs].sort(() => Math.random() - 0.5);
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <h3 style="text-align:center;margin-bottom:20px;color:#333;">🧩 配对游戏</h3>
+                <div class="matching-grid" id="matchingGrid">
+                    ${shuffledPairs.map((pair, index) => `
+                        <div class="matching-card" onclick="selectMatchingCard(${index})" data-index="${index}">
+                            <div class="matching-emoji">${pair.emoji}</div>
+                            <div>${pair.value}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn" onclick="showMainMenu()">
+                        🏠 返回菜单
+                    </button>
+                </div>
+            `;
+            
+            window.matchingPairs = shuffledPairs;
+            window.selectedMatchingCards = [];
+        }
+        
+        // 选择配对卡片
+        function selectMatchingCard(index) {
+            const card = document.querySelector(`[data-index="${index}"]`);
+            if (card.classList.contains('matched') || card.classList.contains('selected')) return;
+            
+            card.classList.add('selected');
+            window.selectedMatchingCards.push(index);
+            
+            if (window.selectedMatchingCards.length === 2) {
+                const [idx1, idx2] = window.selectedMatchingCards;
+                const pair1 = window.matchingPairs[idx1];
+                const pair2 = window.matchingPairs[idx2];
+                
+                if ((pair1.type === 'english' && pair2.type === 'chinese' && pair1.match === pair2.value) ||
+                    (pair2.type === 'english' && pair1.type === 'chinese' && pair2.match === pair1.value)) {
+                    // 匹配成功
+                    document.querySelector(`[data-index="${idx1}"]`).classList.add('matched');
+                    document.querySelector(`[data-index="${idx2}"]`).classList.add('matched');
+                    gameData.score += 20;
+                    gameData.streak++;
+                    updateStats();
+                    
+                    // 检查是否全部匹配
+                    const matchedCards = document.querySelectorAll('.matching-card.matched');
+                    if (matchedCards.length === 8) {
+                        setTimeout(() => {
+                            alert('🎉 太棒了！所有配对都完成了！');
+                            gameData.level++;
+                            showMatchingGame();
+                        }, 500);
+                    }
+                } else {
+                    // 匹配失败
+                    setTimeout(() => {
+                        document.querySelector(`[data-index="${idx1}"]`).classList.remove('selected');
+                        document.querySelector(`[data-index="${idx2}"]`).classList.remove('selected');
+                        gameData.streak = 0;
+                        updateStats();
+                    }, 1000);
+                }
+                
+                window.selectedMatchingCards = [];
+            }
+        }
+        
+        // 拼写游戏
+        function showSpellingGame() {
+            const words = contentLibrary.words[gameData.currentTheme];
+            const word = words[Math.floor(Math.random() * words.length)];
+            const scrambled = word.en.split('').sort(() => Math.random() - 0.5);
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <h3 style="text-align:center;margin-bottom:20px;color:#333;">✍️ 拼写游戏</h3>
+                <div class="spelling-area">
+                    <div class="spelling-hint">
+                        拼写单词：<span style="font-weight:bold;">${word.zh}</span>
+                        <div style="font-size:48px;margin:15px 0;">${word.emoji}</div>
+                    </div>
+                    <div class="spelling-input" id="spellingInput">
+                        ${scrambled.map((letter, idx) => `
+                            <div class="letter-tile" onclick="selectLetterTile(${idx})" data-letter="${letter}">
+                                ${letter}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="font-size:18px;color:#666;margin-bottom:20px;" id="currentSpelling"></div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="checkSpelling()">
+                        ✅ 检查答案
+                    </button>
+                    <button class="btn" onclick="showMainMenu()">
+                        🏠 返回菜单
+                    </button>
+                </div>
+            `;
+            
+            window.currentWord = word.en;
+            window.selectedLetters = [];
+            updateSpellingDisplay();
+        }
+        
+        // 选择字母
+        function selectLetterTile(index) {
+            const tile = document.querySelectorAll('.letter-tile')[index];
+            if (tile.classList.contains('selected')) {
+                tile.classList.remove('selected');
+                window.selectedLetters = window.selectedLetters.filter((_, i) => i !== window.selectedLetters.length - 1);
+            } else {
+                tile.classList.add('selected');
+                window.selectedLetters.push(tile.dataset.letter);
+            }
+            updateSpellingDisplay();
+        }
+        
+        // 更新拼写显示
+        function updateSpellingDisplay() {
+            const display = document.getElementById('currentSpelling');
+            display.textContent = window.selectedLetters.join(' ') || '点击字母开始拼写';
+        }
+        
+        // 检查拼写
+        function checkSpelling() {
+            const userSpelling = window.selectedLetters.join('');
+            if (userSpelling.toUpperCase() === window.currentWord.toUpperCase()) {
+                alert('🎉 拼写正确！太棒了！');
+                gameData.score += 15;
+                gameData.streak++;
+                if (gameData.streak >= 3) {
+                    awardBadge('spelling_master');
+                }
+                gameData.level++;
+                updateStats();
+                showSpellingGame();
+            } else {
+                alert('再试一次！💪');
+                gameData.streak = 0;
+                updateStats();
+            }
+        }
+        
+        // 听力游戏（简化版）
+        function showListeningGame() {
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <h3 style="text-align:center;margin-bottom:20px;color:#333;">🎧 听力游戏</h3>
+                <div style="text-align:center;padding:30px;background:#f8f9fa;border-radius:16px;margin-bottom:20px;">
+                    <div style="font-size:48px;margin-bottom:20px;">🔊</div>
+                    <div style="font-size:18px;color:#666;">点击播放按钮听单词</div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="playAudio()">
+                        ▶️ 播放单词
+                    </button>
+                    <button class="btn" onclick="showMainMenu()">
+                        🏠 返回菜单
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 播放音频（模拟）
+        function playAudio() {
+            alert('🔊 汪汪！这是模拟的音频播放\n（实际开发中可以接入真实语音合成）');
+        }
+        
+        // 显示徽章
+        function showBadges() {
+            const badges = [
+                { id: 'first_game', name: '初次体验', icon: '🎮', desc: '完成第一次游戏' },
+                { id: 'streak_5', name: '五连胜', icon: '🔥', desc: '连续答对5题' },
+                { id: 'score_100', name: '百分达人', icon: '💯', desc: '获得100分' },
+                { id: 'spelling_master', name: '拼写大师', icon: '🏆', desc: '连续拼对3个单词' },
+                { id: 'animal_expert', name: '动物专家', icon: '🐾', desc: '完成动物主题' },
+                { id: 'fruit_master', name: '水果大师', icon: '🍎', desc: '完成水果主题' }
+            ];
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <h3 style="text-align:center;margin-bottom:20px;color:#333;">🏆 徽章收集</h3>
+                <div class="badges-container">
+                    ${badges.map(badge => `
+                        <div class="badge ${gameData.earnedBadges.includes(badge.id) ? 'earned' : ''}" 
+                             title="${badge.name}: ${badge.desc}">
+                            ${badge.icon}
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="text-align:center;color:#666;font-size:14px;margin:20px 0;">
+                    已获得 ${gameData.earnedBadges.length} / ${badges.length} 个徽章
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="showMainMenu()">
+                        🏠 返回菜单
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 颁发徽章
+        function awardBadge(badgeId) {
+            if (!gameData.earnedBadges.includes(badgeId)) {
+                gameData.earnedBadges.push(badgeId);
+                // 这里可以添加徽章获得动画
+            }
+        }
+        
+        // 更新统计信息
+        function updateStats() {
+            document.getElementById('scoreDisplay').textContent = gameData.score;
+            document.getElementById('streakDisplay').textContent = gameData.streak;
+            document.getElementById('levelDisplay').textContent = gameData.level;
+        }
+        
+        // 页面加载完成后初始化
+        window.onload = initGame;
+    </script>
+</body>
+</html>

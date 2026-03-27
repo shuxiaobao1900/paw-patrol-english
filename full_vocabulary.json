@@ -1,0 +1,638 @@
+{
+  "themes": [
+    {
+      "id": "animals",
+      "name": "动物世界",
+      "icon": "🐾",
+      "color": "#FF6B6B"
+    },
+    {
+      "id": "fruits",
+      "name": "水果乐园",
+      "icon": "🍎",
+      "color": "#43e97b"
+    },
+    {
+      "id": "colors",
+      "name": "颜色认知",
+      "icon": "🎨",
+      "color": "#667eea"
+    },
+    {
+      "id": "numbers",
+      "name": "数字王国",
+      "icon": "🔢",
+      "color": "#fa709a"
+    },
+    {
+      "id": "body",
+      "name": "身体部位",
+      "icon": "👦",
+      "color": "#FFB655"
+    },
+    {
+      "id": "vehicles",
+      "name": "交通工具",
+      "icon": "🚗",
+      "color": "#66CCFF"
+    },
+    {
+      "id": "food",
+      "name": "美味食物",
+      "icon": "🍔",
+      "color": "#FF7F50"
+    },
+    {
+      "id": "family",
+      "name": "家庭成员",
+      "icon": "👨‍👩‍👧",
+      "color": "#9370DB"
+    }
+  ],
+  "words": {
+    "animals": [
+      {
+        "en": "Cat",
+        "zh": "猫",
+        "emoji": "🐱",
+        "sound": "meow"
+      },
+      {
+        "en": "Dog",
+        "zh": "狗",
+        "emoji": "🐶",
+        "sound": "woof"
+      },
+      {
+        "en": "Bird",
+        "zh": "鸟",
+        "emoji": "🐦",
+        "sound": "tweet"
+      },
+      {
+        "en": "Fish",
+        "zh": "鱼",
+        "emoji": "🐟",
+        "sound": "blub"
+      },
+      {
+        "en": "Rabbit",
+        "zh": "兔子",
+        "emoji": "🐰",
+        "sound": "hop"
+      },
+      {
+        "en": "Elephant",
+        "zh": "大象",
+        "emoji": "🐘",
+        "sound": "trumpet"
+      },
+      {
+        "en": "Bear",
+        "zh": "熊",
+        "emoji": "🐻",
+        "sound": "roar"
+      },
+      {
+        "en": "Panda",
+        "zh": "熊猫",
+        "emoji": "🐼",
+        "sound": "nom"
+      },
+      {
+        "en": "Lion",
+        "zh": "狮子",
+        "emoji": "🦁",
+        "sound": "roar"
+      },
+      {
+        "en": "Tiger",
+        "zh": "老虎",
+        "emoji": "🐯",
+        "sound": "roar"
+      },
+      {
+        "en": "Monkey",
+        "zh": "猴子",
+        "emoji": "🐵",
+        "sound": "ooh"
+      },
+      {
+        "en": "Zebra",
+        "zh": "斑马",
+        "emoji": "🦓",
+        "sound": "bray"
+      },
+      {
+        "en": "Duck",
+        "zh": "鸭子",
+        "emoji": "🦆",
+        "sound": "quack"
+      },
+      {
+        "en": "Chicken",
+        "zh": "鸡",
+        "emoji": "🐔",
+        "sound": "cluck"
+      },
+      {
+        "en": "Cow",
+        "zh": "奶牛",
+        "emoji": "🐄",
+        "sound": "moo"
+      },
+      {
+        "en": "Horse",
+        "zh": "马",
+        "emoji": "🐴",
+        "sound": "neigh"
+      }
+    ],
+    "fruits": [
+      {
+        "en": "Apple",
+        "zh": "苹果",
+        "emoji": "🍎",
+        "color": "red"
+      },
+      {
+        "en": "Banana",
+        "zh": "香蕉",
+        "emoji": "🍌",
+        "color": "yellow"
+      },
+      {
+        "en": "Orange",
+        "zh": "橙子",
+        "emoji": "🍊",
+        "color": "orange"
+      },
+      {
+        "en": "Grape",
+        "zh": "葡萄",
+        "emoji": "🍇",
+        "color": "purple"
+      },
+      {
+        "en": "Watermelon",
+        "zh": "西瓜",
+        "emoji": "🍉",
+        "color": "green"
+      },
+      {
+        "en": "Strawberry",
+        "zh": "草莓",
+        "emoji": "🍓",
+        "color": "red"
+      },
+      {
+        "en": "Pineapple",
+        "zh": "菠萝",
+        "emoji": "🍍",
+        "color": "yellow"
+      },
+      {
+        "en": "Mango",
+        "zh": "芒果",
+        "emoji": "🥭",
+        "color": "yellow"
+      },
+      {
+        "en": "Peach",
+        "zh": "桃子",
+        "emoji": "🍑",
+        "color": "pink"
+      },
+      {
+        "en": "Pear",
+        "zh": "梨",
+        "emoji": "🍐",
+        "color": "green"
+      },
+      {
+        "en": "Blueberry",
+        "zh": "蓝莓",
+        "emoji": "🫐",
+        "color": "blue"
+      },
+      {
+        "en": "Cherry",
+        "zh": "樱桃",
+        "emoji": "🍒",
+        "color": "red"
+      },
+      {
+        "en": "Kiwi",
+        "zh": "猕猴桃",
+        "emoji": "🥝",
+        "color": "green"
+      },
+      {
+        "en": "Lemon",
+        "zh": "柠檬",
+        "emoji": "🍋",
+        "color": "yellow"
+      },
+      {
+        "en": "Avocado",
+        "zh": "牛油果",
+        "emoji": "🥑",
+        "color": "green"
+      },
+      {
+        "en": "Coconut",
+        "zh": "椰子",
+        "emoji": "🥥",
+        "color": "brown"
+      }
+    ],
+    "colors": [
+      {
+        "en": "Red",
+        "zh": "红色",
+        "emoji": "🔴",
+        "color": "red"
+      },
+      {
+        "en": "Blue",
+        "zh": "蓝色",
+        "emoji": "🔵",
+        "color": "blue"
+      },
+      {
+        "en": "Yellow",
+        "zh": "黄色",
+        "emoji": "🟡",
+        "color": "yellow"
+      },
+      {
+        "en": "Green",
+        "zh": "绿色",
+        "emoji": "🟢",
+        "color": "green"
+      },
+      {
+        "en": "Orange",
+        "zh": "橙色",
+        "emoji": "🟠",
+        "color": "orange"
+      },
+      {
+        "en": "Purple",
+        "zh": "紫色",
+        "emoji": "🟣",
+        "color": "purple"
+      },
+      {
+        "en": "Pink",
+        "zh": "粉色",
+        "emoji": "🌸",
+        "color": "pink"
+      },
+      {
+        "en": "Black",
+        "zh": "黑色",
+        "emoji": "⚫",
+        "color": "black"
+      },
+      {
+        "en": "White",
+        "zh": "白色",
+        "emoji": "⚪",
+        "color": "white"
+      },
+      {
+        "en": "Brown",
+        "zh": "棕色",
+        "emoji": "🟤",
+        "color": "brown"
+      },
+      {
+        "en": "Gray",
+        "zh": "灰色",
+        "emoji": "🔘",
+        "color": "gray"
+      },
+      {
+        "en": "Gold",
+        "zh": "金色",
+        "emoji": "✨",
+        "color": "gold"
+      }
+    ],
+    "numbers": [
+      {
+        "en": "One",
+        "zh": "一",
+        "emoji": "1️⃣",
+        "count": 1
+      },
+      {
+        "en": "Two",
+        "zh": "二",
+        "emoji": "2️⃣",
+        "count": 2
+      },
+      {
+        "en": "Three",
+        "zh": "三",
+        "emoji": "3️⃣",
+        "count": 3
+      },
+      {
+        "en": "Four",
+        "zh": "四",
+        "emoji": "4️⃣",
+        "count": 4
+      },
+      {
+        "en": "Five",
+        "zh": "五",
+        "emoji": "5️⃣",
+        "count": 5
+      },
+      {
+        "en": "Six",
+        "zh": "六",
+        "emoji": "6️⃣",
+        "count": 6
+      },
+      {
+        "en": "Seven",
+        "zh": "七",
+        "emoji": "7️⃣",
+        "count": 7
+      },
+      {
+        "en": "Eight",
+        "zh": "八",
+        "emoji": "8️⃣",
+        "count": 8
+      },
+      {
+        "en": "Nine",
+        "zh": "九",
+        "emoji": "9️⃣",
+        "count": 9
+      },
+      {
+        "en": "Ten",
+        "zh": "十",
+        "emoji": "🔟",
+        "count": 10
+      },
+      {
+        "en": "Eleven",
+        "zh": "十一",
+        "emoji": "1️⃣1️⃣",
+        "count": 11
+      },
+      {
+        "en": "Twelve",
+        "zh": "十二",
+        "emoji": "1️⃣2️⃣",
+        "count": 12
+      }
+    ],
+    "body": [
+      {
+        "en": "Head",
+        "zh": "头",
+        "emoji": "👦"
+      },
+      {
+        "en": "Eye",
+        "zh": "眼睛",
+        "emoji": "👁️"
+      },
+      {
+        "en": "Ear",
+        "zh": "耳朵",
+        "emoji": "👂"
+      },
+      {
+        "en": "Nose",
+        "zh": "鼻子",
+        "emoji": "👃"
+      },
+      {
+        "en": "Mouth",
+        "zh": "嘴",
+        "emoji": "👄"
+      },
+      {
+        "en": "Hand",
+        "zh": "手",
+        "emoji": "✋"
+      },
+      {
+        "en": "Foot",
+        "zh": "脚",
+        "emoji": "🦶"
+      },
+      {
+        "en": "Arm",
+        "zh": "胳膊",
+        "emoji": "💪"
+      },
+      {
+        "en": "Leg",
+        "zh": "腿",
+        "emoji": "🦵"
+      },
+      {
+        "en": "Face",
+        "zh": "脸",
+        "emoji": "😊"
+      },
+      {
+        "en": "Hair",
+        "zh": "头发",
+        "emoji": "💇"
+      },
+      {
+        "en": "Teeth",
+        "zh": "牙齿",
+        "emoji": "🦷"
+      }
+    ],
+    "vehicles": [
+      {
+        "en": "Car",
+        "zh": "汽车",
+        "emoji": "🚗"
+      },
+      {
+        "en": "Bus",
+        "zh": "公交车",
+        "emoji": "🚌"
+      },
+      {
+        "en": "Train",
+        "zh": "火车",
+        "emoji": "🚂"
+      },
+      {
+        "en": "Bike",
+        "zh": "自行车",
+        "emoji": "🚲"
+      },
+      {
+        "en": "Plane",
+        "zh": "飞机",
+        "emoji": "✈️"
+      },
+      {
+        "en": "Boat",
+        "zh": "船",
+        "emoji": "🚢"
+      },
+      {
+        "en": "Ship",
+        "zh": "轮船",
+        "emoji": "🚢"
+      },
+      {
+        "en": "Truck",
+        "zh": "卡车",
+        "emoji": "🚚"
+      },
+      {
+        "en": "Motorcycle",
+        "zh": "摩托车",
+        "emoji": "🏍️"
+      },
+      {
+        "en": "Taxi",
+        "zh": "出租车",
+        "emoji": "🚕"
+      },
+      {
+        "en": "Subway",
+        "zh": "地铁",
+        "emoji": "🚇"
+      },
+      {
+        "en": "Ambulance",
+        "zh": "救护车",
+        "emoji": "🚑"
+      }
+    ],
+    "food": [
+      {
+        "en": "Bread",
+        "zh": "面包",
+        "emoji": "🍞"
+      },
+      {
+        "en": "Milk",
+        "zh": "牛奶",
+        "emoji": "🥛"
+      },
+      {
+        "en": "Egg",
+        "zh": "鸡蛋",
+        "emoji": "🥚"
+      },
+      {
+        "en": "Cake",
+        "zh": "蛋糕",
+        "emoji": "🍰"
+      },
+      {
+        "en": "Rice",
+        "zh": "米饭",
+        "emoji": "🍚"
+      },
+      {
+        "en": "Noodle",
+        "zh": "面条",
+        "emoji": "🍜"
+      },
+      {
+        "en": "Hamburger",
+        "zh": "汉堡",
+        "emoji": "🍔"
+      },
+      {
+        "en": "Pizza",
+        "zh": "披萨",
+        "emoji": "🍕"
+      },
+      {
+        "en": "Chocolate",
+        "zh": "巧克力",
+        "emoji": "🍫"
+      },
+      {
+        "en": "Ice Cream",
+        "zh": "冰淇淋",
+        "emoji": "🍦"
+      },
+      {
+        "en": "Candy",
+        "zh": "糖果",
+        "emoji": "🍬"
+      },
+      {
+        "en": "Cookie",
+        "zh": "饼干",
+        "emoji": "🍪"
+      }
+    ],
+    "family": [
+      {
+        "en": "Mom",
+        "zh": "妈妈",
+        "emoji": "👩"
+      },
+      {
+        "en": "Dad",
+        "zh": "爸爸",
+        "emoji": "👨"
+      },
+      {
+        "en": "Brother",
+        "zh": "兄弟",
+        "emoji": "👦"
+      },
+      {
+        "en": "Sister",
+        "zh": "姐妹",
+        "emoji": "👧"
+      },
+      {
+        "en": "Grandpa",
+        "zh": "爷爷",
+        "emoji": "👴"
+      },
+      {
+        "en": "Grandma",
+        "zh": "奶奶",
+        "emoji": "👵"
+      },
+      {
+        "en": "Baby",
+        "zh": "宝宝",
+        "emoji": "👶"
+      },
+      {
+        "en": "Me",
+        "zh": "我",
+        "emoji": "👧"
+      },
+      {
+        "en": "Friend",
+        "zh": "朋友",
+        "emoji": "👫"
+      },
+      {
+        "en": "Teacher",
+        "zh": "老师",
+        "emoji": "👩‍🏫"
+      }
+    ]
+  },
+  "totalWords": 102,
+  "totalThemes": 8
+}

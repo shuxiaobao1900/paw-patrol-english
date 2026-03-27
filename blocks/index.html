@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>汪汪队英语乐园 - 小朋友的英语启蒙小游戏</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paw-blue: #2E5CAB;
+            --paw-light-blue: #5B8BDF;
+            --paw-yellow: #FFD100;
+            --paw-red: #ED2633;
+            --paw-green: #39B54A;
+            --bg-gradient: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #1A237E;
+            --text-medium: #3949AB;
+            --shadow: 0 8px 24px rgba(46, 92, 171, 0.2);
+            --shadow-hover: 0 12px 32px rgba(46, 92, 171, 0.3);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+        .paw-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 209, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(46, 92, 171, 0.05) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px 0 30px;
+            animation: slideDown 0.6s ease-out;
+        }
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--paw-blue);
+            text-shadow: 3px 3px 0 var(--paw-yellow);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+        /* Character Selection */
+        .character-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .character-section.active {
+            display: block;
+        }
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            color: var(--paw-blue);
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0 rgba(255, 209, 0, 0.3);
+        }
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .character-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 4px solid transparent;
+        }
+        .character-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .character-card.selected {
+            border-color: var(--paw-yellow);
+            background: linear-gradient(135deg, #FFFDE7 0%, #FFFFFF 100%);
+        }
+        .character-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .character-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .character-theme {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+        .character-avatar.ryder { background: linear-gradient(135deg, var(--paw-blue), var(--paw-light-blue)); }
+        .character-avatar.chase { background: linear-gradient(135deg, #1565C0, #5E92F3); }
+        .character-avatar.skye { background: linear-gradient(135deg, #E91E63, #F06292); }
+        .character-avatar.rubble { background: linear-gradient(135deg, #FFC107, #FFD54F); }
+        .character-avatar.marshall { background: linear-gradient(135deg, var(--paw-red), #EF5350); }
+        .character-avatar.zuma { background: linear-gradient(135deg, var(--paw-green), #66BB6A); }
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--paw-blue), var(--paw-light-blue));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            background: linear-gradient(135deg, var(--paw-light-blue), var(--paw-blue));
+        }
+        .btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        /* Game Section */
+        .game-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .game-section.active {
+            display: block;
+        }
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .score-box {
+            text-align: center;
+        }
+        .score-label {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+        .score-value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            color: var(--paw-yellow);
+            text-shadow: 1px 1px 0 var(--paw-blue);
+        }
+        .current-character {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .character-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        /* Game Area */
+        .game-area {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+        .question-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .word-audio {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .speaker-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--paw-yellow), #FFE040);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 209, 0, 0.4);
+            transition: all 0.3s ease;
+            font-size: 1.8rem;
+        }
+        .speaker-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(255, 209, 0, 0.5);
+        }
+        .speaker-btn:active {
+            transform: scale(0.95);
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .option-card {
+            background: #F5F9FF;
+            border: 3px solid #E3F2FD;
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .option-card:hover {
+            border-color: var(--paw-light-blue);
+            background: #E3F2FD;
+            transform: scale(1.03);
+        }
+        .option-card.correct {
+            border-color: var(--paw-green);
+            background: #E8F5E9;
+            animation: correctPulse 0.6s ease;
+        }
+        .option-card.wrong {
+            border-color: var(--paw-red);
+            background: #FFEBEE;
+            animation: wrongShake 0.5s ease;
+        }
+        .option-image {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+        .option-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+        /* Result Section */
+        .result-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .result-section.active {
+            display: block;
+        }
+        .result-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .trophy {
+            font-size: 6rem;
+            animation: bounce 1s ease infinite;
+            margin-bottom: 20px;
+        }
+        .result-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            color: var(--paw-blue);
+            margin-bottom: 15px;
+        }
+        .result-score {
+            font-size: 1.5rem;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+        }
+        .result-score span {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            color: var(--paw-yellow);
+            text-shadow: 2px 2px 0 var(--paw-blue);
+        }
+        .buttons-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--paw-yellow), #FFE040);
+            color: var(--paw-blue);
+        }
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .characters-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            .game-area {
+                padding: 20px 15px;
+            }
+            .question-text {
+                font-size: 1.5rem;
+            }
+            .buttons-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                max-width: 250px;
+            }
+        }
+        @media (max-width: 480px) {
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti-fall 3s ease-in forwards;
+        }
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(-10px) rotate(0deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paw-pattern"></div>
+    <div class="container">
+        <header>
+            <h1 class="logo">🐾 汪汪队英语乐园 🐾</h1>
+            <p class="subtitle">小朋友的快乐英语启蒙小游戏 ✨</p>
+        </header>
+        <!-- Character Selection -->
+        <section class="character-section active" id="characterSection">
+            <h2 class="section-title">选择你喜欢的汪汪队角色 👇</h2>
+            <div class="characters-grid">
+                <div class="character-card" data-character="ryder" data-theme="command">
+                    <div class="character-avatar ryder">👑</div>
+                    <h3 class="character-name">莱德</h3>
+                    <p class="character-theme">指令英语</p>
+                </div>
+                <div class="character-card" data-character="chase" data-theme="vehicle">
+                    <div class="character-avatar chase">🚓</div>
+                    <h3 class="character-name">阿奇</h3>
+                    <p class="character-theme">交通工具</p>
+                </div>
+                <div class="character-card" data-character="skye" data-theme="sky">
+                    <div class="character-avatar skye">🚁</div>
+                    <h3 class="character-name">天天</h3>
+                    <p class="character-theme">航空天气</p>
+                </div>
+                <div class="character-card" data-character="rubble" data-theme="construction">
+                    <div class="character-avatar rubble">🚧</div>
+                    <h3 class="character-name">小砾</h3>
+                    <p class="character-theme">工程建筑</p>
+                </div>
+                <div class="character-card" data-character="marshall" data-theme="fire">
+                    <div class="character-avatar marshall">🚒</div>
+                    <h3 class="character-name">毛毛</h3>
+                    <p class="character-theme">消防救援</p>
+                </div>
+                <div class="character-card" data-character="zuma" data-theme="water">
+                    <div class="character-avatar zuma">🚤</div>
+                    <h3 class="character-name">路马</h3>
+                    <p class="character-theme">水上救援</p>
+                </div>
+            </div>
+            <button class="btn" id="startGameBtn" disabled>开始游戏 🎮</button>
+        </section>
+        <!-- Game Area -->
+        <section class="game-section" id="gameSection">
+            <div class="game-header">
+                <div class="score-box">
+                    <div class="score-label">得分</div>
+                    <div class="score-value" id="scoreDisplay">0 / 10</div>
+                </div>
+                <div class="current-character">
+                    <div class="character-badge" id="currentCharacterBadge"></div>
+                    <div>
+                        <div style="font-weight: 700; color: var(--text-dark);" id="currentCharacterName"></div>
+                        <div style="font-size: 0.85rem; color: var(--text-medium);" id="currentCharacterTheme"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-area">
+                <div class="question-text" id="questionText"></div>
+                <div class="word-audio">
+                    <button class="speaker-btn" id="speakerBtn">🔊</button>
+                </div>
+                <div class="options-grid" id="optionsGrid"></div>
+            </div>
+        </section>
+        <!-- Result -->
+        <section class="result-section" id="resultSection">
+            <div class="result-card">
+                <div class="trophy">🏆</div>
+                <h2 class="result-title">游戏完成啦！</h2>
+                <p class="result-score">你获得了 <span id="finalScore">0</span> 分!</p>
+                <div class="buttons-row">
+                    <button class="btn" id="backToCharactersBtn">选择其他角色 ↩️</button>
+                    <button class="btn btn-secondary" id="playAgainBtn">再来一次 🔄</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Vocabulary database by character theme
+        const vocabulary = {
+            command: [
+                { word: "GO", image: "▶️", translation: "走", options: ["去", "停", "跳", "坐"] },
+                { word: "STOP", image: "🛑", translation: "停", options: ["走", "停", "跑", "站"] },
+                { word: "COME", image: "👉", translation: "来", options: ["去", "来", "走", "停"] },
+                { word: "JUMP", image: "🦘", translation: "跳", options: ["跑", "走", "跳", "坐"] },
+                { word: "SIT", image: "🪑", translation: "坐", options: ["站", "坐", "躺", "跳"] },
+                { word: "RUN", image: "🏃", translation: "跑", options: ["走", "跑", "跳", "坐"] },
+                { word: "UP", image: "⬆️", translation: "上", options: ["上", "下", "左", "右"] },
+                { word: "DOWN", image: "⬇️", translation: "下", options: ["上", "下", "前", "后"] },
+                { word: "HELLO", image: "👋", translation: "你好", options: ["再见", "你好", "谢谢", "抱歉"] },
+                { word: "BYE", image: "👋", translation: "再见", options: ["你好", "再见", "晚安", "早上好"] }
+            ],
+            vehicle: [
+                { word: "CAR", image: "🚗", translation: "汽车", options: ["汽车", "卡车", "公交车", "火车"] },
+                { word: "BUS", image: "🚌", translation: "公交车", options: ["汽车", "公交车", "出租车", "自行车"] },
+                { word: "TRUCK", image: "🚚", translation: "卡车", options: ["轿车", "卡车", "轮船", "飞机"] },
+                { word: "POLICE CAR", image: "🚓", translation: "警车", options: ["消防车", "救护车", "警车", "出租车"] },
+                { word: "BIKE", image: "🚲", translation: "自行车", options: ["摩托车", "自行车", "汽车", "公交车"] },
+                { word: "TRAIN", image: "🚂", translation: "火车", options: ["火车", "飞机", "轮船", "汽车"] },
+                { word: "BOAT", image: "🚤", translation: "船", options: ["汽车", "船", "飞机", "自行车"] },
+                { word: "PLANE", image: "✈️", translation: "飞机", options: ["火车", "汽车", "飞机", "轮船"] },
+                { word: "MOTORCYCLE", image: "🏍️", translation: "摩托车", options: ["自行车", "摩托车", "汽车", "公交车"] },
+                { word: "AMBULANCE", image: "🚑", translation: "救护车", options: ["消防车", "警车", "救护车", "出租车"] }
+            ],
+            sky: [
+                { word: "SKY", image: "☁️", translation: "天空", options: ["地面", "天空", "海洋", "山脉"] },
+                { word: "CLOUD", image: "☁️", translation: "云", options: ["太阳", "云", "雨", "风"] },
+                { word: "SUN", image: "☀️", translation: "太阳", options: ["月亮", "星星", "太阳", "云"] },
+                { word: "RAIN", image: "🌧️", translation: "雨", options: ["雪", "风", "雨", "晴"] },
+                { word: "WIND", image: "💨", translation: "风", options: ["雨", "云", "风", "太阳"] },
+                { word: "HELICOPTER", image: "🚁", translation: "直升机", options: ["飞机", "直升机", "热气球", "火箭"] },
+                { word: "MOON", image: "🌙", translation: "月亮", options: ["太阳", "月亮", "星星", "云"] },
+                { word: "STAR", image: "⭐", translation: "星星", options: ["月亮", "太阳", "星星", "云"] },
+                { word: "SNOW", image: "❄️", translation: "雪", options: ["雨", "风", "雪", "冰"] },
+                { word: "HEAT", image: "🔥", translation: "热", options: ["冷", "热", "凉", "暖"] }
+            ],
+            construction: [
+                { word: "HOUSE", image: "🏠", translation: "房子", options: ["房子", "墙", "砖", "路"] },
+                { word: "WALL", image: "🧱", translation: "墙", options: ["房子", "墙", "门", "窗"] },
+                { word: "DOOR", image: "🚪", translation: "门", options: ["窗", "门", "墙", "屋顶"] },
+                { word: "WINDOW", image: "🪟", translation: "窗", options: ["门", "墙", "窗", "屋顶"] },
+                { word: "SHOVEL", image: "⛏️", translation: "铲子", options: ["锤子", "铲子", "钻头", "锯子"] },
+                { word: "HAMMER", image: "🔨", translation: "锤子", options: ["锤子", "铲子", "扳手", "钳子"] },
+                { word: "BRICK", image: "🧱", translation: "砖", options: ["水泥", "砖", "石头", "沙子"] },
+                { word: "ROAD", image: "🛣️", translation: "路", options: ["桥", "路", "房子", "山"] },
+                { word: "DIG", image: "⚒️", translation: "挖", options: ["建", "挖", "推", "拉"] },
+                { word: "BUILD", image: "🏗️", translation: "建造", options: ["建造", "破坏", "修理", "打扫"] }
+            ],
+            fire: [
+                { word: "FIRE", image: "🔥", translation: "火", options: ["水", "火", "土", "空气"] },
+                { word: "WATER", image: "💧", translation: "水", options: ["火", "水", "木头", "土"] },
+                { word: "TRUCK", image: "🚒", translation: "消防车", options: ["警车", "消防车", "救护车", "卡车"] },
+                { word: "HELP", image: "🆘", translation: "帮助", options: ["救命", "再见", "你好", "谢谢"] },
+                { word: "RED", image: "🔴", translation: "红色", options: ["红色", "蓝色", "绿色", "黄色"] },
+                { word: "HYDRANT", image: "🚰", translation: "消防栓", options: ["水泵", "消防栓", "水管", "梯子"] },
+                { word: "LADDER", image: "🪜", translation: "梯子", options: ["梯子", "绳子", "棍子", "管子"] },
+                { word: "SAFE", image: "✅", translation: "安全", options: ["危险", "安全", "快", "慢"] },
+                { word: "HOT", image: "🥵", translation: "热", options: ["冷", "凉", "热", "暖"] },
+                { word: "ALARM", image: "🚨", translation: "警报", options: ["铃声", "警报", "电话", "呼叫"] }
+            ],
+            water: [
+                { word: "WATER", image: "💦", translation: "水", options: "火", "水", "土", "风"] },
+                { word: "BOAT", image: "🚤", translation: "船", options: ["汽车", "船", "飞机", "火车"] },
+                { word: "SEA", image: "🌊", translation: "大海", options: ["河流", "湖泊", "大海", "海洋"] },
+                { word: "FISH", image: "🐟", translation: "鱼", options: ["鱼", "鲨鱼", "海豚", "鲸鱼"] },
+                { word: "SWIM", image: "🏊", translation: "游泳", options: ["跑步", "跳跃", "游泳", "走路"] },
+                { word: "DOLPHIN", image: "🐬", translation: "海豚", options: ["鲸鱼", "海豚", "鲨鱼", "鱼"] },
+                { word: "BEACH", image: "🏖️", translation: "海滩", options: ["山", "森林", "海滩", "公园"] },
+                { word: "BLUE", image: "🔵", translation: "蓝色", options: ["红色", "蓝色", "绿色", "黄色"] },
+                { word: "WAVE", image: "🌊", translation: "波浪", options: ["波浪", "潮汐", "水流", "浪花"] },
+                { word: "SAIL", image: "⛵", translation: "航行", options: ["航行", "停靠", "游泳", "潜水"] }
+            ]
+        };
+        const characters = {
+            ryder: { name: "莱德", emoji: "👑", theme: "command", themeName: "指令英语", className: "ryder" },
+            chase: { name: "阿奇", emoji: "🚓", theme: "vehicle", themeName: "交通工具", className: "chase" },
+            skye: { name: "天天", emoji: "🚁", theme: "sky", themeName: "航空天气", className: "skye" },
+            rubble: { name: "小砾", emoji: "🚧", theme: "construction", themeName: "工程建筑", className: "rubble" },
+            marshall: { name: "毛毛", emoji: "🚒", theme: "fire", themeName: "消防救援", className: "marshall" },
+            zuma: { name: "路马", emoji: "🚤", theme: "water", themeName: "水上救援", className: "zuma" }
+        };
+        let currentCharacter = null;
+        let currentTheme = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questions = [];
+        let answered = false;
+        // DOM Elements
+        const characterSection = document.getElementById('characterSection');
+        const gameSection = document.getElementById('gameSection');
+        const resultSection = document.getElementById('resultSection');
+        const startGameBtn = document.getElementById('startGameBtn');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const questionText = document.getElementById('questionText');
+        const optionsGrid = document.getElementById('optionsGrid');
+        const speakerBtn = document.getElementById('speakerBtn');
+        const currentCharacterBadge = document.getElementById('currentCharacterBadge');
+        const currentCharacterName = document.getElementById('currentCharacterName');
+        const currentCharacterTheme = document.getElementById('currentCharacterTheme');
+        const finalScore = document.getElementById('finalScore');
+        const backToCharactersBtn = document.getElementById('backToCharactersBtn');
+        const playAgainBtn = document.getElementById('playAgainBtn');
+        // Event Listeners
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.addEventListener('click', () => selectCharacter(card));
+        });
+        startGameBtn.addEventListener('click', startGame);
+        speakerBtn.addEventListener('click', speakCurrentWord);
+        backToCharactersBtn.addEventListener('click', backToCharacters);
+        playAgainBtn.addEventListener('click', restartGame);
+        // Select character
+        function selectCharacter(cardElement) {
+            document.querySelectorAll('.character-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
+            
+            const characterKey = cardElement.dataset.character;
+            currentCharacter = characters[characterKey];
+            currentTheme = cardElement.dataset.theme;
+            startGameBtn.disabled = false;
+        }
+        // Start game
+        function startGame() {
+            characterSection.classList.remove('active');
+            gameSection.classList.add('active');
+            
+            // Update header
+            currentCharacterBadge.className = `character-badge ${currentCharacter.className}`;
+            currentCharacterBadge.textContent = currentCharacter.emoji;
+            currentCharacterName.textContent = currentCharacter.name;
+            currentCharacterTheme.textContent = currentCharacter.themeName;
+            
+            // Prepare questions
+            score = 0;
+            currentQuestionIndex = 0;
+            questions = [...vocabulary[currentTheme]];
+            // Shuffle questions
+            questions.sort(() => Math.random() - 0.5);
+            
+            updateScore();
+            showQuestion();
+        }
+        // Show current question
+        function showQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                endGame();
+                return;
+            }
+            
+            answered = false;
+            const question = questions[currentQuestionIndex];
+            
+            questionText.textContent = `"${question.word}" 是什么意思？`;
+            
+            // Shuffle options
+            const options = [...question.options];
+            options.sort(() => Math.random() - 0.5);
+            
+            optionsGrid.innerHTML = '';
+            options.forEach(option => {
+                const optionCard = document.createElement('div');
+                optionCard.className = 'option-card';
+                optionCard.innerHTML = `
+                    <div class="option-text">${option}</div>
+                `;
+                optionCard.addEventListener('click', () => checkAnswer(optionCard, option, question.translation));
+                optionsGrid.appendChild(optionCard);
+            });
+        }
+        // Check answer
+        function checkAnswer(optionElement, selected, correct) {
+            if (answered) return;
+            answered = true;
+            
+            if (selected === correct) {
+                optionElement.classList.add('correct');
+                score++;
+                updateScore();
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    showQuestion();
+                }, 800);
+            } else {
+                optionElement.classList.add('wrong');
+                // Highlight correct answer
+                Array.from(optionsGrid.children).forEach(card => {
+                    if (card.textContent.trim() === correct) {
+                        card.classList.add('correct');
+                    }
+                });
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    showQuestion();
+                }, 1200);
+            }
+        }
+        // Update score display
+        function updateScore() {
+            scoreDisplay.textContent = `${score} / ${questions.length}`;
+        }
+        // End game
+        function endGame() {
+            gameSection.classList.remove('active');
+            resultSection.classList.add('active');
+            finalScore.textContent = score;
+            
+            // Create confetti celebration
+            if (score >= 8) {
+                createConfetti();
+            }
+        }
+        // Back to character selection
+        function backToCharacters() {
+            resultSection.classList.remove('active');
+            characterSection.classList.add('active');
+            startGameBtn.disabled = !currentCharacter;
+        }
+        // Restart game with same character
+        function restartGame() {
+            resultSection.classList.remove('active');
+            gameSection.classList.add('active');
+            startGame();
+        }
+        // Speak current word using Web Speech API
+        function speakCurrentWord() {
+            if (!('speechSynthesis' in window)) {
+                alert('您的浏览器不支持语音朗读功能');
+                return;
+            }
+            
+            if (answered) return;
+            const question = questions[currentQuestionIndex];
+            
+            const utterance = new SpeechSynthesisUtterance(question.word);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utterance);
+        }
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#2E5CAB', '#FFD100', '#ED2633', '#39B54A', '#5B8BDF', '#E91E63'];
+            const container = document.body;
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.animationDuration = `${2 + Math.random() * 2}s`;
+                    confetti.style.animationDelay = `${Math.random() * 1}s`;
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+        // Preload fonts
+        document.fonts.ready.then(function () {
+            console.log('Fonts loaded successfully');
+        });
+    </script>
+</body>
+</html>

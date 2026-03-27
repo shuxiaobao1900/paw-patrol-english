@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🐾 汪汪队英语乐园</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 26px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        
+        /* 进度条 */
+        .progress-container {
+            background: #f0f0f0;
+            padding: 12px 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.4s ease;
+            border-radius: 5px;
+        }
+        
+        /* 主内容区 */
+        .content {
+            padding: 20px 15px;
+            min-height: 400px;
+        }
+        
+        /* 菜单网格 */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px 0;
+        }
+        
+        .menu-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 15px;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .menu-item:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .menu-item .icon {
+            font-size: 42px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* 不同颜色主题 */
+        .menu-item.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+        
+        .menu-item.green {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            box-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);
+        }
+        
+        .menu-item.orange {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            box-shadow: 0 4px 15px rgba(250, 112, 154, 0.3);
+        }
+        
+        /* 问题卡片 */
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .question-text {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .question-image {
+            font-size: 80px;
+            margin: 15px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* 选项按钮 */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        
+        .option-btn {
+            background: white;
+            border: 3px solid #e0e0e0;
+            padding: 18px 15px;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 500;
+            color: #333;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .option-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .option-btn.correct {
+            background: #43e97b;
+            border-color: #43e97b;
+            color: white;
+            animation: celebrate 0.5s ease;
+        }
+        
+        .option-btn.wrong {
+            background: #ff6b6b;
+            border-color: #ff6b6b;
+            color: white;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        /* 结果卡片 */
+        .result-card {
+            text-align: center;
+            padding: 30px 15px;
+        }
+        
+        .result-emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .result-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .result-score {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .result-message {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        /* 按钮组 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        /* 底部导航 */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f8f9fa;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .nav-btn {
+            flex: 1;
+            padding: 14px 10px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 380px) {
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .menu-item {
+                padding: 20px 12px;
+                font-size: 15px;
+            }
+            
+            .menu-item .icon {
+                font-size: 36px;
+            }
+            
+            .question-text {
+                font-size: 18px;
+            }
+            
+            .option-btn {
+                font-size: 16px;
+                padding: 16px 12px;
+            }
+        }
+        
+        /* 横屏优化 */
+        @media (max-aspect-ratio: 1/1) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🐾 汪汪队英语乐园</h1>
+            <p>和汪汪队一起快乐学英语！</p>
+        </div>
+        
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span id="levelInfo">第 1 关 / 共 10 关</span>
+                <span id="scoreInfo">得分：0</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 10%;"></div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content" id="gameContent">
+            <!-- 动态内容将在这里显示 -->
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <button class="nav-btn active" onclick="showMenu()">🏠 首页</button>
+            <button class="nav-btn" onclick="continueGame()">▶️ 继续</button>
+            <button class="nav-btn" onclick="showResults()">📊 成绩</button>
+        </div>
+    </div>
+    <script>
+        // 游戏数据
+        let currentLevel = 1;
+        let score = 0;
+        let totalQuestions = 10;
+        let currentQuestion = null;
+        let gameMode = 'menu'; // menu, playing, result
+        
+        // 题库
+        const questionBank = [
+            {
+                type: 'letter',
+                question: '哪个是字母 "A"?',
+                emoji: '🅰️',
+                options: ['A', 'B', 'D'],
+                answer: 0
+            },
+            {
+                type: 'word',
+                question: '"Apple" 是什么意思？',
+                emoji: '🍎',
+                options: ['香蕉', '苹果', '橙子'],
+                answer: 1
+            },
+            {
+                type: 'listening',
+                question: '听音辨物：这是哪种动物？',
+                emoji: '🐶',
+                audio: 'dog',
+                options: ['猫', '狗', '鸟'],
+                answer: 1
+            },
+            {
+                type: 'match',
+                question: '"Cat" 对应哪个图片？',
+                emoji: '❓',
+                options: ['🐱', '🐶', '🐰'],
+                answer: 0
+            },
+            {
+                type: 'word',
+                question: '"Banana" 是什么颜色？',
+                emoji: '🍌',
+                options: ['红色', '黄色', '蓝色'],
+                answer: 1
+            }
+        ];
+        
+        // 初始化游戏
+        function initGame() {
+            showMenu();
+        }
+        
+        // 显示菜单
+        function showMenu() {
+            gameMode = 'menu';
+            updateNav();
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="menu-grid">
+                    <button class="menu-item blue" onclick="startGame('letter')">
+                        <span class="icon">🔤</span>
+                        学字母
+                    </button>
+                    <button class="menu-item green" onclick="startGame('word')">
+                        <span class="icon">📝</span>
+                        学单词
+                    </button>
+                    <button class="menu-item orange" onclick="startGame('listening')">
+                        <span class="icon">🎧</span>
+                        练听力
+                    </button>
+                    <button class="menu-item" onclick="startGame('match')">
+                        <span class="icon">🧩</span>
+                        配对游戏
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 开始游戏
+        function startGame(mode) {
+            gameMode = 'playing';
+            currentLevel = 1;
+            score = 0;
+            updateProgress();
+            updateNav();
+            showQuestion(mode);
+        }
+        
+        // 显示问题
+        function showQuestion(mode) {
+            const questions = questionBank.filter(q => q.type === mode);
+            const question = questions[Math.floor(Math.random() * questions.length)];
+            currentQuestion = question;
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="question-card">
+                    <div class="question-text">${question.question}</div>
+                    <div class="question-image">${question.emoji}</div>
+                </div>
+                <div class="options-grid">
+                    ${question.options.map((opt, index) => `
+                        <button class="option-btn" onclick="checkAnswer(${index})">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        // 检查答案
+        function checkAnswer(index) {
+            const buttons = document.querySelectorAll('.option-btn');
+            if (index === currentQuestion.answer) {
+                buttons[index].classList.add('correct');
+                score += 10;
+                setTimeout(() => {
+                    currentLevel++;
+                    if (currentLevel > totalQuestions) {
+                        showResults();
+                    } else {
+                        updateProgress();
+                        showQuestion(currentQuestion.type);
+                    }
+                }, 1000);
+            } else {
+                buttons[index].classList.add('wrong');
+                setTimeout(() => {
+                    buttons[index].classList.remove('wrong');
+                }, 500);
+            }
+            updateProgress();
+        }
+        
+        // 更新进度
+        function updateProgress() {
+            document.getElementById('levelInfo').textContent = `第 ${currentLevel} 关 / 共 ${totalQuestions} 关`;
+            document.getElementById('scoreInfo').textContent = `得分：${score}`;
+            const progress = (currentLevel / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+        
+        // 显示结果
+        function showResults() {
+            gameMode = 'result';
+            updateNav();
+            const percentage = (score / (totalQuestions * 10)) * 100;
+            let emoji, message;
+            if (percentage >= 90) {
+                emoji = '🏆';
+                message = '太棒了！你真是英语小天才！继续保持！';
+            } else if (percentage >= 70) {
+                emoji = '🌟';
+                message = '很不错！继续加油，你会更棒的！';
+            } else if (percentage >= 50) {
+                emoji = '💪';
+                message = '不错哦！多练习几次会更好！';
+            } else {
+                emoji = '📚';
+                message = '没关系，我们一起再学习一次吧！';
+            }
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="result-card">
+                    <div class="result-emoji">${emoji}</div>
+                    <div class="result-title">完成！</div>
+                    <div class="result-score">${score} 分</div>
+                    <div class="result-message">${message}</div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="showMenu()">🏠 返回首页</button>
+                        <button class="btn btn-success" onclick="startGame('${currentQuestion?.type || 'word'}')">🔄 再来一次</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 继续游戏
+        function continueGame() {
+            if (gameMode === 'result') {
+                startGame(currentQuestion?.type || 'word');
+            } else if (gameMode === 'menu') {
+                alert('请先选择一个游戏模式哦！😊');
+            }
+        }
+        
+        // 更新导航
+        function updateNav() {
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns[0].classList.toggle('active', gameMode === 'menu');
+            navBtns[1].classList.toggle('active', gameMode === 'playing');
+            navBtns[2].classList.toggle('active', gameMode === 'result');
+        }
+        
+        // 页面加载完成后初始化
+        window.onload = initGame;
+    </script>
+</body>
+</html>

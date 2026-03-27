@@ -1,0 +1,852 @@
+2026-03-24 07:04:50 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10c01fcb0> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:04:50 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 07:04:50 | INFO | New task created | {'src': 'taskmgr', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:04:50 | INFO | Added single message: +4053 tokens, total: 4053, id: Jn-05AsT6ms | {'src': 'context_manager', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:06:10 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:06:10 | INFO | Context compressed: 1->1 messages, 4053->4053 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:06:14 | INFO | Updated context tokens from LLM usage: 9088 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:06:30 | INFO | Updated context tokens from LLM usage: 10081 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:06:30 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:06:30 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:06:30 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:06:30 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 07:07:37 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Will clean Round 0: TOOL_FAILED: 1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Will clean 2 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Executing Smart compact with 2 message IDs | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Deleted 2 messages by ID, saved 108 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:07:37 | INFO | delete_messages_by_ids returned: (2, 108) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Compact completed: 2 messages deleted | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Messages: 5 -> 3 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Tokens: 10081 -> 4573 (saved: 5508) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:07:37 | INFO | Step compact result: (2, 3, 5508, 4573) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:07:37 | INFO | Step compact completed: 2 messages cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:07:37 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:07:37 | ERROR | trustoken API call failed with status code 403 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'llm', 'name': 'trustoken', 'e': PermissionDeniedError("Error code: 403 - {'error': {'code': 'insufficient_user_quota', 'message': 'API令牌余额受限，请确认余额是否充足。 (request id: 20260324150737959758284AQm5Wzkf). 查看原因（ https://d.aipyaipy.com/d/76 ）或者新建全新任务重试。', 'param': '', 'type': 'new_api_error'}}")}
+Traceback (most recent call last):
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/stdio.py", line 809, in <module>
+    task.run(instruction, lang=settings.lang)
+    │    │   │                 └ <dynaconf.base.LazySettings object at 0x10bea4f50>
+    │    │   └ '继续下一步'
+    │    └ <function Task.run at 0x10be3eca0>
+    └ <aipyapp.aipy.task.Task object at 0x10b536ea0>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/task.py", line 52, in wrapper
+    return func(self, *args, **kwargs)
+           │    │      │       └ {'lang': 'zh'}
+           │    │      └ ('继续下一步',)
+           │    └ <aipyapp.aipy.task.Task object at 0x10b536ea0>
+           └ <function Task.run at 0x10be3ec00>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/task.py", line 534, in run
+    response = step.run()
+               │    └ <function Step.run at 0x10b698180>
+               └ <aipyapp.aipy.step.Step object at 0x10c20ab40>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/step.py", line 194, in run
+    response = self.request(user_message)
+               │    │       └ ChatMessage(id='HQTTC7d7Jd4', message=UserMessage(role=<MessageRole.USER: 'user'>, content='<user_prompt>\n<message from="use...
+               │    └ <function Step.request at 0x10b698040>
+               └ <aipyapp.aipy.step.Step object at 0x10c20ab40>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/step.py", line 159, in request
+    msg = client(user_message)
+          │      └ ChatMessage(id='HQTTC7d7Jd4', message=UserMessage(role=<MessageRole.USER: 'user'>, content='<user_prompt>\n<message from="use...
+          └ <aipyapp.aipy.client.Client object at 0x10bfbf560>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/client.py", line 189, in __call__
+    msg = client([m.to_llm_dict() for m in messages], stream_processor=stream_processor, extra_headers=self.extra_headers, tools=tools)
+          │                                │                           │                               │    │                    └ None
+          │                                │                           │                               │    └ {'Aipy-Task-ID': 'CZMUn4piLZVxKt55xCPUd', 'User-Agent': 'Mozilla/5.0 (darwin; arm64) AppleWebKit/537.36 (KHTML, like Gecko) a...
+          │                                │                           │                               └ <aipyapp.aipy.client.Client object at 0x10bfbf560>
+          │                                │                           └ <aipyapp.aipy.client.StreamProcessor object at 0x10c5f4c50>
+          │                                └ [ChatMessage(id='Jn-05AsT6ms', message=SystemMessage(role=<MessageRole.SYSTEM: 'system'>, content='<system_prompt>\n<role>\n\...
+          └ trustoken/trust:auto
+
+> File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/llm/base_openai.py", line 171, in __call__
+    response = self.get_completion(messages, **kwargs)
+               │    │              │           └ {'extra_headers': {'Aipy-Task-ID': 'CZMUn4piLZVxKt55xCPUd', 'User-Agent': 'Mozilla/5.0 (darwin; arm64) AppleWebKit/537.36 (KH...
+               │    │              └ [{'role': 'system', 'content': '<system_prompt>\n<role>\n\n</role>\n<output_rules>\nThe output must use structured Markdown f...
+               │    └ <function OpenAIBaseClient.get_completion at 0x10ac3f600>
+               └ trustoken/trust:auto
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/llm/base_openai.py", line 160, in get_completion
+    response = self._client.chat.completions.create(model=model, messages=cast(Any, messages), **api_params)
+               │    │       │    │           │            │               │    │    │            └ {'max_tokens': 8192, 'temperature': 0.1, 'stream': True, 'stream_options': {'include_usage': True}, 'extra_headers': {'Aipy-T...
+               │    │       │    │           │            │               │    │    └ [{'role': 'system', 'content': '<system_prompt>\n<role>\n\n</role>\n<output_rules>\nThe output must use structured Markdown f...
+               │    │       │    │           │            │               │    └ typing.Any
+               │    │       │    │           │            │               └ <function cast at 0x103db2c00>
+               │    │       │    │           │            └ 'auto'
+               │    │       │    │           └ <function Completions.create at 0x10c27e7a0>
+               │    │       │    └ <openai.resources.chat.completions.completions.Completions object at 0x10c035f10>
+               │    │       └ <openai.resources.chat.chat.Chat object at 0x10c037fe0>
+               │    └ <openai.OpenAI object at 0x10c037ec0>
+               └ trustoken/trust:auto
+
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           │     │       └ {'model': 'auto', 'messages': [{'role': 'system', 'content': '<system_prompt>\n<role>\n\n</role>\n<output_rules>\nThe output ...
+           │     └ (<openai.resources.chat.completions.completions.Completions object at 0x10c035f10>,)
+           └ <function Completions.create at 0x10c27e660>
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+    return self._post(
+           │    └ <bound method SyncAPIClient.post of <openai.OpenAI object at 0x10c037ec0>>
+           └ <openai.resources.chat.completions.completions.Completions object at 0x10c035f10>
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+           │    │          │    │       │        │            │                  └ openai.Stream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+           │    │          │    │       │        │            └ True
+           │    │          │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers={'Aipy-Task-ID': 'CZMUn4piLZVxKt55xCPUd', 'Use...
+           │    │          │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+           │    │          │    └ <function SyncAPIClient.request at 0x10aaaf600>
+           │    │          └ <openai.OpenAI object at 0x10c037ec0>
+           │    └ ~ResponseT
+           └ <function cast at 0x103db2c00>
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+          │    └ <function BaseClient._make_status_error_from_response at 0x10aaadda0>
+          └ <openai.OpenAI object at 0x10c037ec0>
+
+openai.PermissionDeniedError: Error code: 403 - {'error': {'code': 'insufficient_user_quota', 'message': 'API令牌余额受限，请确认余额是否充足。 (request id: 20260324150737959758284AQm5Wzkf). 查看原因（ https://d.aipyaipy.com/d/76 ）或者新建全新任务重试。', 'param': '', 'type': 'new_api_error'}}
+2026-03-24 07:07:37 | ERROR | LLM request error | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'Step', 'error': '模型服务请求失败: API令牌余额受限，请确认余额是否充足。 (request id: 20260324150737959758284AQm5Wzkf). 查看原因（ https://d.aipyaipy.com/d/76 ）或者新建全新任务重试。'}
+2026-03-24 07:07:37 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:07:37 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:07:37 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 1}
+2026-03-24 07:08:09 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:08:09 | INFO | Step compact result: (0, 3, 0, 4573) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:08:09 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:08:09 | ERROR | trustoken API call failed with status code 403 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'llm', 'name': 'trustoken', 'e': PermissionDeniedError("Error code: 403 - {'error': {'code': 'insufficient_user_quota', 'message': 'API令牌余额受限，请确认余额是否充足。 (request id: 20260324150809322567742F90JyHWC). 查看原因（ https://d.aipyaipy.com/d/76 ）或者新建全新任务重试。', 'param': '', 'type': 'new_api_error'}}")}
+Traceback (most recent call last):
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/stdio.py", line 809, in <module>
+    task.run(instruction, lang=settings.lang)
+    │    │   │                 └ <dynaconf.base.LazySettings object at 0x10bea4f50>
+    │    │   └ '继续下一步'
+    │    └ <function Task.run at 0x10be3eca0>
+    └ <aipyapp.aipy.task.Task object at 0x10b536ea0>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/task.py", line 52, in wrapper
+    return func(self, *args, **kwargs)
+           │    │      │       └ {'lang': 'zh'}
+           │    │      └ ('继续下一步',)
+           │    └ <aipyapp.aipy.task.Task object at 0x10b536ea0>
+           └ <function Task.run at 0x10be3ec00>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/task.py", line 534, in run
+    response = step.run()
+               │    └ <function Step.run at 0x10b698180>
+               └ <aipyapp.aipy.step.Step object at 0x10c1c2de0>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/step.py", line 194, in run
+    response = self.request(user_message)
+               │    │       └ ChatMessage(id='HQTTC7d7Jd4', message=UserMessage(role=<MessageRole.USER: 'user'>, content='<user_prompt>\n<message from="use...
+               │    └ <function Step.request at 0x10b698040>
+               └ <aipyapp.aipy.step.Step object at 0x10c1c2de0>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/step.py", line 159, in request
+    msg = client(user_message)
+          │      └ ChatMessage(id='HQTTC7d7Jd4', message=UserMessage(role=<MessageRole.USER: 'user'>, content='<user_prompt>\n<message from="use...
+          └ <aipyapp.aipy.client.Client object at 0x10bfbf560>
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/aipy/client.py", line 189, in __call__
+    msg = client([m.to_llm_dict() for m in messages], stream_processor=stream_processor, extra_headers=self.extra_headers, tools=tools)
+          │                                │                           │                               │    │                    └ None
+          │                                │                           │                               │    └ {'Aipy-Task-ID': 'CZMUn4piLZVxKt55xCPUd', 'User-Agent': 'Mozilla/5.0 (darwin; arm64) AppleWebKit/537.36 (KHTML, like Gecko) a...
+          │                                │                           │                               └ <aipyapp.aipy.client.Client object at 0x10bfbf560>
+          │                                │                           └ <aipyapp.aipy.client.StreamProcessor object at 0x11082e720>
+          │                                └ [ChatMessage(id='NRqrnlW9JPo', message=SystemMessage(role=<MessageRole.SYSTEM: 'system'>, content='<system_prompt>\n<role>\n\...
+          └ trustoken/trust:auto
+
+> File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/llm/base_openai.py", line 171, in __call__
+    response = self.get_completion(messages, **kwargs)
+               │    │              │           └ {'extra_headers': {'Aipy-Task-ID': 'CZMUn4piLZVxKt55xCPUd', 'User-Agent': 'Mozilla/5.0 (darwin; arm64) AppleWebKit/537.36 (KH...
+               │    │              └ [{'role': 'system', 'content': '<system_prompt>\n<role>\n\n</role>\n<output_rules>\nThe output must use structured Markdown f...
+               │    └ <function OpenAIBaseClient.get_completion at 0x10ac3f600>
+               └ trustoken/trust:auto
+
+  File "/Applications/AiPy Pro.app/Contents/Resources/app.asar.unpacked/resources/aipyapp/aipyapp/llm/base_openai.py", line 160, in get_completion
+    response = self._client.chat.completions.create(model=model, messages=cast(Any, messages), **api_params)
+               │    │       │    │           │            │               │    │    │            └ {'max_tokens': 8192, 'temperature': 0.1, 'stream': True, 'stream_options': {'include_usage': True}, 'extra_headers': {'Aipy-T...
+               │    │       │    │           │            │               │    │    └ [{'role': 'system', 'content': '<system_prompt>\n<role>\n\n</role>\n<output_rules>\nThe output must use structured Markdown f...
+               │    │       │    │           │            │               │    └ typing.Any
+               │    │       │    │           │            │               └ <function cast at 0x103db2c00>
+               │    │       │    │           │            └ 'auto'
+               │    │       │    │           └ <function Completions.create at 0x10c27e7a0>
+               │    │       │    └ <openai.resources.chat.completions.completions.Completions object at 0x10c035f10>
+               │    │       └ <openai.resources.chat.chat.Chat object at 0x10c037fe0>
+               │    └ <openai.OpenAI object at 0x10c037ec0>
+               └ trustoken/trust:auto
+
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           │     │       └ {'model': 'auto', 'messages': [{'role': 'system', 'content': '<system_prompt>\n<role>\n\n</role>\n<output_rules>\nThe output ...
+           │     └ (<openai.resources.chat.completions.completions.Completions object at 0x10c035f10>,)
+           └ <function Completions.create at 0x10c27e660>
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+    return self._post(
+           │    └ <bound method SyncAPIClient.post of <openai.OpenAI object at 0x10c037ec0>>
+           └ <openai.resources.chat.completions.completions.Completions object at 0x10c035f10>
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+           │    │          │    │       │        │            │                  └ openai.Stream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+           │    │          │    │       │        │            └ True
+           │    │          │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers={'Aipy-Task-ID': 'CZMUn4piLZVxKt55xCPUd', 'Use...
+           │    │          │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+           │    │          │    └ <function SyncAPIClient.request at 0x10aaaf600>
+           │    │          └ <openai.OpenAI object at 0x10c037ec0>
+           │    └ ~ResponseT
+           └ <function cast at 0x103db2c00>
+  File "/Users/btt/Library/Application Support/aipy-pro/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+          │    └ <function BaseClient._make_status_error_from_response at 0x10aaadda0>
+          └ <openai.OpenAI object at 0x10c037ec0>
+
+openai.PermissionDeniedError: Error code: 403 - {'error': {'code': 'insufficient_user_quota', 'message': 'API令牌余额受限，请确认余额是否充足。 (request id: 20260324150809322567742F90JyHWC). 查看原因（ https://d.aipyaipy.com/d/76 ）或者新建全新任务重试。', 'param': '', 'type': 'new_api_error'}}
+2026-03-24 07:08:09 | ERROR | LLM request error | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'Step', 'error': '模型服务请求失败: API令牌余额受限，请确认余额是否充足。 (request id: 20260324150809322567742F90JyHWC). 查看原因（ https://d.aipyaipy.com/d/76 ）或者新建全新任务重试。'}
+2026-03-24 07:08:09 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:08:09 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:08:09 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 1}
+2026-03-24 07:11:57 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:11:57 | INFO | Step compact result: (0, 3, 0, 4573) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:11:57 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:11:57 | INFO | Context compressed: 3->3 messages, 4573->4573 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:12:00 | INFO | Updated context tokens from LLM usage: 10082 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:12:00 | INFO | Connecting to server '@aipy-pro/mindmap-generator'... | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:00 | INFO | Successfully connected to server '@aipy-pro/mindmap-generator' | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:00 | ERROR | MCP error for '@aipy-pro/mindmap-generator:_': MCP error -32602: Invalid tools/call result: [
+  {
+    "expected": "object",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input"
+  }
+] | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:00 | WARNING | First attempt failed, reconnecting to '@aipy-pro/mindmap-generator'... | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:00 | INFO | Connecting to server '@aipy-pro/mindmap-generator'... | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:01 | INFO | Successfully connected to server '@aipy-pro/mindmap-generator' | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:01 | ERROR | MCP error for '@aipy-pro/mindmap-generator:_': MCP error -32602: Invalid tools/call result: [
+  {
+    "expected": "object",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input"
+  }
+] | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:01 | ERROR | Retry failed for '@aipy-pro/mindmap-generator': {'error': 'MCP protocol error', 'details': 'MCP error -32602: Invalid tools/call result: [\n  {\n    "expected": "object",\n    "code": "invalid_type",\n    "path": [],\n    "message": "Invalid input"\n  }\n]'} | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:12:50 | INFO | Updated context tokens from LLM usage: 12452 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:12:50 | INFO | Update block todo version to 2 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:12:50 | INFO | Added 4 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:12:50 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:12:50 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:12:50 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 07:16:28 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:16:28 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:16:28 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:16:28 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:16:28 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:16:28 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:16:28 | INFO | Step compact result: (0, 7, 0, 12452) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:16:28 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:16:31 | INFO | Updated context tokens from LLM usage: 25251 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:18:12 | INFO | Updated context tokens from LLM usage: 35637 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:18:12 | INFO | Update block paw_patrol_english_game version to 2 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:18:12 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:18:12 | INFO | Exec: <CodeBlock name=paw_patrol_english_game, version=2, lang=html, path=blocks/index.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 07:18:12 | INFO | Registered executor for html: <aipyapp.exec.html.HtmlExecutor object at 0x110997d70> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 07:18:12 | INFO | Context compressed: 11->11 messages, 35637->35637 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:18:36 | INFO | Updated context tokens from LLM usage: 46506 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:18:36 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:18:36 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:18:36 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:18:36 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-24 07:22:38 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | Preserving Round 1: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:22:38 | INFO | Step compact result: (0, 13, 0, 46506) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:22:38 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:22:47 | INFO | Updated context tokens from LLM usage: 44745 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:22:47 | WARNING | Disconnect '@aipy-pro/mindmap-generator' failed: Attempted to exit cancel scope in a different task than it was entered in | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:22:47 | INFO | Connecting to server 'Trustoken-search'... | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:22:48 | INFO | Successfully connected to server 'Trustoken-search' | {'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 07:22:59 | INFO | Updated context tokens from LLM usage: 49799 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:32:07 | INFO | Updated context tokens from LLM usage: 70432 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:32:07 | INFO | Update block todo_upgrade version to 2 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:32:07 | INFO | Added 3 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:32:07 | INFO | Exec: <CodeBlock name=paw_patrol_english_game_v2, version=1, lang=html, path=blocks/index_v2.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 07:32:07 | INFO | Context compressed: 19->19 messages, 70432->70432 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:39:14 | INFO | Updated context tokens from LLM usage: 67673 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:39:15 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:39:15 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:39:15 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 4}
+2026-03-24 07:40:37 | INFO | Step has 4 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Preserving Round 1: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Preserving Round 2: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Preserving Round 3: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Execution records preserved: 4 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:40:37 | INFO | Step compact result: (0, 21, 0, 67673) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:40:37 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:40:37 | INFO | Context compressed: 21->21 messages, 67673->67673 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:46:47 | INFO | Updated context tokens from LLM usage: 120123 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:46:47 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:46:47 | INFO | Exec: <CodeBlock name=paw_patrol_english_game_v3, version=1, lang=html, path=blocks/index_v3.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 07:46:47 | INFO | Sliding window compression: 23 -> 7 messages, 74066 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 07:46:47 | INFO | Context compressed: 23->7 messages, 120123->74066 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:47:13 | INFO | Updated context tokens from LLM usage: 87443 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:47:13 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:47:13 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:47:13 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 07:48:53 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:48:53 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:48:53 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:48:53 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:48:53 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:48:53 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:48:53 | INFO | Step compact result: (0, 9, 0, 87443) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:48:53 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:52:52 | INFO | Updated context tokens from LLM usage: 109168 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:52:52 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:52:52 | INFO | Exec: <CodeBlock name=paw_patrol_english_game_v4, version=1, lang=html, path=blocks/index_v4.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 07:52:53 | INFO | Sliding window compression: 11 -> 7 messages, 61451 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 07:52:53 | INFO | Context compressed: 11->7 messages, 109168->61451 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:53:09 | INFO | Updated context tokens from LLM usage: 97679 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:53:09 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:53:09 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:53:09 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 07:53:38 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:53:38 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:53:38 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:53:38 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:53:38 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:53:38 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:53:38 | INFO | Step compact result: (0, 9, 0, 97679) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:53:38 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:56:17 | INFO | Updated context tokens from LLM usage: 113916 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:56:17 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 07:56:17 | INFO | Exec: <CodeBlock name=paw_patrol_english_game_v5, version=1, lang=html, path=blocks/index_v5.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 07:56:17 | INFO | Sliding window compression: 11 -> 7 messages, 61696 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 07:56:17 | INFO | Context compressed: 11->7 messages, 113916->61696 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:56:32 | INFO | Updated context tokens from LLM usage: 96329 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:56:32 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:56:32 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:56:32 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 07:56:54 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:56:54 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:56:54 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:56:54 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:56:54 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:56:54 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:56:54 | INFO | Step compact result: (0, 9, 0, 96329) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:56:54 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:57:14 | INFO | Updated context tokens from LLM usage: 51617 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 07:57:15 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 07:57:15 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:57:15 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 1}
+2026-03-24 07:57:51 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 07:57:51 | INFO | Step compact result: (0, 11, 0, 51617) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 07:57:51 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:01:30 | INFO | Updated context tokens from LLM usage: 119856 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:01:30 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:01:30 | INFO | Exec: <CodeBlock name=paw_patrol_english_game_v6, version=1, lang=html, path=blocks/index_v6.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:01:33 | INFO | Sliding window compression: 13 -> 7 messages, 50916 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 08:01:33 | INFO | Context compressed: 13->7 messages, 119856->50916 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:02:02 | INFO | Updated context tokens from LLM usage: 88197 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:02:02 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 08:02:02 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:02:02 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 08:02:49 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:02:49 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:02:49 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:02:49 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:02:49 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:02:49 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:02:49 | INFO | Step compact result: (0, 9, 0, 88197) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:02:49 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:14:24 | INFO | Updated context tokens from LLM usage: 107371 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:14:24 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:14:24 | INFO | Exec: <CodeBlock name=paw_patrol_english_game_v7, version=1, lang=html, path=blocks/index_v7.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:14:24 | INFO | Sliding window compression: 11 -> 7 messages, 72812 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 08:14:24 | INFO | Context compressed: 11->7 messages, 107371->72812 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:15:06 | INFO | Updated context tokens from LLM usage: 92916 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:15:06 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 08:15:06 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:15:06 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 08:17:01 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:17:01 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:17:01 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:17:01 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:17:01 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:17:01 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:17:01 | INFO | Step compact result: (0, 9, 0, 92916) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:17:01 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:17:34 | INFO | Updated context tokens from LLM usage: 93739 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:17:34 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:17:34 | INFO | Exec: <CodeBlock name=start_local_server, version=1, lang=python, path=blocks/start_server.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:17:34 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:54:55 | WARNING | Task not saved, trying to save | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 08:54:56 | INFO | Saved task state to file | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 08:54:56 | INFO | Task auto saved | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 08:54:56 | INFO | Task done | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd', 'path': PosixPath('/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd')}
+2026-03-24 08:55:23 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x109bdbfe0> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 08:55:23 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 08:55:23 | INFO | New task created | {'src': 'taskmgr', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 08:55:23 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x109bf3ef0> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 08:55:23 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x109bf3ef0> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 08:55:23 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 08:55:23 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 08:55:32 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:55:32 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 08:55:32 | INFO | Step compact result: (0, 61, 0, 1560100) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:55:32 | INFO | Step compact result: (0, 61, 0, 1560100) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:55:32 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:55:32 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:55:32 | INFO | Sliding window compression: 61 -> 7 messages, 39473 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 08:55:32 | INFO | Sliding window compression: 61 -> 7 messages, 39473 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 08:55:32 | INFO | Context compressed: 61->7 messages, 1560100->39473 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:55:32 | INFO | Context compressed: 61->7 messages, 1560100->39473 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:56:13 | INFO | Updated context tokens from LLM usage: 54296 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:56:13 | INFO | Updated context tokens from LLM usage: 54296 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:56:13 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:56:13 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:56:13 | INFO | Exec: <CodeBlock name=deploy_to_github, version=1, lang=python, path=blocks/deploy_github.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:56:13 | INFO | Exec: <CodeBlock name=deploy_to_github, version=1, lang=python, path=blocks/deploy_github.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:56:13 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:56:13 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:56:14 | ERROR | Error in code block deploy_to_github: 1 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'PythonExecutor'}
+2026-03-24 08:56:14 | ERROR | Error in code block deploy_to_github: 1 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'PythonExecutor'}
+2026-03-24 08:56:33 | INFO | Updated context tokens from LLM usage: 57400 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:56:33 | INFO | Updated context tokens from LLM usage: 57400 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:56:33 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:56:33 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 08:56:33 | INFO | Exec: <CodeBlock name=install_github_tools, version=1, lang=python, path=blocks/install_tools.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:56:33 | INFO | Exec: <CodeBlock name=install_github_tools, version=1, lang=python, path=blocks/install_tools.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 08:57:07 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'install_github_tools'}
+2026-03-24 08:57:07 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'install_github_tools'}
+2026-03-24 08:57:18 | INFO | Updated context tokens from LLM usage: 58546 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:57:18 | INFO | Updated context tokens from LLM usage: 58546 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 08:57:18 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 08:57:18 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 08:57:18 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:57:18 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 08:57:18 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-24 08:57:18 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-24 09:12:37 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10d67be00> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 09:12:37 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 09:12:37 | INFO | New task created | {'src': 'taskmgr', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 09:12:37 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10d689610> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 09:12:37 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10d689610> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-24 09:12:37 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 09:12:37 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-24 09:12:43 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Preserving Round 0: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Preserving Round 0: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 09:12:43 | INFO | Step compact result: (0, 68, 0, 1730342) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 09:12:43 | INFO | Step compact result: (0, 68, 0, 1730342) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 09:12:43 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 09:12:43 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 09:12:43 | INFO | Sliding window compression: 68 -> 7 messages, 22339 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 09:12:43 | INFO | Sliding window compression: 68 -> 7 messages, 22339 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-24 09:12:43 | INFO | Context compressed: 68->7 messages, 1730342->22339 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 09:12:43 | INFO | Context compressed: 68->7 messages, 1730342->22339 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 09:12:59 | INFO | Updated context tokens from LLM usage: 36015 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 09:12:59 | INFO | Updated context tokens from LLM usage: 36015 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 09:12:59 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 09:12:59 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 09:12:59 | INFO | Exec: <CodeBlock name=final_deploy, version=1, lang=python, path=blocks/final_deploy.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 09:12:59 | INFO | Exec: <CodeBlock name=final_deploy, version=1, lang=python, path=blocks/final_deploy.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 09:12:59 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 09:12:59 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 09:13:06 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'final_deploy'}
+2026-03-24 09:13:06 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'final_deploy'}
+2026-03-24 09:13:15 | INFO | Updated context tokens from LLM usage: 38617 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 09:13:15 | INFO | Updated context tokens from LLM usage: 38617 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 09:13:15 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 09:13:15 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 09:13:15 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 09:13:15 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 09:13:15 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 09:13:15 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 10:00:31 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:00:31 | INFO | Step compact result: (0, 11, 0, 38617) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:00:31 | INFO | Step compact result: (0, 11, 0, 38617) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:00:31 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:00:31 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:00:31 | INFO | Context compressed: 11->11 messages, 38617->38617 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:00:31 | INFO | Context compressed: 11->11 messages, 38617->38617 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:00:55 | INFO | Updated context tokens from LLM usage: 38672 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:00:55 | INFO | Updated context tokens from LLM usage: 38672 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:00:55 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:00:55 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:00:55 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:00:55 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:00:55 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:00:55 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:00:55 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 1}
+2026-03-24 10:00:55 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 1}
+2026-03-24 10:02:48 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:02:48 | INFO | No enough rounds found in step, skipping compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:02:48 | INFO | Step compact result: (0, 13, 0, 38672) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:02:48 | INFO | Step compact result: (0, 13, 0, 38672) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:02:48 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:02:48 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:04:03 | INFO | Updated context tokens from LLM usage: 45449 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:04:03 | INFO | Updated context tokens from LLM usage: 45449 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:04:03 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:04:03 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:04:03 | INFO | Exec: <CodeBlock name=deploy_mobile_version, version=1, lang=python, path=blocks/deploy_mobile.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:04:03 | INFO | Exec: <CodeBlock name=deploy_mobile_version, version=1, lang=python, path=blocks/deploy_mobile.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:04:05 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_mobile_version'}
+2026-03-24 10:04:05 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_mobile_version'}
+2026-03-24 10:04:21 | INFO | Updated context tokens from LLM usage: 47513 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:04:21 | INFO | Updated context tokens from LLM usage: 47513 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:04:21 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:04:21 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:04:21 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:04:21 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:04:21 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 10:04:21 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-24 10:06:22 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:06:22 | INFO | Step compact result: (0, 17, 0, 47513) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:06:22 | INFO | Step compact result: (0, 17, 0, 47513) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:06:22 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:06:22 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:06:22 | INFO | Context compressed: 17->17 messages, 47513->47513 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:06:22 | INFO | Context compressed: 17->17 messages, 47513->47513 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:07:22 | INFO | Updated context tokens from LLM usage: 48418 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:07:22 | INFO | Updated context tokens from LLM usage: 48418 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:07:22 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:07:22 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:07:22 | INFO | Exec: <CodeBlock name=expand_content, version=1, lang=python, path=blocks/expand_content.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:07:22 | INFO | Exec: <CodeBlock name=expand_content, version=1, lang=python, path=blocks/expand_content.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:07:22 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'expand_content'}
+2026-03-24 10:07:22 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'expand_content'}
+2026-03-24 10:11:32 | INFO | Updated context tokens from LLM usage: 59690 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:11:32 | INFO | Updated context tokens from LLM usage: 59690 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:11:32 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:11:32 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:11:32 | INFO | Exec: <CodeBlock name=deploy_enhanced_version, version=1, lang=python, path=blocks/deploy_enhanced.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:11:32 | INFO | Exec: <CodeBlock name=deploy_enhanced_version, version=1, lang=python, path=blocks/deploy_enhanced.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:11:35 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_enhanced_version'}
+2026-03-24 10:11:35 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_enhanced_version'}
+2026-03-24 10:11:35 | INFO | Context compressed: 21->21 messages, 59690->59690 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:11:35 | INFO | Context compressed: 21->21 messages, 59690->59690 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:12:14 | INFO | Updated context tokens from LLM usage: 56006 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:12:14 | INFO | Updated context tokens from LLM usage: 56006 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:12:15 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:12:15 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:12:15 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:12:15 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:12:15 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-24 10:12:15 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-24 10:12:56 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Preserving Round 1: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Preserving Round 1: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-24 10:12:56 | INFO | Step compact result: (0, 23, 0, 56006) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:12:56 | INFO | Step compact result: (0, 23, 0, 56006) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:12:56 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:12:56 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:12:56 | INFO | Context compressed: 23->23 messages, 56006->56006 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:12:56 | INFO | Context compressed: 23->23 messages, 56006->56006 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:14:28 | INFO | Updated context tokens from LLM usage: 69524 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:14:28 | INFO | Updated context tokens from LLM usage: 69524 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:14:28 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:14:28 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:14:28 | INFO | Exec: <CodeBlock name=expand_words, version=1, lang=python, path=blocks/expand_words.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:14:28 | INFO | Exec: <CodeBlock name=expand_words, version=1, lang=python, path=blocks/expand_words.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:14:28 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'expand_words'}
+2026-03-24 10:14:28 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'expand_words'}
+2026-03-24 10:14:28 | INFO | Context compressed: 25->25 messages, 69524->69524 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:14:28 | INFO | Context compressed: 25->25 messages, 69524->69524 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:14 | INFO | Updated context tokens from LLM usage: 88240 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:14 | INFO | Updated context tokens from LLM usage: 88240 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:14 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:18:14 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-24 10:18:14 | INFO | Exec: <CodeBlock name=deploy_full_version, version=1, lang=python, path=blocks/deploy_full.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:18:14 | INFO | Exec: <CodeBlock name=deploy_full_version, version=1, lang=python, path=blocks/deploy_full.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-24 10:18:17 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_full_version'}
+2026-03-24 10:18:17 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_full_version'}
+2026-03-24 10:18:17 | INFO | Context compressed: 27->27 messages, 88240->88240 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:17 | INFO | Context compressed: 27->27 messages, 88240->88240 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:53 | INFO | Updated context tokens from LLM usage: 91169 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:53 | INFO | Updated context tokens from LLM usage: 91169 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-24 10:18:53 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:18:53 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-24 10:18:53 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:18:53 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-24 10:18:53 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-24 10:18:53 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 3}
+2026-03-27 02:03:08 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x109417c50> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 02:03:08 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-27 02:03:08 | INFO | New task created | {'src': 'taskmgr', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 02:03:09 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x1094257c0> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 02:03:09 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x1094257c0> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 02:03:09 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-27 02:03:09 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-27 02:03:17 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Preserving Round 0: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Preserving Round 0: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 02:03:17 | INFO | Step compact result: (0, 95, 0, 2349655) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 02:03:17 | INFO | Step compact result: (0, 95, 0, 2349655) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 02:03:17 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 02:03:17 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 02:03:17 | INFO | Sliding window compression: 95 -> 7 messages, 37277 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-27 02:03:17 | INFO | Sliding window compression: 95 -> 7 messages, 37277 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-27 02:03:17 | INFO | Context compressed: 95->7 messages, 2349655->37277 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:03:17 | INFO | Context compressed: 95->7 messages, 2349655->37277 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:03:32 | INFO | Updated context tokens from LLM usage: 52198 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:03:32 | INFO | Updated context tokens from LLM usage: 52198 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:03:32 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:03:32 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:04:16 | INFO | Updated context tokens from LLM usage: 54515 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:04:16 | INFO | Updated context tokens from LLM usage: 54515 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:04:16 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:04:16 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:04:16 | INFO | Exec: <CodeBlock name=frozen_colors, version=1, lang=python, path=blocks/frozen_colors.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:04:16 | INFO | Exec: <CodeBlock name=frozen_colors, version=1, lang=python, path=blocks/frozen_colors.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:04:16 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:04:16 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:04:16 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'frozen_colors'}
+2026-03-27 02:04:16 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'frozen_colors'}
+2026-03-27 02:12:47 | INFO | Updated context tokens from LLM usage: 69090 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:12:47 | INFO | Updated context tokens from LLM usage: 69090 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:12:47 | INFO | Added 3 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:12:47 | INFO | Added 3 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:12:47 | INFO | Exec: <CodeBlock name=deploy_frozen, version=1, lang=python, path=blocks/deploy_frozen.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:12:47 | INFO | Exec: <CodeBlock name=deploy_frozen, version=1, lang=python, path=blocks/deploy_frozen.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:12:50 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_frozen'}
+2026-03-27 02:12:50 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'deploy_frozen'}
+2026-03-27 02:12:50 | INFO | Context compressed: 13->13 messages, 69090->69090 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:12:50 | INFO | Context compressed: 13->13 messages, 69090->69090 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:13:41 | INFO | Updated context tokens from LLM usage: 45383 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:13:41 | INFO | Updated context tokens from LLM usage: 45383 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:13:41 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:13:41 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 02:13:41 | INFO | Exec: <CodeBlock name=create_repo, version=1, lang=python, path=blocks/create_frozen_repo.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:13:41 | INFO | Exec: <CodeBlock name=create_repo, version=1, lang=python, path=blocks/create_frozen_repo.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 02:13:51 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'create_repo'}
+2026-03-27 02:13:51 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'create_repo'}
+2026-03-27 02:14:40 | INFO | Updated context tokens from LLM usage: 48422 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:14:40 | INFO | Updated context tokens from LLM usage: 48422 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 02:14:40 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 02:14:40 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 02:14:40 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 02:14:40 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 02:14:40 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 5}
+2026-03-27 02:14:40 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 5}
+2026-03-27 16:43:38 | INFO | Step has 5 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Step has 5 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 1: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 1: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 2: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 2: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 3: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 3: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 4: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Preserving Round 4: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Execution records preserved: 5 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Execution records preserved: 5 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:43:38 | INFO | Step compact result: (0, 17, 0, 48422) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:43:38 | INFO | Step compact result: (0, 17, 0, 48422) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:43:38 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:43:38 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:43:38 | INFO | Context compressed: 17->17 messages, 48422->48422 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:43:38 | INFO | Context compressed: 17->17 messages, 48422->48422 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:44:04 | INFO | Updated context tokens from LLM usage: 85108 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:44:04 | INFO | Updated context tokens from LLM usage: 85108 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:44:04 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 16:44:04 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 16:44:04 | INFO | Exec: <CodeBlock name=fix_404, version=1, lang=python, path=blocks/fix_404.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 16:44:04 | INFO | Exec: <CodeBlock name=fix_404, version=1, lang=python, path=blocks/fix_404.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 16:44:11 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'fix_404'}
+2026-03-27 16:44:11 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'fix_404'}
+2026-03-27 16:44:28 | INFO | Updated context tokens from LLM usage: 87662 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:44:28 | INFO | Updated context tokens from LLM usage: 87662 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:44:28 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 16:44:28 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 16:44:28 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:44:28 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:44:28 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-27 16:44:28 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-27 16:46:09 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 16:46:09 | INFO | Step compact result: (0, 21, 0, 87662) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:46:09 | INFO | Step compact result: (0, 21, 0, 87662) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:46:09 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:46:09 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 16:46:09 | INFO | Context compressed: 21->21 messages, 87662->87662 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:46:09 | INFO | Context compressed: 21->21 messages, 87662->87662 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:46:23 | INFO | Updated context tokens from LLM usage: 52707 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:46:23 | INFO | Updated context tokens from LLM usage: 52707 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:46:23 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 16:46:23 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 16:46:23 | INFO | Context compressed: 23->23 messages, 52707->52707 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:46:23 | INFO | Context compressed: 23->23 messages, 52707->52707 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:47:08 | INFO | Updated context tokens from LLM usage: 54141 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:47:08 | INFO | Updated context tokens from LLM usage: 54141 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:47:08 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 16:47:08 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 16:47:08 | INFO | Exec: <CodeBlock name=audio_architecture, version=1, lang=python, path=blocks/audio_architecture.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 16:47:08 | INFO | Exec: <CodeBlock name=audio_architecture, version=1, lang=python, path=blocks/audio_architecture.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 16:47:08 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'audio_architecture'}
+2026-03-27 16:47:08 | INFO | Add module | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'BlockImporter', 'name': 'audio_architecture'}
+2026-03-27 16:47:08 | INFO | Context compressed: 25->25 messages, 54141->54141 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 16:47:08 | INFO | Context compressed: 25->25 messages, 54141->54141 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:31:21 | WARNING | Task not saved, trying to save | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:21 | WARNING | Task not saved, trying to save | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:22 | INFO | Saved task state to file | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 17:31:22 | INFO | Saved task state to file | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 17:31:22 | INFO | Task auto saved | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:22 | INFO | Task auto saved | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:22 | INFO | Task done | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd', 'path': PosixPath('/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd')}
+2026-03-27 17:31:22 | INFO | Task done | {'src': 'task', 'task_id': 'CZMUn4piLZVxKt55xCPUd', 'path': PosixPath('/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd')}
+2026-03-27 17:31:40 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10dba7e00> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:40 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-27 17:31:40 | INFO | New task created | {'src': 'taskmgr', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:40 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10dbb7e60> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:40 | INFO | Registered runtime for python: <aipyapp.aipy.runtime.CliPythonRuntime object at 0x10dbb7e60> | {'src': 'block_executor', 'task_id': 'CZMUn4piLZVxKt55xCPUd'}
+2026-03-27 17:31:40 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-27 17:31:40 | INFO | Registered 28 events for StdioDisplayPlugin | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'TypedEventBus'}
+2026-03-27 17:31:53 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Step has 3 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Preserving Round 0: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Preserving Round 0: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Preserving Round 2: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Execution records preserved: 3 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:31:53 | INFO | Step compact result: (0, 118, 0, 2898881) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:31:53 | INFO | Step compact result: (0, 118, 0, 2898881) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:31:53 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:31:53 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:31:53 | INFO | Sliding window compression: 118 -> 7 messages, 31273 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-27 17:31:53 | INFO | Sliding window compression: 118 -> 7 messages, 31273 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'SlidingWindowStrategy'}
+2026-03-27 17:31:53 | INFO | Context compressed: 118->7 messages, 2898881->31273 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:31:53 | INFO | Context compressed: 118->7 messages, 2898881->31273 tokens | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:33:51 | INFO | Updated context tokens from LLM usage: 54084 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:33:51 | INFO | Updated context tokens from LLM usage: 54084 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:33:51 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:33:51 | INFO | Added 2 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:33:51 | INFO | Exec: <CodeBlock name=paw_patrol_game, version=1, lang=html, path=blocks/paw_patrol_english.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:33:51 | INFO | Exec: <CodeBlock name=paw_patrol_game, version=1, lang=html, path=blocks/paw_patrol_english.html> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:33:51 | INFO | Registered executor for html: <aipyapp.exec.html.HtmlExecutor object at 0x11241cf20> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:33:51 | INFO | Registered executor for html: <aipyapp.exec.html.HtmlExecutor object at 0x11241cf20> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:34:28 | INFO | Updated context tokens from LLM usage: 65756 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:34:28 | INFO | Updated context tokens from LLM usage: 65756 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:34:28 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:34:28 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:34:28 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 17:34:28 | INFO | Saved task state to file | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'path': '/Users/btt/aipywork/CXEbTdw7Fvi2jCCYdUs9c/CZMUn4piLZVxKt55xCPUd/task.json'}
+2026-03-27 17:34:28 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:34:28 | INFO | Task auto saved | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:34:28 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-27 17:34:28 | INFO | Step done | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task', 'rounds': 2}
+2026-03-27 17:35:18 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Step has 2 rounds, implementing smart compact | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Preserving Round 0: SUCCESS: 1/1 tools | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Preserving Round 1: TEXT_ONLY | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Will clean 0 messages from deletable rounds | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | No messages need to be cleaned | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Execution records preserved: 2 rounds kept | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'StepCleaner'}
+2026-03-27 17:35:18 | INFO | Step compact result: (0, 11, 0, 65756) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:35:18 | INFO | Step compact result: (0, 11, 0, 65756) | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:35:18 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:35:18 | INFO | Start task with features: ['aipy_call', 'exec_code'] | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'task'}
+2026-03-27 17:35:44 | INFO | Updated context tokens from LLM usage: 63385 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:35:44 | INFO | Updated context tokens from LLM usage: 63385 | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'context_manager'}
+2026-03-27 17:35:44 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:35:44 | INFO | Added 1 blocks | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'CodeBlocks'}
+2026-03-27 17:35:44 | INFO | Exec: <CodeBlock name=git_deploy, version=1, lang=python, path=blocks/git_deploy.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:35:44 | INFO | Exec: <CodeBlock name=git_deploy, version=1, lang=python, path=blocks/git_deploy.py> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:35:44 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}
+2026-03-27 17:35:44 | INFO | Registered executor for python: <PythonExecutor> | {'task_id': 'CZMUn4piLZVxKt55xCPUd', 'src': 'block_executor'}

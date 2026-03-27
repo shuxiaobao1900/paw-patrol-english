@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>❄️ 冰雪奇缘英语乐园</title>
+    <style>
+        /* 冰雪奇缘主题变量 */
+        :root {
+            /* 主色调 */
+            --ice-blue: #8AC6E8;
+            --snow-white: #F5F7FA;
+            --frozen-purple: #B39BC8;
+            --crystal-teal: #64C4C4;
+            --silver: #C0C0C0;
+            
+            /* 渐变方案 */
+            --gradient-main: linear-gradient(135deg, #8AC6E8 0%, #B39BC8 100%);
+            --gradient-light: linear-gradient(135deg, #F5F7FA 0%, #E3F2FD 100%);
+            --gradient-dark: linear-gradient(135deg, #64C4C4 0%, #8AC6E8 100%);
+            --gradient-sparkle: linear-gradient(135deg, #FFFFFF 0%, #E3F2FD 50%, #FFFFFF 100%);
+            
+            /* 点缀色 */
+            --gold: #FFD700;
+            --pink: #FFB6C1;
+            --green: #98FB98;
+            --dark-blue: #4169E1;
+            
+            /* 文字色 */
+            --text-primary: #2C3E50;
+            --text-secondary: #5D6D7E;
+            --text-light: #7F8C8D;
+            --text-white: #FFFFFF;
+            
+            /* 阴影 */
+            --shadow-soft: 0 4px 20px rgba(138, 198, 232, 0.15);
+            --shadow-medium: 0 8px 30px rgba(138, 198, 232, 0.25);
+            --shadow-hard: 0 12px 40px rgba(138, 198, 232, 0.35);
+            
+            /* 边框 */
+            --border-ice: 2px solid rgba(138, 198, 232, 0.3);
+            --border-crystal: 2px solid rgba(179, 155, 200, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%);
+            min-height: 100vh;
+            padding: 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 雪花背景 */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowfall linear infinite;
+        }
+        
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(calc(100vh + 10px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* 冰晶装饰 */
+        .crystal {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.8) 50%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: sparkle 3s infinite alternate;
+            z-index: 0;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--snow-white);
+            border-radius: 25px;
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            border: var(--border-ice);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* 冰雪奇缘主题头部 */
+        .header {
+            background: var(--gradient-main);
+            color: var(--text-white);
+            padding: 25px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "❄️✨👑🏰👸❄️✨";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            font-size: 28px;
+            opacity: 0.2;
+            animation: float 40s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 15px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        /* 冰晶主题选择器 */
+        .theme-selector {
+            padding: 15px 10px;
+            background: var(--gradient-light);
+            border-bottom: var(--border-crystal);
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            scrollbar-width: none;
+        }
+        
+        .theme-selector::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .theme-btn {
+            flex-shrink: 0;
+            padding: 10px 15px;
+            border: var(--border-ice);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-primary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 80px;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .theme-btn.active {
+            background: var(--gradient-main);
+            color: var(--text-white);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(138, 198, 232, 0.5);
+        }
+        
+        .theme-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* 主内容区 */
+        .content {
+            padding: 25px 15px;
+            min-height: 450px;
+            background: linear-gradient(to bottom, rgba(245, 247, 250, 0.9), rgba(227, 242, 253, 0.8));
+        }
+        
+        /* 冰雪游戏模式选择 */
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px 0;
+        }
+        
+        .mode-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            border: var(--border-ice);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .mode-card:active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .mode-card.active {
+            border-color: var(--ice-blue);
+            background: var(--gradient-light);
+            box-shadow: 0 0 25px rgba(138, 198, 232, 0.3);
+        }
+        
+        .mode-icon {
+            font-size: 40px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 2px 4px rgba(138, 198, 232, 0.3));
+        }
+        
+        .mode-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+        
+        .mode-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+        
+        /* 冰晶闪卡 */
+        .flashcard {
+            background: var(--gradient-main);
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            color: var(--text-white);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: var(--border-crystal);
+            overflow: hidden;
+        }
+        
+        .flashcard::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-sparkle);
+            animation: rotate 20s linear infinite;
+            opacity: 0.1;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .flashcard-emoji {
+            font-size: 90px;
+            margin-bottom: 25px;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        .flashcard-word {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flashcard-translation {
+            font-size: 22px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flashcard-hint {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        /* 冰晶配对游戏 */
+        .matching-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .matching-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid rgba(138, 198, 232, 0.3);
+            border-radius: 15px;
+            padding: 18px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 17px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .matching-card.selected {
+            border-color: var(--ice-blue);
+            background: rgba(138, 198, 232, 0.1);
+            box-shadow: 0 0 15px rgba(138, 198, 232, 0.3);
+        }
+        
+        .matching-card.matched {
+            border-color: var(--crystal-teal);
+            background: rgba(100, 196, 196, 0.1);
+            box-shadow: 0 0 15px rgba(100, 196, 196, 0.3);
+        }
+        
+        .matching-emoji {
+            font-size: 32px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        /* 冰雪拼写游戏 */
+        .spelling-area {
+            background: var(--gradient-light);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            border: var(--border-ice);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .spelling-hint {
+            font-size: 17px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        
+        .spelling-emoji {
+            font-size: 55px;
+            margin: 20px 0;
+            filter: drop-shadow(0 4px 8px rgba(138, 198, 232, 0.3));
+        }
+        
+        .letter-bank {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .letter-tile {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(138, 198, 232, 0.5);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .letter-tile.selected {
+            background: var(--gradient-main);
+            color: var(--text-white);
+            border-color: var(--ice-blue);
+            transform: translateY(-3px);
+        }
+        
+        .letter-tile.used {
+            background: rgba(192, 192, 192, 0.5);
+            color: var(--text-light);
+            border-color: var(--silver);
+            cursor: not-allowed;
+        }
+        
+        .current-spelling {
+            font-size: 20px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            min-height: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            border: var(--border-ice);
+        }
+        
+        /* 冰雪听力游戏 */
+        .listening-area {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--gradient-light);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: var(--border-ice);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .play-btn {
+            display: inline-block;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            color: var(--text-white);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            font-size: 36px;
+            cursor: pointer;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .play-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-sparkle);
+            animation: rotate 10s linear infinite;
+            opacity: 0.2;
+        }
+        
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .listening-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .listening-option {
+            padding: 18px;
+            border: 3px solid rgba(138, 198, 232, 0.3);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 17px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .listening-option:active {
+            transform: scale(0.95);
+        }
+        
+        /* 冰晶徽章展示 */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .badge-item {
+            text-align: center;
+        }
+        
+        .badge-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--text-white);
+            margin: 0 auto 8px;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            opacity: 0.2;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .badge-circle::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-sparkle);
+            animation: rotate 15s linear infinite;
+            opacity: 0.1;
+        }
+        
+        .badge-circle.earned {
+            opacity: 1;
+            animation: badgePop 0.5s ease;
+            box-shadow: 0 0 25px rgba(138, 198, 232, 0.5);
+        }
+        
+        .badge-name {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.2;
+        }
+        
+        @keyframes badgePop {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 冰雪按钮组 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .btn-row {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 18px 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-main);
+            color: var(--text-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--crystal-teal) 0%, var(--green) 100%);
+            color: var(--text-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--gold) 100%);
+            color: var(--text-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-info {
+            background: linear-gradient(135deg, var(--frozen-purple) 0%, var(--snow-white) 100%);
+            color: var(--text-primary);
+            border: 2px solid rgba(179, 155, 200, 0.3);
+        }
+        
+        /* 冰雪统计栏 */
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--gradient-light);
+            border-top: var(--border-crystal);
+            font-size: 15px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--ice-blue);
+            text-shadow: 0 2px 4px rgba(138, 198, 232, 0.2);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        /* 冰雪欢迎信息 */
+        .welcome-card {
+            background: var(--gradient-light);
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            margin-bottom: 25px;
+            border: var(--border-ice);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-sparkle);
+            animation: rotate 30s linear infinite;
+            opacity: 0.1;
+        }
+        
+        .welcome-emoji {
+            font-size: 70px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(138, 198, 232, 0.3));
+            position: relative;
+            z-index: 1;
+        }
+        
+        .welcome-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .welcome-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .word-count {
+            background: var(--gradient-main);
+            color: var(--text-white);
+            padding: 12px 25px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 15px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 动画 */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 380px) {
+            .header h1 { font-size: 22px; }
+            .mode-card { padding: 15px 10px; }
+            .mode-icon { font-size: 32px; }
+            .mode-name { font-size: 14px; }
+            .mode-desc { font-size: 11px; }
+            .flashcard-word { font-size: 32px; }
+            .letter-tile { width: 42px; height: 42px; font-size: 20px; }
+            .badges-grid { grid-template-columns: repeat(3, 1fr); }
+            .badge-circle { width: 60px; height: 60px; font-size: 28px; }
+        }
+        
+        @media (max-width: 320px) {
+            .game-modes { grid-template-columns: 1fr; }
+            .matching-grid { grid-template-columns: 1fr; }
+            .listening-options { grid-template-columns: 1fr; }
+            .badges-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 雪花背景 -->
+    <div class="snowflakes" id="snowflakes"></div>
+    
+    <!-- 冰晶装饰 -->
+    <div class="crystal" style="top: 10%; left: 5%;"></div>
+    <div class="crystal" style="top: 20%; right: 10%;"></div>
+    <div class="crystal" style="top: 40%; left: 15%;"></div>
+    <div class="crystal" style="top: 60%; right: 5%;"></div>
+    <div class="crystal" style="top: 80%; left: 10%;"></div>
+    
+    <div class="container">
+        <!-- 冰雪奇缘头部 -->
+        <div class="header">
+            <h1>❄️ 冰雪奇缘英语乐园</h1>
+            <p>和艾莎安娜一起快乐学英语！</p>
+        </div>
+        
+        <!-- 冰晶主题选择器 -->
+        <div class="theme-selector" id="themeSelector">
+            <!-- 动态生成主题按钮 -->
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content" id="gameContent">
+            <!-- 动态内容将在这里显示 -->
+        </div>
+        
+        <!-- 冰雪统计信息 -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="scoreDisplay">0</div>
+                <div class="stat-label">得分</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="streakDisplay">0</div>
+                <div class="stat-label">连胜</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="badgeCount">0</div>
+                <div class="stat-label">徽章</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 生成雪花
+        function createSnowflakes() {
+            const snowflakes = document.getElementById('snowflakes');
+            for (let i = 0; i < 30; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                const size = Math.random() * 5 + 2;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.left = `${Math.random() * 100}%`;
+                snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                snowflakes.appendChild(snowflake);
+            }
+        }
+        
+        // 游戏数据
+        let gameData = {
+            currentTheme: 'animals',
+            currentMode: 'flashcard',
+            score: 0,
+            streak: 0,
+            level: 1,
+            earnedBadges: [],
+            gameState: 'menu',
+            totalWords: 102
+        };
+        
+        // 完整词汇库
+        const contentLibrary = {
+            themes: [
+                { id: 'animals', name: '动物世界', icon: '🐾', color: '#FF6B6B' },
+                { id: 'fruits', name: '水果乐园', icon: '🍎', color: '#43e97b' },
+                { id: 'colors', name: '颜色认知', icon: '🎨', color: '#667eea' },
+                { id: 'numbers', name: '数字王国', icon: '🔢', color: '#fa709a' },
+                { id: 'body', name: '身体部位', icon: '👦', color: '#FFB655' },
+                { id: 'vehicles', name: '交通工具', icon: '🚗', color: '#66CCFF' },
+                { id: 'food', name: '美味食物', icon: '🍔', color: '#FF7F50' },
+                { id: 'family', name: '家庭成员', icon: '👨‍👩‍👧', color: '#9370DB' }
+            ],
+            gameModes: [
+                { id: 'flashcard', name: '冰晶闪卡', icon: '❄️', desc: '看图认单词' },
+                { id: 'matching', name: '冰雪配对', icon: '🧊', desc: '中英配对' },
+                { id: 'spelling', name: '魔法拼写', icon: '✨', desc: '拼写单词' },
+                { id: 'listening', name: '冰雪听力', icon: '👑', desc: '听音辨词' }
+            ],
+            words: {
+                animals: [
+                    { en: 'Cat', zh: '猫', emoji: '🐱', sound: 'meow' },
+                    { en: 'Dog', zh: '狗', emoji: '🐶', sound: 'woof' },
+                    { en: 'Bird', zh: '鸟', emoji: '🐦', sound: 'tweet' },
+                    { en: 'Fish', zh: '鱼', emoji: '🐟', sound: 'blub' },
+                    { en: 'Rabbit', zh: '兔子', emoji: '🐰', sound: 'hop' },
+                    { en: 'Elephant', zh: '大象', emoji: '🐘', sound: 'trumpet' },
+                    { en: 'Bear', zh: '熊', emoji: '🐻', sound: 'roar' },
+                    { en: 'Panda', zh: '熊猫', emoji: '🐼', sound: 'nom' },
+                    { en: 'Lion', zh: '狮子', emoji: '🦁', sound: 'roar' },
+                    { en: 'Tiger', zh: '老虎', emoji: '🐯', sound: 'roar' },
+                    { en: 'Monkey', zh: '猴子', emoji: '🐵', sound: 'ooh' },
+                    { en: 'Zebra', zh: '斑马', emoji: '🦓', sound: 'bray' },
+                    { en: 'Duck', zh: '鸭子', emoji: '🦆', sound: 'quack' },
+                    { en: 'Chicken', zh: '鸡', emoji: '🐔', sound: 'cluck' },
+                    { en: 'Cow', zh: '奶牛', emoji: '🐄', sound: 'moo' },
+                    { en: 'Horse', zh: '马', emoji: '🐴', sound: 'neigh' }
+                ],
+                fruits: [
+                    { en: 'Apple', zh: '苹果', emoji: '🍎', color: 'red' },
+                    { en: 'Banana', zh: '香蕉', emoji: '🍌', color: 'yellow' },
+                    { en: 'Orange', zh: '橙子', emoji: '🍊', color: 'orange' },
+                    { en: 'Grape', zh: '葡萄', emoji: '🍇', color: 'purple' },
+                    { en: 'Watermelon', zh: '西瓜', emoji: '🍉', color: 'green' },
+                    { en: 'Strawberry', zh: '草莓', emoji: '🍓', color: 'red' },
+                    { en: 'Pineapple', zh: '菠萝', emoji: '🍍', color: 'yellow' },
+                    { en: 'Mango', zh: '芒果', emoji: '🥭', color: 'yellow' },
+                    { en: 'Peach', zh: '桃子', emoji: '🍑', color: 'pink' },
+                    { en: 'Pear', zh: '梨', emoji: '🍐', color: 'green' },
+                    { en: 'Blueberry', zh: '蓝莓', emoji: '🫐', color: 'blue' },
+                    { en: 'Cherry', zh: '樱桃', emoji: '🍒', color: 'red' },
+                    { en: 'Kiwi', zh: '猕猴桃', emoji: '🥝', color: 'green' },
+                    { en: 'Lemon', zh: '柠檬', emoji: '🍋', color: 'yellow' },
+                    { en: 'Avocado', zh: '牛油果', emoji: '🥑', color: 'green' },
+                    { en: 'Coconut', zh: '椰子', emoji: '🥥', color: 'brown' }
+                ],
+                colors: [
+                    { en: 'Red', zh: '红色', emoji: '🔴', color: 'red' },
+                    { en: 'Blue', zh: '蓝色', emoji: '🔵', color: 'blue' },
+                    { en: 'Yellow', zh: '黄色', emoji: '🟡', color: 'yellow' },
+                    { en: 'Green', zh: '绿色', emoji: '🟢', color: 'green' },
+                    { en: 'Orange', zh: '橙色', emoji: '🟠', color: 'orange' },
+                    { en: 'Purple', zh: '紫色', emoji: '🟣', color: 'purple' },
+                    { en: 'Pink', zh: '粉色', emoji: '🌸', color: 'pink' },
+                    { en: 'Black', zh: '黑色', emoji: '⚫', color: 'black' },
+                    { en: 'White', zh: '白色', emoji: '⚪', color: 'white' },
+                    { en: 'Brown', zh: '棕色', emoji: '🟤', color: 'brown' },
+                    { en: 'Gray', zh: '灰色', emoji: '🔘', color: 'gray' },
+                    { en: 'Gold', zh: '金色', emoji: '✨', color: 'gold' }
+                ],
+                numbers: [
+                    { en: 'One', zh: '一', emoji: '1️⃣', count: 1 },
+                    { en: 'Two', zh: '二', emoji: '2️⃣', count: 2 },
+                    { en: 'Three', zh: '三', emoji: '3️⃣', count: 3 },
+                    { en: 'Four', zh: '四', emoji: '4️⃣', count: 4 },
+                    { en: 'Five', zh: '五', emoji: '5️⃣', count: 5 },
+                    { en: 'Six', zh: '六', emoji: '6️⃣', count: 6 },
+                    { en: 'Seven', zh: '七', emoji: '7️⃣', count: 7 },
+                    { en: 'Eight', zh: '八', emoji: '8️⃣', count: 8 },
+                    { en: 'Nine', zh: '九', emoji: '9️⃣', count: 9 },
+                    { en: 'Ten', zh: '十', emoji: '🔟', count: 10 },
+                    { en: 'Eleven', zh: '十一', emoji: '1️⃣1️⃣', count: 11 },
+                    { en: 'Twelve', zh: '十二', emoji: '1️⃣2️⃣', count: 12 }
+                ],
+                body: [
+                    { en: 'Head', zh: '头', emoji: '👦' },
+                    { en: 'Eye', zh: '眼睛', emoji: '👁️' },
+                    { en: 'Ear', zh: '耳朵', emoji: '👂' },
+                    { en: 'Nose', zh: '鼻子', emoji: '👃' },
+                    { en: 'Mouth', zh: '嘴', emoji: '👄' },
+                    { en: 'Hand', zh: '手', emoji: '✋' },
+                    { en: 'Foot', zh: '脚', emoji: '🦶' },
+                    { en: 'Arm', zh: '胳膊', emoji: '💪' },
+                    { en: 'Leg', zh: '腿', emoji: '🦵' },
+                    { en: 'Face', zh: '脸', emoji: '😊' },
+                    { en: 'Hair', zh: '头发', emoji: '💇' },
+                    { en: 'Teeth', zh: '牙齿', emoji: '🦷' }
+                ],
+                vehicles: [
+                    { en: 'Car', zh: '汽车', emoji: '🚗' },
+                    { en: 'Bus', zh: '公交车', emoji: '🚌' },
+                    { en: 'Train', zh: '火车', emoji: '🚂' },
+                    { en: 'Bike', zh: '自行车', emoji: '🚲' },
+                    { en: 'Plane', zh: '飞机', emoji: '✈️' },
+                    { en: 'Boat', zh: '船', emoji: '🚢' },
+                    { en: 'Ship', zh: '轮船', emoji: '🚢' },
+                    { en: 'Truck', zh: '卡车', emoji: '🚚' },
+                    { en: 'Motorcycle', zh: '摩托车', emoji: '🏍️' },
+                    { en: 'Taxi', zh: '出租车', emoji: '🚕' },
+                    { en: 'Subway', zh: '地铁', emoji: '🚇' },
+                    { en: 'Ambulance', zh: '救护车', emoji: '🚑' }
+                ],
+                food: [
+                    { en: 'Bread', zh: '面包', emoji: '🍞' },
+                    { en: 'Milk', zh: '牛奶', emoji: '🥛' },
+                    { en: 'Egg', zh: '鸡蛋', emoji: '🥚' },
+                    { en: 'Cake', zh: '蛋糕', emoji: '🍰' },
+                    { en: 'Rice', zh: '米饭', emoji: '🍚' },
+                    { en: 'Noodle', zh: '面条', emoji: '🍜' },
+                    { en: 'Hamburger', zh: '汉堡', emoji: '🍔' },
+                    { en: 'Pizza', zh: '披萨', emoji: '🍕' },
+                    { en: 'Chocolate', zh: '巧克力', emoji: '🍫' },
+                    { en: 'Ice Cream', zh: '冰淇淋', emoji: '🍦' },
+                    { en: 'Candy', zh: '糖果', emoji: '🍬' },
+                    { en: 'Cookie', zh: '饼干', emoji: '🍪' }
+                ],
+                family: [
+                    { en: 'Mom', zh: '妈妈', emoji: '👩' },
+                    { en: 'Dad', zh: '爸爸', emoji: '👨' },
+                    { en: 'Brother', zh: '兄弟', emoji: '👦' },
+                    { en: 'Sister', zh: '姐妹', emoji: '👧' },
+                    { en: 'Grandpa', zh: '爷爷', emoji: '👴' },
+                    { en: 'Grandma', zh: '奶奶', emoji: '👵' },
+                    { en: 'Baby', zh: '宝宝', emoji: '👶' },
+                    { en: 'Me', zh: '我', emoji: '👧' },
+                    { en: 'Friend', zh: '朋友', emoji: '👫' },
+                    { en: 'Teacher', zh: '老师', emoji: '👩‍🏫' }
+                ]
+            }
+        };
+        
+        // 冰雪奇缘徽章列表
+        const badgesList = [
+            { id: 'first_game', name: '初次体验', icon: '❄️' },
+            { id: 'streak_5', name: '五连胜', icon: '🔥' },
+            { id: 'streak_10', name: '十连胜', icon: '⚡' },
+            { id: 'score_100', name: '百分达人', icon: '💯' },
+            { id: 'score_500', name: '五百分', icon: '🌟' },
+            { id: 'spelling_master', name: '拼写大师', icon: '✨' },
+            { id: 'matching_champ', name: '配对冠军', icon: '🧊' },
+            { id: 'animals_expert', name: '动物专家', icon: '🐾' },
+            { id: 'fruits_expert', name: '水果专家', icon: '🍎' },
+            { id: 'colors_expert', name: '色彩大师', icon: '🎨' },
+            { id: 'all_themes', name: '全能达人', icon: '👑' },
+            { id: 'vocab_master', name: '词汇达人', icon: '📚' }
+        ];
+        
+        // 初始化游戏
+        function initGame() {
+            createSnowflakes();
+            renderThemeSelector();
+            showWelcome();
+            updateStats();
+        }
+        
+        // 渲染主题选择器
+        function renderThemeSelector() {
+            const container = document.getElementById('themeSelector');
+            container.innerHTML = contentLibrary.themes.map(theme => `
+                <button class="theme-btn ${gameData.currentTheme === theme.id ? 'active' : ''}" 
+                        onclick="selectTheme('${theme.id}')">
+                    ${theme.icon} ${theme.name}
+                </button>
+            `).join('');
+        }
+        
+        // 选择主题
+        function selectTheme(themeId) {
+            gameData.currentTheme = themeId;
+            renderThemeSelector();
+            if (gameData.gameState === 'menu') {
+                showMainMenu();
+            } else {
+                if (gameData.currentMode) {
+                    startGame(gameData.currentMode);
+                }
+            }
+            checkThemeBadges();
+        }
+        
+        // 显示冰雪欢迎页
+        function showWelcome() {
+            gameData.gameState = 'welcome';
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="welcome-emoji">❄️✨👑</div>
+                    <div class="welcome-title">欢迎来到冰雪奇缘英语乐园！</div>
+                    <div class="welcome-text">
+                        和艾莎安娜一起快乐学英语！<br>
+                        这里有冰雪魔法、可爱图标和满满的成就感！<br>
+                        让小朋友在冰雪世界中轻松掌握英语单词！
+                    </div>
+                    <div class="word-count">
+                        📚 总计 ${gameData.totalWords} 个单词，8大主题！
+                    </div>
+                </div>
+                <div class="game-modes">
+                    ${contentLibrary.gameModes.map(mode => `
+                        <div class="mode-card ${gameData.currentMode === mode.id ? 'active' : ''}" 
+                             onclick="selectMode('${mode.id}')">
+                            <div class="mode-icon">${mode.icon}</div>
+                            <div class="mode-name">${mode.name}</div>
+                            <div class="mode-desc">${mode.desc}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="startGame('${gameData.currentMode}')">
+                        🚀 开始学习
+                    </button>
+                    <button class="btn btn-warning" onclick="showBadges()">
+                        👑 查看徽章收藏
+                    </button>
+                </div>
+            `;
+            awardBadge('first_game');
+            updateStats();
+        }
+        
+        // 显示主菜单
+        function showMainMenu() {
+            gameData.gameState = 'menu';
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="info-title">📖 当前主题：${getCurrentThemeName()}</div>
+                    <div class="info-content">
+                        共有 <strong>${contentLibrary.words[gameData.currentTheme].length}</strong> 个单词
+                    </div>
+                </div>
+                <div class="game-modes">
+                    ${contentLibrary.gameModes.map(mode => `
+                        <div class="mode-card ${gameData.currentMode === mode.id ? 'active' : ''}" 
+                             onclick="selectMode('${mode.id}')">
+                            <div class="mode-icon">${mode.icon}</div>
+                            <div class="mode-name">${mode.name}</div>
+                            <div class="mode-desc">${mode.desc}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="startGame('${gameData.currentMode}')">
+                        🚀 开始游戏
+                    </button>
+                    <button class="btn btn-warning" onclick="showBadges()">
+                        👑 我的徽章
+                    </button>
+                    <button class="btn btn-info" onclick="showWelcome()">
+                        🏰 返回首页
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 获取当前主题名称
+        function getCurrentThemeName() {
+            const theme = contentLibrary.themes.find(t => t.id === gameData.currentTheme);
+            return theme ? theme.icon + ' ' + theme.name : '未知';
+        }
+        
+        // 选择游戏模式
+        function selectMode(modeId) {
+            gameData.currentMode = modeId;
+            if (gameData.gameState === 'menu') {
+                showMainMenu();
+            }
+        }
+        
+        // 开始游戏
+        function startGame(mode) {
+            gameData.gameState = 'playing';
+            gameData.currentMode = mode;
+            
+            awardBadge('first_game');
+            checkAllThemesBadge();
+            
+            switch(mode) {
+                case 'flashcard':
+                    showFlashcardGame();
+                    break;
+                case 'matching':
+                    showMatchingGame();
+                    break;
+                case 'spelling':
+                    showSpellingGame();
+                    break;
+                case 'listening':
+                    showListeningGame();
+                    break;
+            }
+        }
+        
+        // 获取随机单词
+        function getRandomWord() {
+            const words = contentLibrary.words[gameData.currentTheme];
+            return words[Math.floor(Math.random() * words.length)];
+        }
+        
+        // 冰晶闪卡游戏
+        function showFlashcardGame() {
+            const word = getRandomWord();
+            let hint = '';
+            if (word.color) hint = `颜色：${word.color}`;
+            if (word.count) hint = `数量：${word.count}`;
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="info-title">❄️ 冰晶闪卡</div>
+                    <div class="info-content">
+                        认出单词后点击 "我认识"，不认得出点击 "再学一次"
+                    </div>
+                </div>
+                <div class="flashcard">
+                    <div class="flashcard-emoji">${word.emoji}</div>
+                    <div class="flashcard-word">${word.en}</div>
+                    <div class="flashcard-translation">${word.zh}</div>
+                    ${hint ? `<div class="flashcard-hint">${hint}</div>` : ''}
+                </div>
+                <div class="btn-group">
+                    <div class="btn-row">
+                        <button class="btn btn-success" onclick="answerFlashcard(true)">
+                            ✅ 我认识
+                        </button>
+                        <button class="btn btn-primary" onclick="answerFlashcard(false)">
+                            🔄 再学一次
+                        </button>
+                    </div>
+                    <button class="btn btn-info" onclick="showMainMenu()">
+                        🏰 返回菜单
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 回答闪卡
+        function answerFlashcard(correct) {
+            if (correct) {
+                gameData.score += 5;
+                gameData.streak++;
+                awardBadgeForStreak();
+                awardBadgeForScore();
+                if (gameData.streak >= 3) {
+                    awardBadge('streak_5');
+                }
+                if (gameData.score >= 100) {
+                    awardBadge('score_100');
+                }
+                if (gameData.score >= 500) {
+                    awardBadge('score_500');
+                }
+            } else {
+                gameData.streak = 0;
+            }
+            
+            gameData.level++;
+            updateStats();
+            showFlashcardGame();
+        }
+        
+        // 冰雪配对游戏
+        function showMatchingGame() {
+            const words = contentLibrary.words[gameData.currentTheme];
+            const selectedWords = [...words].sort(() => Math.random() - 0.5).slice(0, 4);
+            const pairs = [];
+            selectedWords.forEach(word => {
+                pairs.push({ type: 'english', value: word.en, match: word.zh, emoji: word.emoji });
+                pairs.push({ type: 'chinese', value: word.zh, match: word.en, emoji: word.emoji });
+            });
+            const shuffledPairs = [...pairs].sort(() => Math.random() - 0.5);
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="info-title">🧊 冰雪配对</div>
+                    <div class="info-content">
+                        点击卡片，将英文和中文配对
+                    </div>
+                </div>
+                <div class="matching-grid" id="matchingGrid">
+                    ${shuffledPairs.map((pair, index) => `
+                        <div class="matching-card" onclick="selectMatchingCard(${index})" data-index="${index}">
+                            <div class="matching-emoji">${pair.emoji}</div>
+                            <div>${pair.value}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-info" onclick="showMainMenu()">
+                        🏰 返回菜单
+                    </button>
+                </div>
+            `;
+            
+            window.matchingPairs = shuffledPairs;
+            window.selectedMatchingCards = [];
+            window.matchedCount = 0;
+        }
+        
+        // 选择配对卡片
+        function selectMatchingCard(index) {
+            const card = document.querySelector(`[data-index="${index}"]`);
+            if (card.classList.contains('matched') || card.classList.contains('selected')) return;
+            
+            card.classList.add('selected');
+            window.selectedMatchingCards.push(index);
+            
+            if (window.selectedMatchingCards.length === 2) {
+                const [idx1, idx2] = window.selectedMatchingCards;
+                const pair1 = window.matchingPairs[idx1];
+                const pair2 = window.matchingPairs[idx2];
+                
+                if ((pair1.type === 'english' && pair2.type === 'chinese' && pair1.match === pair2.value) ||
+                    (pair2.type === 'english' && pair1.type === 'chinese' && pair2.match === pair1.value)) {
+                    // 匹配成功
+                    document.querySelector(`[data-index="${idx1}"]`).classList.remove('selected');
+                    document.querySelector(`[data-index="${idx2}"]`).classList.remove('selected');
+                    document.querySelector(`[data-index="${idx1}"]`).classList.add('matched');
+                    document.querySelector(`[data-index="${idx2}"]`).classList.add('matched');
+                    gameData.score += 10;
+                    gameData.streak++;
+                    window.matchedCount++;
+                    awardBadgeForStreak();
+                    awardBadgeForScore();
+                    updateStats();
+                    awardBadge('matching_champ');
+                    
+                    // 检查是否全部匹配
+                    if (window.matchedCount === 4) {
+                        setTimeout(() => {
+                            alert('🎉 太棒了！所有配对都完成了！');
+                            gameData.level++;
+                            showMatchingGame();
+                        }, 500);
+                    }
+                } else {
+                    // 匹配失败
+                    setTimeout(() => {
+                        document.querySelector(`[data-index="${idx1}"]`).classList.remove('selected');
+                        document.querySelector(`[data-index="${idx2}"]`).classList.remove('selected');
+                        gameData.streak = 0;
+                        updateStats();
+                    }, 1000);
+                }
+                
+                window.selectedMatchingCards = [];
+            }
+        }
+        
+        // 魔法拼写游戏
+        function showSpellingGame() {
+            const word = getRandomWord();
+            const letters = word.en.split('');
+            const scrambled = [...letters].sort(() => Math.random() - 0.5);
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="info-title">✨ 魔法拼写</div>
+                    <div class="info-content">
+                        根据意思点击字母拼写出单词
+                    </div>
+                </div>
+                <div class="spelling-area">
+                    <div class="spelling-hint">
+                        拼出单词：<strong>${word.zh}</strong>
+                        <div class="spelling-emoji">${word.emoji}</div>
+                    </div>
+                    <div class="current-spelling" id="currentSpelling"></div>
+                    <div class="letter-bank" id="letterBank">
+                        ${scrambled.map((letter, idx) => `
+                            <div class="letter-tile" onclick="selectSpellingLetter(${idx})" data-letter="${letter}">
+                                ${letter}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <div class="btn-row">
+                        <button class="btn btn-success" onclick="checkSpelling()">
+                            ✅ 检查
+                        </button>
+                        <button class="btn btn-warning" onclick="resetSpelling()">
+                            🔄 重来
+                        </button>
+                    </div>
+                    <button class="btn btn-info" onclick="showMainMenu()">
+                        🏰 返回菜单
+                    </button>
+                </div>
+            `;
+            
+            window.currentWord = word.en;
+            window.selectedLetters = [];
+            window.originalLetters = scrambled;
+            updateSpellingDisplay();
+        }
+        
+        // 选择拼写字母
+        function selectSpellingLetter(index) {
+            const tile = document.querySelectorAll('.letter-tile')[index];
+            const letter = tile.dataset.letter;
+            
+            if (tile.classList.contains('used')) {
+                return;
+            }
+            
+            tile.classList.add('used');
+            window.selectedLetters.push(letter);
+            updateSpellingDisplay();
+        }
+        
+        // 重置拼写
+        function resetSpelling() {
+            window.selectedLetters = [];
+            const tiles = document.querySelectorAll('.letter-tile');
+            tiles.forEach(tile => tile.classList.remove('used'));
+            updateSpellingDisplay();
+        }
+        
+        // 更新拼写显示
+        function updateSpellingDisplay() {
+            const display = document.getElementById('currentSpelling');
+            if (window.selectedLetters.length === 0) {
+                display.textContent = '请点击字母开始拼写';
+            } else {
+                display.textContent = window.selectedLetters.join(' ');
+            }
+        }
+        
+        // 检查拼写
+        function checkSpelling() {
+            const userSpelling = window.selectedLetters.join('');
+            if (userSpelling.toUpperCase() === window.currentWord.toUpperCase()) {
+                alert('🎉 拼写正确！太棒了！');
+                gameData.score += 10;
+                gameData.streak++;
+                awardBadge('spelling_master');
+                awardBadgeForStreak();
+                awardBadgeForScore();
+                gameData.level++;
+                updateStats();
+                showSpellingGame();
+            } else {
+                alert(`❌ 不对哦，正确答案是：${window.currentWord}\n再试一次吧！💪`);
+                gameData.streak = 0;
+                updateStats();
+                resetSpelling();
+            }
+        }
+        
+        // 冰雪听力游戏
+        function showListeningGame() {
+            const words = contentLibrary.words[gameData.currentTheme];
+            const selectedWords = [...words].sort(() => Math.random() - 0.5).slice(0, 4);
+            const targetWord = selectedWords[Math.floor(Math.random() * selectedWords.length)];
+            
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="info-title">👑 冰雪听力</div>
+                    <div class="info-content">
+                        点击播放按钮听单词，然后选择正确答案<br>
+                        💡 提示：本版本为演示，实际可接入语音合成
+                    </div>
+                </div>
+                <div class="listening-area">
+                    <button class="play-btn" onclick="playAudio()">
+                        🔊
+                    </button>
+                    <p style="color:var(--text-secondary);">请听这个单词：${targetWord.zh}（${targetWord.emoji}）</p>
+                </div>
+                <div class="listening-options">
+                    ${selectedWords.map(word => `
+                        <div class="listening-option" onclick="checkListeningAnswer('${word.en}', '${targetWord.en}')">
+                            ${word.emoji}<br>${word.en}
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-info" onclick="showMainMenu()">
+                        🏰 返回菜单
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 播放音频（模拟）
+        function playAudio() {
+            alert('🔊 冰雪魔法！\n这是模拟播放演示\n实际使用可接入专业英语语音合成');
+        }
+        
+        // 检查听力答案
+        function checkListeningAnswer(userAnswer, correctAnswer) {
+            if (userAnswer === correctAnswer) {
+                alert('🎉 答对了！太棒了！');
+                gameData.score += 10;
+                gameData.streak++;
+                awardBadgeForStreak();
+                awardBadgeForScore();
+                gameData.level++;
+                updateStats();
+                showListeningGame();
+            } else {
+                alert('❌ 不对哦，再听一次试试！💪');
+                gameData.streak = 0;
+                updateStats();
+            }
+        }
+        
+        // 显示冰雪徽章
+        function showBadges() {
+            const content = document.getElementById('gameContent');
+            content.innerHTML = `
+                <div class="welcome-card">
+                    <div class="info-title">👑 冰雪徽章收藏</div>
+                    <div class="info-content">
+                        完成挑战收集徽章！你已获得 ${gameData.earnedBadges.length} / ${badgesList.length} 个徽章
+                    </div>
+                </div>
+                <div class="badges-grid">
+                    ${badgesList.map(badge => `
+                        <div class="badge-item">
+                            <div class="badge-circle ${gameData.earnedBadges.includes(badge.id) ? 'earned' : ''}" 
+                                 title="${badge.name}">
+                                ${badge.icon}
+                            </div>
+                            <div class="badge-name">${badge.name}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-info" onclick="showMainMenu()">
+                        🏰 返回菜单
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 颁发冰雪徽章
+        function awardBadge(badgeId) {
+            if (!gameData.earnedBadges.includes(badgeId)) {
+                gameData.earnedBadges.push(badgeId);
+                checkVocabBadge();
+                updateStats();
+            }
+        }
+        
+        // 根据连胜颁发徽章
+        function awardBadgeForStreak() {
+            if (gameData.streak >= 5) awardBadge('streak_5');
+            if (gameData.streak >= 10) awardBadge('streak_10');
+        }
+        
+        // 根据分数颁发徽章
+        function awardBadgeForScore() {
+            if (gameData.score >= 100) awardBadge('score_100');
+            if (gameData.score >= 500) awardBadge('score_500');
+        }
+        
+        // 检查主题徽章
+        function checkThemeBadges() {
+            switch(gameData.currentTheme) {
+                case 'animals':
+                    if (gameData.score > 50) awardBadge('animals_expert');
+                    break;
+                case 'fruits':
+                    if (gameData.score > 50) awardBadge('fruits_expert');
+                    break;
+                case 'colors':
+                    if (gameData.score > 50) awardBadge('colors_expert');
+                    break;
+            }
+        }
+        
+        // 检查所有主题徽章
+        function checkAllThemesBadge() {
+            const earnedThemes = [];
+            if (gameData.earnedBadges.includes('animals_expert')) earnedThemes.push('animals_expert');
+            if (gameData.earnedBadges.includes('fruits_expert')) earnedThemes.push('fruits_expert');
+            if (gameData.earnedBadges.includes('colors_expert')) earnedThemes.push('colors_expert');
+            
+            if (earnedThemes.length >= 3) {
+                awardBadge('all_themes');
+            }
+        }
+        
+        // 检查词汇达人徽章
+        function checkVocabBadge() {
+            if (gameData.score >= 200) {
+                awardBadge('vocab_master');
+            }
+        }
+        
+        // 更新统计信息
+        function updateStats() {
+            document.getElementById('scoreDisplay').textContent = gameData.score;
+            document.getElementById('streakDisplay').textContent = gameData.streak;
+            document.getElementById('badgeCount').textContent = gameData.earnedBadges.length;
+        }
+        
+        // 页面加载完成后初始化
+        window.onload = initGame;
+    </script>
+</body>
+</html>

@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>汪汪队英语乐园 - 小朋友的英语启蒙小游戏</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paw-blue: #2E5CAB;
+            --paw-light-blue: #5B8BDF;
+            --paw-yellow: #FFD100;
+            --paw-red: #ED2633;
+            --paw-green: #39B54A;
+            --bg-gradient: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #1A237E;
+            --text-medium: #3949AB;
+            --shadow: 0 8px 24px rgba(46, 92, 171, 0.2);
+            --shadow-hover: 0 12px 32px rgba(46, 92, 171, 0.3);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+        .paw-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 209, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(46, 92, 171, 0.05) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px 0 30px;
+            animation: slideDown 0.6s ease-out;
+        }
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--paw-blue);
+            text-shadow: 3px 3px 0 var(--paw-yellow);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+        /* Character Selection */
+        .character-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .character-section.active {
+            display: block;
+        }
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            color: var(--paw-blue);
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0 rgba(255, 209, 0, 0.3);
+        }
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .character-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 4px solid transparent;
+        }
+        .character-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .character-card.selected {
+            border-color: var(--paw-yellow);
+            background: linear-gradient(135deg, #FFFDE7 0%, #FFFFFF 100%);
+        }
+        .character-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 4px solid white;
+        }
+        .character-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .character-theme {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+        .character-avatar.ryder { background-color: #2E5CAB; }
+        .character-avatar.chase { background-color: #1565C0; }
+        .character-avatar.skye { background-color: #E91E63; }
+        .character-avatar.rubble { background-color: #FFC107; }
+        .character-avatar.marshall { background-color: #ED2633; }
+        .character-avatar.zuma { background-color: #39B54A; }
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--paw-blue), var(--paw-light-blue));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            background: linear-gradient(135deg, var(--paw-light-blue), var(--paw-blue));
+        }
+        .btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        /* Game Section */
+        .game-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .game-section.active {
+            display: block;
+        }
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .score-box {
+            text-align: center;
+        }
+        .score-label {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+        .score-value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            color: var(--paw-yellow);
+            text-shadow: 1px 1px 0 var(--paw-blue);
+        }
+        .current-character {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .character-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Game Area */
+        .game-area {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+        /* 英文单词 - 小写形式，更适合幼儿学习 */
+        .question-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--paw-blue);
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question-hint {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .word-audio {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .speaker-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--paw-yellow), #FFE040);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 209, 0, 0.4);
+            transition: all 0.3s ease;
+            font-size: 2rem;
+        }
+        .speaker-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(255, 209, 0, 0.5);
+        }
+        .speaker-btn:active {
+            transform: scale(0.95);
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .option-card {
+            background: #F5F9FF;
+            border: 3px solid #E3F2FD;
+            border-radius: 15px;
+            padding: 20px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .option-card:hover {
+            border-color: var(--paw-light-blue);
+            background: #E3F2FD;
+            transform: scale(1.03);
+        }
+        .option-card.correct {
+            border-color: var(--paw-green);
+            background: #E8F5E9;
+            animation: correctPulse 0.6s ease;
+        }
+        .option-card.wrong {
+            border-color: var(--paw-red);
+            background: #FFEBEE;
+            animation: wrongShake 0.5s ease;
+        }
+        .option-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        /* Result Section */
+        .result-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .result-section.active {
+            display: block;
+        }
+        .result-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .trophy {
+            font-size: 6rem;
+            animation: bounce 1s ease infinite;
+            margin-bottom: 20px;
+        }
+        .result-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            color: var(--paw-blue);
+            margin-bottom: 15px;
+        }
+        .result-score {
+            font-size: 1.5rem;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+        }
+        .result-score span {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            color: var(--paw-yellow);
+            text-shadow: 2px 2px 0 var(--paw-blue);
+        }
+        .buttons-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--paw-yellow), #FFE040);
+            color: var(--paw-blue);
+        }
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 12px;
+            background: #E3F2FD;
+            border-radius: 6px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--paw-yellow), var(--paw-green));
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin-bottom: 5px;
+        }
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .characters-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            .game-area {
+                padding: 20px 15px;
+            }
+            .question-text {
+                font-size: 2.8rem;
+                letter-spacing: 6px;
+            }
+            .question-hint {
+                font-size: 1.1rem;
+            }
+            .buttons-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                max-width: 250px;
+            }
+            .character-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            .option-text {
+                font-size: 1.4rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 15px;
+            }
+            .question-text {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+            }
+        }
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti-fall 3s ease-in forwards;
+        }
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(-10px) rotate(0deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        /* Loading */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--paw-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="paw-pattern"></div>
+    <div class="container">
+        <header>
+            <h1 class="logo">🐾 汪汪队英语乐园 🐾</h1>
+            <p class="subtitle">小朋友的快乐英语启蒙小游戏 ✨</p>
+        </header>
+        <!-- Character Selection -->
+        <section class="character-section active" id="characterSection">
+            <h2 class="section-title">选择你喜欢的汪汪队角色 👇</h2>
+            <div class="characters-grid">
+                <div class="character-card" data-character="ryder" data-theme="command">
+                    <div class="character-avatar ryder" id="avatar-ryder"></div>
+                    <h3 class="character-name">莱德</h3>
+                    <p class="character-theme">指令英语</p>
+                </div>
+                <div class="character-card" data-character="chase" data-theme="vehicle">
+                    <div class="character-avatar chase" id="avatar-chase"></div>
+                    <h3 class="character-name">阿奇</h3>
+                    <p class="character-theme">交通工具</p>
+                </div>
+                <div class="character-card" data-character="skye" data-theme="sky">
+                    <div class="character-avatar skye" id="avatar-skye"></div>
+                    <h3 class="character-name">天天</h3>
+                    <p class="character-theme">航空天气</p>
+                </div>
+                <div class="character-card" data-character="rubble" data-theme="construction">
+                    <div class="character-avatar rubble" id="avatar-rubble"></div>
+                    <h3 class="character-name">小砾</h3>
+                    <p class="character-theme">工程建筑</p>
+                </div>
+                <div class="character-card" data-character="marshall" data-theme="fire">
+                    <div class="character-avatar marshall" id="avatar-marshall"></div>
+                    <h3 class="character-name">毛毛</h3>
+                    <p class="character-theme">消防救援</p>
+                </div>
+                <div class="character-card" data-character="zuma" data-theme="water">
+                    <div class="character-avatar zuma" id="avatar-zuma"></div>
+                    <h3 class="character-name">路马</h3>
+                    <p class="character-theme">水上救援</p>
+                </div>
+            </div>
+            <button class="btn" id="startGameBtn" disabled>开始游戏 🎮</button>
+        </section>
+        <!-- Game Area -->
+        <section class="game-section" id="gameSection">
+            <div class="game-header">
+                <div class="score-box">
+                    <div class="score-label">得分</div>
+                    <div class="score-value" id="scoreDisplay">0 / 10</div>
+                </div>
+                <div class="current-character">
+                    <div class="character-badge" id="currentCharacterBadge"></div>
+                    <div>
+                        <div style="font-weight: 700; color: var(--text-dark);" id="currentCharacterName"></div>
+                        <div style="font-size: 0.85rem; color: var(--text-medium);" id="currentCharacterTheme"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-text">进度：<span id="currentQuestion">1</span> / <span id="totalQuestions">10</span></div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 10%"></div>
+            </div>
+            <div class="game-area">
+                <div class="question-text" id="questionText"></div>
+                <div class="question-hint" id="questionHint">是什么意思？</div>
+                <div class="word-audio">
+                    <button class="speaker-btn" id="speakerBtn">🔊</button>
+                </div>
+                <div class="options-grid" id="optionsGrid"></div>
+            </div>
+        </section>
+        <!-- Result -->
+        <section class="result-section" id="resultSection">
+            <div class="result-card">
+                <div class="trophy">🏆</div>
+                <h2 class="result-title">游戏完成啦！</h2>
+                <p class="result-score">你获得了 <span id="finalScore">0</span> 分!</p>
+                <div class="buttons-row">
+                    <button class="btn" id="backToCharactersBtn">选择其他角色 ↩️</button>
+                    <button class="btn btn-secondary" id="playAgainBtn">再来一次 🔄</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // 汪汪队角色图片 URL
+        const characterImages = {
+            ryder: "https://bkimg.cdn.bcebos.com/pic/48540923dd54564e92585996b1848b82d158ccbfe150?x-bce-process=image/resize,m_lfit,w_536,limit_1/quality,Q_70",
+            chase: "https://bkimg.cdn.bcebos.com/pic/2934349b033b5bb5c9ea02891098c239b6003af3163b?x-bce-process=image/resize,m_lfit,w_536,limit_1/quality,Q_70",
+            skye: "https://bkimg.cdn.bcebos.com/pic/dcc451da81cb39dbb6fda81b17401e24ab18972b9a7d?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_440",
+            rubble: "https://bkimg.cdn.bcebos.com/pic/d31b0ef41bd5ad6eddc4a7a4469d2edbb6fd5266967c?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_440",
+            marshall: "https://i0.hdslb.com/bfs/archive/cb7df5487a20f0fa14e1fb542d176e9a0746ae23.png",
+            zuma: "https://www.cooboys.com/uploadfile/2022/0504/d22d6ac9ef258f6da1f8e54600e3f659253_t.jpg"
+        };
+        // 词汇数据库 - 每个角色 50 个词汇（全部改为小写，适合幼儿学习）
+        const vocabulary = {
+            command: [
+                { word: "go", translation: "走", options: ["去", "停", "跳", "坐"] },
+                { word: "stop", translation: "停", options: ["走", "停", "跑", "站"] },
+                { word: "come", translation: "来", options: ["去", "来", "走", "停"] },
+                { word: "jump", translation: "跳", options: ["跑", "走", "跳", "坐"] },
+                { word: "sit", translation: "坐", options: ["站", "坐", "躺", "跳"] },
+                { word: "run", translation: "跑", options: ["走", "跑", "跳", "坐"] },
+                { word: "up", translation: "上", options: ["上", "下", "左", "右"] },
+                { word: "down", translation: "下", options: ["上", "下", "前", "后"] },
+                { word: "hello", translation: "你好", options: ["再见", "你好", "谢谢", "抱歉"] },
+                { word: "bye", translation: "再见", options: ["你好", "再见", "晚安", "早上好"] },
+                { word: "yes", translation: "是", options: ["是", "不", "可能", "也许"] },
+                { word: "no", translation: "不", options: ["是", "不", "好", "对"] },
+                { word: "please", translation: "请", options: ["请", "谢谢", "对不起", "你好"] },
+                { word: "thank you", translation: "谢谢", options: ["请", "谢谢", "对不起", "再见"] },
+                { word: "sorry", translation: "对不起", options: ["谢谢", "对不起", "请", "你好"] },
+                { word: "wait", translation: "等待", options: ["走", "等待", "跑", "跳"] },
+                { word: "look", translation: "看", options: ["听", "看", "说", "闻"] },
+                { word: "listen", translation: "听", options: ["看", "听", "说", "读"] },
+                { word: "speak", translation: "说", options: ["听", "看", "说", "写"] },
+                { word: "read", translation: "读", options: ["写", "读", "画", "唱"] },
+                { word: "write", translation: "写", options: ["读", "写", "画", "说"] },
+                { word: "draw", translation: "画", options: ["写", "读", "画", "唱"] },
+                { word: "sing", translation: "唱", options: ["跳", "唱", "跑", "走"] },
+                { word: "dance", translation: "跳舞", options: ["唱歌", "跳舞", "画画", "写字"] },
+                { word: "play", translation: "玩", options: ["工作", "玩", "学习", "休息"] },
+                { word: "work", translation: "工作", options: ["玩", "工作", "学习", "睡觉"] },
+                { word: "study", translation: "学习", options: ["玩", "工作", "学习", "休息"] },
+                { word: "sleep", translation: "睡觉", options: ["起床", "睡觉", "吃饭", "喝水"] },
+                { word: "wake up", translation: "起床", options: ["睡觉", "起床", "吃饭", "洗澡"] },
+                { word: "eat", translation: "吃", options: ["喝", "吃", "睡", "玩"] },
+                { word: "drink", translation: "喝", options: ["吃", "喝", "睡", "玩"] },
+                { word: "stand", translation: "站", options: ["坐", "站", "躺", "走"] },
+                { word: "lie", translation: "躺", options: ["站", "坐", "躺", "走"] },
+                { word: "walk", translation: "走", options: ["跑", "走", "跳", "爬"] },
+                { word: "crawl", translation: "爬", options: ["走", "跑", "爬", "跳"] },
+                { word: "climb", translation: "爬", options: ["跳", "爬", "走", "跑"] },
+                { word: "swim", translation: "游泳", options: ["跑步", "游泳", "跳跃", "走路"] },
+                { word: "fly", translation: "飞", options: ["跑", "走", "飞", "跳"] },
+                { word: "drive", translation: "开车", options: ["走路", "开车", "跑步", "骑车"] },
+                { word: "ride", translation: "骑", options: ["开", "骑", "坐", "站"] },
+                { word: "push", translation: "推", options: ["拉", "推", "举", "扔"] },
+                { word: "pull", translation: "拉", options: ["推", "拉", "举", "扔"] },
+                { word: "lift", translation: "举", options: ["推", "拉", "举", "扔"] },
+                { word: "throw", translation: "扔", options: ["接", "扔", "踢", "拍"] },
+                { word: "catch", translation: "接", options: ["扔", "接", "踢", "拍"] },
+                { word: "kick", translation: "踢", options: ["扔", "接", "踢", "拍"] },
+                { word: "hit", translation: "打", options: ["踢", "打", "拍", "扔"] },
+                { word: "hug", translation: "拥抱", options: ["握手", "拥抱", "亲吻", "拍肩"] },
+                { word: "kiss", translation: "亲吻", options: ["拥抱", "亲吻", "握手", "拍肩"] },
+                { word: "laugh", translation: "笑", options: ["哭", "笑", "生气", "害怕"] }
+            ],
+            vehicle: [
+                { word: "car", translation: "汽车", options: ["汽车", "卡车", "公交车", "火车"] },
+                { word: "bus", translation: "公交车", options: ["汽车", "公交车", "出租车", "自行车"] },
+                { word: "truck", translation: "卡车", options: ["轿车", "卡车", "轮船", "飞机"] },
+                { word: "police car", translation: "警车", options: ["消防车", "救护车", "警车", "出租车"] },
+                { word: "bike", translation: "自行车", options: ["摩托车", "自行车", "汽车", "公交车"] },
+                { word: "train", translation: "火车", options: ["火车", "飞机", "轮船", "汽车"] },
+                { word: "boat", translation: "船", options: ["汽车", "船", "飞机", "自行车"] },
+                { word: "plane", translation: "飞机", options: ["火车", "汽车", "飞机", "轮船"] },
+                { word: "motorcycle", translation: "摩托车", options: ["自行车", "摩托车", "汽车", "公交车"] },
+                { word: "ambulance", translation: "救护车", options: ["消防车", "警车", "救护车", "出租车"] },
+                { word: "fire truck", translation: "消防车", options: ["警车", "救护车", "消防车", "出租车"] },
+                { word: "taxi", translation: "出租车", options: ["公交车", "出租车", "火车", "轮船"] },
+                { word: "subway", translation: "地铁", options: ["火车", "地铁", "公交车", "出租车"] },
+                { word: "helicopter", translation: "直升机", options: ["飞机", "直升机", "热气球", "火箭"] },
+                { word: "rocket", translation: "火箭", options: ["飞机", "直升机", "火箭", "飞船"] },
+                { word: "spaceship", translation: "宇宙飞船", options: ["飞机", "火箭", "宇宙飞船", "直升机"] },
+                { word: "tractor", translation: "拖拉机", options: ["卡车", "拖拉机", "汽车", "摩托车"] },
+                { word: "excavator", translation: "挖掘机", options: ["推土机", "挖掘机", "起重机", "拖拉机"] },
+                { word: "bulldozer", translation: "推土机", options: ["挖掘机", "推土机", "起重机", "拖拉机"] },
+                { word: "crane", translation: "起重机", options: ["推土机", "挖掘机", "起重机", "拖拉机"] },
+                { word: "forklift", translation: "叉车", options: ["卡车", "叉车", "汽车", "摩托车"] },
+                { word: "van", translation: "货车", options: ["汽车", "货车", "卡车", "公交车"] },
+                { word: "minibus", translation: "小巴", options: ["大巴", "小巴", "出租车", "货车"] },
+                { word: "coach", translation: "长途汽车", options: ["公交车", "长途汽车", "出租车", "火车"] },
+                { word: "tram", translation: "有轨电车", options: ["地铁", "有轨电车", "火车", "公交车"] },
+                { word: "ferry", translation: "渡轮", options: ["轮船", "渡轮", "游艇", "帆船"] },
+                { word: "yacht", translation: "游艇", options: ["轮船", "渡轮", "游艇", "帆船"] },
+                { word: "sailboat", translation: "帆船", options: ["轮船", "游艇", "帆船", "快艇"] },
+                { word: "speedboat", translation: "快艇", options: ["轮船", "游艇", "帆船", "快艇"] },
+                { word: "submarine", translation: "潜水艇", options: ["轮船", "潜水艇", "快艇", "帆船"] },
+                { word: "jet ski", translation: "水上摩托", options: ["快艇", "水上摩托", "帆船", "游艇"] },
+                { word: "hot air balloon", translation: "热气球", options: ["飞机", "直升机", "热气球", "火箭"] },
+                { word: "glider", translation: "滑翔机", options: ["飞机", "滑翔机", "直升机", "热气球"] },
+                { word: "parachute", translation: "降落伞", options: ["滑翔伞", "降落伞", "热气球", "飞机"] },
+                { word: "skateboard", translation: "滑板", options: ["自行车", "滑板", "轮滑", "滑板车"] },
+                { word: "scooter", translation: "滑板车", options: ["自行车", "滑板", "滑板车", "轮滑"] },
+                { word: "roller skates", translation: "轮滑鞋", options: ["滑板", "滑板车", "轮滑鞋", "自行车"] },
+                { word: "ski", translation: "滑雪板", options: ["滑板", "滑雪板", "轮滑鞋", "滑板车"] },
+                { word: "snowmobile", translation: "雪地摩托", options: ["摩托车", "雪地摩托", "汽车", "拖拉机"] },
+                { word: "golf cart", translation: "高尔夫球车", options: ["汽车", "高尔夫球车", "摩托车", "自行车"] },
+                { word: "race car", translation: "赛车", options: ["汽车", "赛车", "摩托车", "卡车"] },
+                { word: "tank", translation: "坦克", options: ["卡车", "坦克", "汽车", "拖拉机"] },
+                { word: "cement mixer", translation: "水泥搅拌车", options: ["卡车", "水泥搅拌车", "货车", "拖拉机"] },
+                { word: "garbage truck", translation: "垃圾车", options: ["卡车", "垃圾车", "货车", "拖拉机"] },
+                { word: "ice cream truck", translation: "冰淇淋车", options: ["货车", "冰淇淋车", "卡车", "汽车"] },
+                { word: "tow truck", translation: "拖车", options: ["卡车", "拖车", "货车", "拖拉机"] },
+                { word: "limousine", translation: "豪华轿车", options: ["轿车", "豪华轿车", "跑车", "越野车"] },
+                { word: "convertible", translation: "敞篷车", options: ["跑车", "敞篷车", "轿车", "越野车"] },
+                { word: "suv", translation: "越野车", options: ["轿车", "越野车", "跑车", "面包车"] },
+                { word: "cruise ship", translation: "游轮", options: ["轮船", "游轮", "渡轮", "帆船"] }
+            ],
+            sky: [
+                { word: "sky", translation: "天空", options: ["地面", "天空", "海洋", "山脉"] },
+                { word: "cloud", translation: "云", options: ["太阳", "云", "雨", "风"] },
+                { word: "sun", translation: "太阳", options: ["月亮", "星星", "太阳", "云"] },
+                { word: "rain", translation: "雨", options: ["雪", "风", "雨", "晴"] },
+                { word: "wind", translation: "风", options: ["雨", "云", "风", "太阳"] },
+                { word: "helicopter", translation: "直升机", options: ["飞机", "直升机", "热气球", "火箭"] },
+                { word: "moon", translation: "月亮", options: ["太阳", "月亮", "星星", "云"] },
+                { word: "star", translation: "星星", options: ["月亮", "太阳", "星星", "云"] },
+                { word: "snow", translation: "雪", options: ["雨", "风", "雪", "冰"] },
+                { word: "heat", translation: "热", options: ["冷", "热", "凉", "暖"] },
+                { word: "cold", translation: "冷", options: ["热", "冷", "暖", "凉爽"] },
+                { word: "warm", translation: "温暖", options: ["热", "冷", "温暖", "凉爽"] },
+                { word: "cool", translation: "凉爽", options: ["热", "冷", "温暖", "凉爽"] },
+                { word: "lightning", translation: "闪电", options: ["雷声", "闪电", "雨", "风"] },
+                { word: "thunder", translation: "雷声", options: ["闪电", "雷声", "雨", "风"] },
+                { word: "storm", translation: "暴风雨", options: ["晴天", "暴风雨", "多云", "雾天"] },
+                { word: "fog", translation: "雾", options: ["云", "雾", "雨", "雪"] },
+                { word: "mist", translation: "薄雾", options: ["雾", "薄雾", "云", "雨"] },
+                { word: "dew", translation: "露水", options: ["雨", "露水", "雪", "冰"] },
+                { word: "frost", translation: "霜", options: ["雪", "霜", "冰", "露水"] },
+                { word: "ice", translation: "冰", options: ["雪", "冰", "霜", "露水"] },
+                { word: "hail", translation: "冰雹", options: ["雪", "冰雹", "雨", "霜"] },
+                { word: "sleet", translation: "雨夹雪", options: ["雪", "雨", "雨夹雪", "冰雹"] },
+                { word: "drizzle", translation: "毛毛雨", options: ["大雨", "毛毛雨", "暴雨", "小雨"] },
+                { word: "shower", translation: "阵雨", options: ["大雨", "阵雨", "暴雨", "小雨"] },
+                { word: "downpour", translation: "倾盆大雨", options: ["小雨", "倾盆大雨", "阵雨", "毛毛雨"] },
+                { word: "hurricane", translation: "飓风", options: ["台风", "飓风", "龙卷风", "暴风雨"] },
+                { word: "typhoon", translation: "台风", options: ["飓风", "台风", "龙卷风", "暴风雨"] },
+                { word: "tornado", translation: "龙卷风", options: ["飓风", "台风", "龙卷风", "暴风雨"] },
+                { word: "cyclone", translation: "气旋", options: ["飓风", "台风", "龙卷风", "气旋"] },
+                { word: "breeze", translation: "微风", options: ["大风", "微风", "狂风", "和风"] },
+                { word: "gale", translation: "大风", options: ["微风", "大风", "狂风", "和风"] },
+                { word: "blizzard", translation: "暴风雪", options: ["大雪", "暴风雪", "小雪", "雨夹雪"] },
+                { word: "avalanche", translation: "雪崩", options: ["滑坡", "雪崩", "洪水", "地震"] },
+                { word: "earthquake", translation: "地震", options: ["台风", "地震", "洪水", "火山"] },
+                { word: "volcano", translation: "火山", options: ["山脉", "火山", "丘陵", "平原"] },
+                { word: "eruption", translation: "喷发", options: ["爆发", "喷发", "爆炸", "燃烧"] },
+                { word: "lava", translation: "岩浆", options: ["岩石", "岩浆", "土壤", "沙子"] },
+                { word: "ash", translation: "火山灰", options: ["灰尘", "火山灰", "烟雾", "雾气"] },
+                { word: "smoke", translation: "烟", options: ["雾", "烟", "云", "灰尘"] },
+                { word: "dust", translation: "灰尘", options: ["泥土", "灰尘", "沙子", "石头"] },
+                { word: "sand", translation: "沙子", options: ["石头", "沙子", "泥土", "灰尘"] },
+                { word: "mud", translation: "泥", options: ["水", "泥", "沙", "土"] },
+                { word: "soil", translation: "土壤", options: ["沙子", "土壤", "泥土", "石头"] },
+                { word: "rock", translation: "岩石", options: ["土壤", "岩石", "沙子", "泥土"] },
+                { word: "stone", translation: "石头", options: ["岩石", "石头", "土壤", "沙子"] },
+                { word: "pebble", translation: "鹅卵石", options: ["石头", "鹅卵石", "岩石", "沙子"] },
+                { word: "boulder", translation: "巨石", options: ["石头", "巨石", "岩石", "鹅卵石"] },
+                { word: "mountain", translation: "山", options: ["丘陵", "山", "平原", "山谷"] },
+                { word: "hill", translation: "丘陵", options: ["山", "丘陵", "平原", "山谷"] }
+            ],
+            construction: [
+                { word: "house", translation: "房子", options: ["房子", "墙", "砖", "路"] },
+                { word: "wall", translation: "墙", options: ["房子", "墙", "门", "窗"] },
+                { word: "door", translation: "门", options: ["窗", "门", "墙", "屋顶"] },
+                { word: "window", translation: "窗", options: ["门", "墙", "窗", "屋顶"] },
+                { word: "shovel", translation: "铲子", options: ["锤子", "铲子", "钻头", "锯子"] },
+                { word: "hammer", translation: "锤子", options: ["锤子", "铲子", "扳手", "钳子"] },
+                { word: "brick", translation: "砖", options: ["水泥", "砖", "石头", "沙子"] },
+                { word: "road", translation: "路", options: ["桥", "路", "房子", "山"] },
+                { word: "dig", translation: "挖", options: ["建", "挖", "推", "拉"] },
+                { word: "build", translation: "建造", options: ["建造", "破坏", "修理", "打扫"] },
+                { word: "fix", translation: "修理", options: ["建造", "破坏", "修理", "打扫"] },
+                { word: "break", translation: "破坏", options: ["建造", "破坏", "修理", "打扫"] },
+                { word: "clean", translation: "打扫", options: ["建造", "破坏", "修理", "打扫"] },
+                { word: "paint", translation: "油漆", options: ["刷子", "油漆", "涂料", "颜料"] },
+                { word: "brush", translation: "刷子", options: ["油漆", "刷子", "滚筒", "刮刀"] },
+                { word: "roller", translation: "滚筒", options: ["刷子", "滚筒", "刮刀", "油漆"] },
+                { word: "screwdriver", translation: "螺丝刀", options: ["锤子", "螺丝刀", "扳手", "钳子"] },
+                { word: "wrench", translation: "扳手", options: ["螺丝刀", "扳手", "钳子", "锤子"] },
+                { word: "pliers", translation: "钳子", options: ["扳手", "钳子", "螺丝刀", "锤子"] },
+                { word: "saw", translation: "锯子", options: ["锤子", "锯子", "钻头", "铲子"] },
+                { word: "drill", translation: "钻头", options: ["锯子", "钻头", "锤子", "铲子"] },
+                { word: "nail", translation: "钉子", options: ["螺丝", "钉子", "螺栓", "螺母"] },
+                { word: "screw", translation: "螺丝", options: ["钉子", "螺丝", "螺栓", "螺母"] },
+                { word: "bolt", translation: "螺栓", options: ["螺丝", "螺栓", "钉子", "螺母"] },
+                { word: "nut", translation: "螺母", options: ["螺栓", "螺母", "螺丝", "钉子"] },
+                { word: "washer", translation: "垫圈", options: ["螺母", "垫圈", "螺栓", "螺丝"] },
+                { word: "rivet", translation: "铆钉", options: ["螺丝", "铆钉", "钉子", "螺栓"] },
+                { word: "glue", translation: "胶水", options: ["油漆", "胶水", "涂料", "粘合剂"] },
+                { word: "tape", translation: "胶带", options: ["绳子", "胶带", "线", "带子"] },
+                { word: "rope", translation: "绳子", options: ["线", "绳子", "带子", "胶带"] },
+                { word: "string", translation: "线", options: ["绳子", "线", "带子", "胶带"] },
+                { word: "wire", translation: "电线", options: ["绳子", "电线", "线", "电缆"] },
+                { word: "cable", translation: "电缆", options: ["电线", "电缆", "绳子", "线"] },
+                { word: "pipe", translation: "管子", options: ["棒子", "管子", "杆子", "棍子"] },
+                { word: "tube", translation: "管", options: ["管子", "管", "管道", "导管"] },
+                { word: "rod", translation: "杆", options: ["棒", "杆", "棍", "管"] },
+                { word: "bar", translation: "棒", options: ["杆", "棒", "棍", "管"] },
+                { word: "beam", translation: "梁", options: ["柱", "梁", "墙", "板"] },
+                { word: "column", translation: "柱", options: ["梁", "柱", "墙", "板"] },
+                { word: "pillar", translation: "支柱", options: ["柱", "支柱", "梁", "墙"] },
+                { word: "post", translation: "柱子", options: ["柱", "柱子", "支柱", "梁"] },
+                { word: "pole", translation: "杆子", options: ["柱子", "杆子", "支柱", "柱"] },
+                { word: "stake", translation: "桩", options: ["柱子", "桩", "杆子", "支柱"] },
+                { word: "plank", translation: "木板", options: ["板", "木板", "板材", "木条"] },
+                { word: "board", translation: "板", options: ["木板", "板", "板材", "木条"] },
+                { word: "slab", translation: "厚板", options: ["板", "厚板", "木板", "板材"] },
+                { word: "panel", translation: "面板", options: ["板", "面板", "木板", "厚板"] },
+                { word: "sheet", translation: "薄板", options: ["板", "薄板", "面板", "厚板"] },
+                { word: "tile", translation: "瓷砖", options: ["砖", "瓷砖", "石头", "木板"] }
+            ],
+            fire: [
+                { word: "fire", translation: "火", options: ["水", "火", "土", "空气"] },
+                { word: "water", translation: "水", options: ["火", "水", "木头", "土"] },
+                { word: "truck", translation: "消防车", options: ["警车", "消防车", "救护车", "卡车"] },
+                { word: "help", translation: "帮助", options: ["救命", "再见", "你好", "谢谢"] },
+                { word: "red", translation: "红色", options: ["红色", "蓝色", "绿色", "黄色"] },
+                { word: "hydrant", translation: "消防栓", options: ["水泵", "消防栓", "水管", "梯子"] },
+                { word: "ladder", translation: "梯子", options: ["梯子", "绳子", "棍子", "管子"] },
+                { word: "safe", translation: "安全", options: ["危险", "安全", "快", "慢"] },
+                { word: "hot", translation: "热", options: ["冷", "凉", "热", "暖"] },
+                { word: "alarm", translation: "警报", options: ["铃声", "警报", "电话", "呼叫"] },
+                { word: "smoke", translation: "烟", options: ["火", "烟", "雾", "气"] },
+                { word: "flame", translation: "火焰", options: ["火", "火焰", "火花", "烟雾"] },
+                { word: "spark", translation: "火花", options: ["火焰", "火花", "火", "烟"] },
+                { word: "burn", translation: "燃烧", options: ["熄灭", "燃烧", "加热", "冷却"] },
+                { word: "extinguish", translation: "熄灭", options: ["燃烧", "熄灭", "点火", "灭火"] },
+                { word: "rescue", translation: "救援", options: ["帮助", "救援", "拯救", "救助"] },
+                { word: "save", translation: "拯救", options: ["帮助", "拯救", "救援", "救助"] },
+                { word: "danger", translation: "危险", options: ["安全", "危险", "警告", "注意"] },
+                { word: "warning", translation: "警告", options: ["注意", "警告", "危险", "安全"] },
+                { word: "caution", translation: "小心", options: ["警告", "小心", "注意", "危险"] },
+                { word: "emergency", translation: "紧急", options: ["普通", "紧急", "重要", "一般"] },
+                { word: "accident", translation: "事故", options: ["事件", "事故", "事情", "情况"] },
+                { word: "injury", translation: "受伤", options: ["生病", "受伤", "健康", "疼痛"] },
+                { word: "pain", translation: "疼痛", options: ["快乐", "疼痛", "舒服", "难受"] },
+                { word: "hurt", translation: "伤害", options: ["帮助", "伤害", "治疗", "保护"] },
+                { word: "heal", translation: "治愈", options: ["伤害", "治愈", "治疗", "恢复"] },
+                { word: "medicine", translation: "药", options: ["食物", "药", "水", "空气"] },
+                { word: "doctor", translation: "医生", options: ["护士", "医生", "老师", "警察"] },
+                { word: "nurse", translation: "护士", options: ["医生", "护士", "老师", "警察"] },
+                { word: "hospital", translation: "医院", options: ["学校", "医院", "家", "商店"] },
+                { word: "ambulance", translation: "救护车", options: ["消防车", "警车", "救护车", "出租车"] },
+                { word: "stretcher", translation: "担架", options: ["床", "担架", "椅子", "桌子"] },
+                { word: "bandage", translation: "绷带", options: ["胶布", "绷带", "纱布", "创可贴"] },
+                { word: "plaster", translation: "创可贴", options: ["绷带", "创可贴", "纱布", "胶布"] },
+                { word: "medical kit", translation: "医疗包", options: ["工具箱", "医疗包", "书包", "钱包"] },
+                { word: "first aid", translation: "急救", options: ["治疗", "急救", "手术", "检查"] },
+                { word: "oxygen", translation: "氧气", options: ["空气", "氧气", "氮气", "二氧化碳"] },
+                { word: "breathe", translation: "呼吸", options: ["吃饭", "呼吸", "喝水", "睡觉"] },
+                { word: "heart", translation: "心脏", options: ["肺", "心脏", "胃", "肝"] },
+                { word: "lung", translation: "肺", options: ["心脏", "肺", "胃", "肝"] },
+                { word: "blood", translation: "血", options: ["水", "血", "汗", "泪"] },
+                { word: "pulse", translation: "脉搏", options: ["心跳", "脉搏", "呼吸", "体温"] },
+                { word: "temperature", translation: "体温", options: ["身高", "体温", "体重", "年龄"] },
+                { word: "fever", translation: "发烧", options: ["感冒", "发烧", "咳嗽", "头痛"] },
+                { word: "cough", translation: "咳嗽", options: ["发烧", "咳嗽", "感冒", "头痛"] },
+                { word: "sneeze", translation: "打喷嚏", options: ["咳嗽", "打喷嚏", "流鼻涕", "头痛"] },
+                { word: "headache", translation: "头痛", options: ["胃痛", "头痛", "牙痛", "背痛"] },
+                { word: "stomach ache", translation: "胃痛", options: ["头痛", "胃痛", "牙痛", "背痛"] },
+                { word: "toothache", translation: "牙痛", options: ["头痛", "胃痛", "牙痛", "背痛"] },
+                { word: "backache", translation: "背痛", options: ["头痛", "胃痛", "牙痛", "背痛"] }
+            ],
+            water: [
+                { word: "water", translation: "水", options: ["火", "水", "土", "风"] },
+                { word: "boat", translation: "船", options: ["汽车", "船", "飞机", "火车"] },
+                { word: "sea", translation: "大海", options: ["河流", "湖泊", "大海", "海洋"] },
+                { word: "fish", translation: "鱼", options: ["鱼", "鲨鱼", "海豚", "鲸鱼"] },
+                { word: "swim", translation: "游泳", options: ["跑步", "跳跃", "游泳", "走路"] },
+                { word: "dolphin", translation: "海豚", options: ["鲸鱼", "海豚", "鲨鱼", "鱼"] },
+                { word: "beach", translation: "海滩", options: ["山", "森林", "海滩", "公园"] },
+                { word: "blue", translation: "蓝色", options: ["红色", "蓝色", "绿色", "黄色"] },
+                { word: "wave", translation: "波浪", options: ["波浪", "潮汐", "水流", "浪花"] },
+                { word: "sail", translation: "航行", options: ["航行", "停靠", "游泳", "潜水"] },
+                { word: "ocean", translation: "海洋", options: ["河流", "湖泊", "海洋", "池塘"] },
+                { word: "river", translation: "河流", options: ["湖泊", "河流", "小溪", "海洋"] },
+                { word: "lake", translation: "湖泊", options: ["河流", "湖泊", "池塘", "海洋"] },
+                { word: "pond", translation: "池塘", options: ["湖泊", "池塘", "河流", "海洋"] },
+                { word: "stream", translation: "小溪", options: ["河流", "小溪", "湖泊", "池塘"] },
+                { word: "brook", translation: "小河", options: ["小溪", "小河", "河流", "湖泊"] },
+                { word: "creek", translation: "溪流", options: ["小河", "溪流", "小溪", "河流"] },
+                { word: "waterfall", translation: "瀑布", options: ["河流", "瀑布", "湖泊", "海洋"] },
+                { word: "rainbow", translation: "彩虹", options: ["云", "彩虹", "太阳", "月亮"] },
+                { word: "island", translation: "岛屿", options: ["大陆", "岛屿", "半岛", "海岸"] },
+                { word: "peninsula", translation: "半岛", options: ["岛屿", "半岛", "大陆", "海岸"] },
+                { word: "coast", translation: "海岸", options: ["海滩", "海岸", "岸边", "码头"] },
+                { word: "shore", translation: "岸边", options: ["海岸", "岸边", "海滩", "码头"] },
+                { word: "harbor", translation: "港口", options: ["码头", "港口", "海岸", "岸边"] },
+                { word: "port", translation: "港口", options: ["码头", "港口", "海岸", "岸边"] },
+                { word: "dock", translation: "码头", options: ["港口", "码头", "海岸", "岸边"] },
+                { word: "pier", translation: "码头", options: ["码头", "港口", "海岸", "岸边"] },
+                { word: "wharf", translation: "码头", options: ["码头", "港口", "海岸", "岸边"] },
+                { word: "canal", translation: "运河", options: ["河流", "运河", "渠道", "水道"] },
+                { word: "channel", translation: "渠道", options: ["河流", "渠道", "运河", "水道"] },
+                { word: "ditch", translation: "沟渠", options: ["河流", "沟渠", "渠道", "运河"] },
+                { word: "reservoir", translation: "水库", options: ["湖泊", "水库", "池塘", "河流"] },
+                { word: "dam", translation: "水坝", options: ["桥", "水坝", "墙", "堤坝"] },
+                { word: "levee", translation: "堤坝", options: ["水坝", "堤坝", "墙", "桥"] },
+                { word: "weir", translation: "堰", options: ["水坝", "堰", "堤坝", "桥"] },
+                { word: "lock", translation: "船闸", options: ["水坝", "船闸", "堰", "堤坝"] },
+                { word: "aqueduct", translation: "渡槽", options: ["桥", "渡槽", "管道", "渠道"] },
+                { word: "fountain", translation: "喷泉", options: ["水池", "喷泉", "瀑布", "水塘"] },
+                { word: "spring", translation: "泉水", options: ["河流", "泉水", "湖泊", "池塘"] },
+                { word: "well", translation: "井", options: ["水池", "井", "池塘", "湖泊"] },
+                { word: "geyser", translation: "间歇泉", options: ["泉水", "间歇泉", "喷泉", "瀑布"] },
+                { word: "hot spring", translation: "温泉", options: ["泉水", "温泉", "湖泊", "池塘"] },
+                { word: "spa", translation: "温泉浴场", options: ["游泳池", "温泉浴场", "浴室", "澡堂"] },
+                { word: "pool", translation: "游泳池", options: ["池塘", "游泳池", "湖泊", "河流"] },
+                { word: "bath", translation: "浴缸", options: ["洗手池", "浴缸", "马桶", "淋浴"] },
+                { word: "shower", translation: "淋浴", options: ["浴缸", "淋浴", "洗手池", "马桶"] },
+                { word: "sink", translation: "洗手池", options: ["浴缸", "洗手池", "马桶", "淋浴"] },
+                { word: "toilet", translation: "马桶", options: ["洗手池", "马桶", "浴缸", "淋浴"] },
+                { word: "faucet", translation: "水龙头", options: ["水管", "水龙头", "阀门", "开关"] },
+                { word: "tap", translation: "水龙头", options: ["水管", "水龙头", "阀门", "开关"] }
+            ]
+        };
+        const characters = {
+            ryder: { name: "莱德", theme: "command", themeName: "指令英语", className: "ryder" },
+            chase: { name: "阿奇", theme: "vehicle", themeName: "交通工具", className: "chase" },
+            skye: { name: "天天", theme: "sky", themeName: "航空天气", className: "skye" },
+            rubble: { name: "小砾", theme: "construction", themeName: "工程建筑", className: "rubble" },
+            marshall: { name: "毛毛", theme: "fire", themeName: "消防救援", className: "marshall" },
+            zuma: { name: "路马", theme: "water", themeName: "水上救援", className: "zuma" }
+        };
+        let currentCharacter = null;
+        let currentTheme = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questions = [];
+        let answered = false;
+        // DOM Elements
+        const loading = document.getElementById('loading');
+        const characterSection = document.getElementById('characterSection');
+        const gameSection = document.getElementById('gameSection');
+        const resultSection = document.getElementById('resultSection');
+        const startGameBtn = document.getElementById('startGameBtn');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const questionText = document.getElementById('questionText');
+        const questionHint = document.getElementById('questionHint');
+        const optionsGrid = document.getElementById('optionsGrid');
+        const speakerBtn = document.getElementById('speakerBtn');
+        const currentCharacterBadge = document.getElementById('currentCharacterBadge');
+        const currentCharacterName = document.getElementById('currentCharacterName');
+        const currentCharacterTheme = document.getElementById('currentCharacterTheme');
+        const finalScore = document.getElementById('finalScore');
+        const backToCharactersBtn = document.getElementById('backToCharactersBtn');
+        const playAgainBtn = document.getElementById('playAgainBtn');
+        const progressBar = document.getElementById('progressBar');
+        const currentQuestionSpan = document.getElementById('currentQuestion');
+        const totalQuestionsSpan = document.getElementById('totalQuestions');
+        // Initialize
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loading.classList.add('hidden');
+                // Load character images
+                Object.keys(characterImages).forEach(key => {
+                    const avatar = document.getElementById(`avatar-${key}`);
+                    if (avatar) {
+                        avatar.style.backgroundImage = `url('${characterImages[key]}')`;
+                    }
+                });
+            }, 1000);
+        });
+        // Event Listeners
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.addEventListener('click', () => selectCharacter(card));
+        });
+        startGameBtn.addEventListener('click', startGame);
+        speakerBtn.addEventListener('click', speakCurrentWord);
+        backToCharactersBtn.addEventListener('click', backToCharacters);
+        playAgainBtn.addEventListener('click', restartGame);
+        // Select character
+        function selectCharacter(cardElement) {
+            document.querySelectorAll('.character-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
+            
+            const characterKey = cardElement.dataset.character;
+            currentCharacter = characters[characterKey];
+            currentTheme = cardElement.dataset.theme;
+            startGameBtn.disabled = false;
+        }
+        // Start game
+        function startGame() {
+            characterSection.classList.remove('active');
+            gameSection.classList.add('active');
+            
+            // Update header
+            currentCharacterBadge.style.backgroundImage = `url('${characterImages[currentCharacter.className]}')`;
+            currentCharacterName.textContent = currentCharacter.name;
+            currentCharacterTheme.textContent = currentCharacter.themeName;
+            
+            // Prepare questions
+            score = 0;
+            currentQuestionIndex = 0;
+            questions = [...vocabulary[currentTheme]];
+            // Shuffle questions and take first 10
+            questions.sort(() => Math.random() - 0.5);
+            questions = questions.slice(0, 10);
+            
+            totalQuestionsSpan.textContent = questions.length;
+            updateScore();
+            updateProgress();
+            showQuestion();
+        }
+        // Show current question
+        function showQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                endGame();
+                return;
+            }
+            
+            answered = false;
+            const question = questions[currentQuestionIndex];
+            
+            // 显示小写英文单词，更适合幼儿学习
+            questionText.textContent = question.word;
+            questionHint.textContent = '是什么意思？';
+            
+            // Shuffle options
+            const options = [...question.options];
+            options.sort(() => Math.random() - 0.5);
+            
+            optionsGrid.innerHTML = '';
+            options.forEach(option => {
+                const optionCard = document.createElement('div');
+                optionCard.className = 'option-card';
+                optionCard.innerHTML = `
+                    <div class="option-text">${option}</div>
+                `;
+                optionCard.addEventListener('click', () => checkAnswer(optionCard, option, question.translation));
+                optionsGrid.appendChild(optionCard);
+            });
+        }
+        // Check answer
+        function checkAnswer(optionElement, selected, correct) {
+            if (answered) return;
+            answered = true;
+            
+            if (selected === correct) {
+                optionElement.classList.add('correct');
+                score++;
+                updateScore();
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    updateProgress();
+                    showQuestion();
+                }, 800);
+            } else {
+                optionElement.classList.add('wrong');
+                // Highlight correct answer
+                Array.from(optionsGrid.children).forEach(card => {
+                    if (card.textContent.trim() === correct) {
+                        card.classList.add('correct');
+                    }
+                });
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    updateProgress();
+                    showQuestion();
+                }, 1200);
+            }
+        }
+        // Update score display
+        function updateScore() {
+            scoreDisplay.textContent = `${score} / ${questions.length}`;
+        }
+        // Update progress
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            currentQuestionSpan.textContent = currentQuestionIndex + 1;
+        }
+        // End game
+        function endGame() {
+            gameSection.classList.remove('active');
+            resultSection.classList.add('active');
+            finalScore.textContent = score;
+            
+            // Create confetti celebration
+            if (score >= 8) {
+                createConfetti();
+            }
+        }
+        // Back to character selection
+        function backToCharacters() {
+            resultSection.classList.remove('active');
+            characterSection.classList.add('active');
+            startGameBtn.disabled = !currentCharacter;
+        }
+        // Restart game with same character
+        function restartGame() {
+            resultSection.classList.remove('active');
+            gameSection.classList.add('active');
+            startGame();
+        }
+        // Speak current word using Web Speech API
+        function speakCurrentWord() {
+            if (!('speechSynthesis' in window)) {
+                alert('您的浏览器不支持语音朗读功能');
+                return;
+            }
+            
+            if (answered) return;
+            const question = questions[currentQuestionIndex];
+            
+            const utterance = new SpeechSynthesisUtterance(question.word);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utterance);
+        }
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#2E5CAB', '#FFD100', '#ED2633', '#39B54A', '#5B8BDF', '#E91E63'];
+            const container = document.body;
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.animationDuration = `${2 + Math.random() * 2}s`;
+                    confetti.style.animationDelay = `${Math.random() * 1}s`;
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+    </script>
+</body>
+</html>
