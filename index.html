@@ -49,27 +49,27 @@
         .header {
             background: linear-gradient(135deg, var(--paw-red) 0%, var(--paw-orange) 100%);
             color: white;
-            padding: 25px 15px;
+            padding: 20px 15px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
         .header h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         
         .header p {
-            font-size: 15px;
+            font-size: 13px;
             opacity: 0.95;
         }
         
         .paw-print {
             position: absolute;
-            font-size: 40px;
+            font-size: 30px;
             opacity: 0.3;
             animation: float 3s ease-in-out infinite;
         }
@@ -83,23 +83,23 @@
         .audio-controls {
             display: flex;
             justify-content: space-around;
-            padding: 12px;
+            padding: 10px;
             background: linear-gradient(135deg, var(--paw-light-blue) 0%, #D6EAF8 100%);
             border-bottom: 3px solid var(--paw-blue);
         }
         
         .audio-btn {
-            padding: 8px 15px;
+            padding: 6px 12px;
             border: 2px solid var(--paw-blue);
-            border-radius: 20px;
+            border-radius: 15px;
             background: white;
             color: var(--text-primary);
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             font-weight: bold;
         }
         
@@ -111,46 +111,46 @@
         
         /* 主内容区 */
         .content {
-            padding: 25px 15px;
-            min-height: 450px;
+            padding: 20px 15px;
+            min-height: 400px;
         }
         
         /* 欢迎界面 */
         .welcome-card {
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 15px;
         }
         
         .welcome-emoji {
-            font-size: 80px;
-            margin-bottom: 20px;
+            font-size: 60px;
+            margin-bottom: 15px;
             animation: bounce 2s infinite;
         }
         
         .welcome-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: var(--paw-red);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .welcome-text {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
         
         .start-btn {
-            padding: 15px 40px;
+            padding: 12px 35px;
             background: linear-gradient(135deg, var(--paw-red) 0%, var(--paw-orange) 100%);
             color: white;
             border: none;
-            border-radius: 30px;
-            font-size: 20px;
+            border-radius: 25px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
             transition: all 0.3s ease;
         }
         
@@ -158,17 +158,127 @@
             transform: scale(0.95);
         }
         
+        /* 主题选择界面 */
+        .theme-selection {
+            display: none;
+        }
+        
+        .theme-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--paw-red);
+            margin-bottom: 20px;
+        }
+        
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .theme-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-card:active {
+            transform: scale(0.95);
+        }
+        
+        .theme-card.animals { border-color: var(--paw-orange); }
+        .theme-card.fruits { border-color: var(--paw-green); }
+        .theme-card.colors { border-color: var(--paw-purple); }
+        .theme-card.numbers { border-color: var(--paw-blue); }
+        .theme-card.body { border-color: var(--paw-pink); }
+        .theme-card.food { border-color: var(--paw-yellow); }
+        .theme-card.vehicles { border-color: var(--paw-red); }
+        .theme-card.nature { border-color: var(--paw-light-blue); }
+        
+        .theme-emoji {
+            font-size: 50px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .theme-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+        
+        .theme-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        /* 学习界面 */
+        .learning-view {
+            display: none;
+        }
+        
+        .current-theme-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, var(--paw-light-blue) 0%, #D6EAF8 100%);
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .theme-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .theme-info-emoji {
+            font-size: 30px;
+        }
+        
+        .theme-info-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+        
+        .back-btn {
+            padding: 8px 15px;
+            background: white;
+            border: 2px solid var(--paw-blue);
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--paw-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:active {
+            transform: scale(0.95);
+        }
+        
         /* 闪卡模式 */
         .flashcard {
             background: linear-gradient(135deg, var(--paw-blue) 0%, var(--paw-light-blue) 100%);
-            border-radius: 25px;
-            padding: 35px 25px;
+            border-radius: 20px;
+            padding: 30px 20px;
             text-align: center;
             color: white;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.25);
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.25);
             border: 3px solid white;
-            min-height: 220px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -176,8 +286,8 @@
         }
         
         .flashcard-emoji {
-            font-size: 90px;
-            margin-bottom: 25px;
+            font-size: 80px;
+            margin-bottom: 20px;
             animation: bounce 2s infinite;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -188,9 +298,9 @@
         }
         
         .flashcard-word {
-            font-size: 40px;
+            font-size: 36px;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             cursor: pointer;
             padding: 5px 15px;
@@ -208,7 +318,7 @@
         }
         
         .flashcard-translation {
-            font-size: 22px;
+            font-size: 20px;
             opacity: 0.95;
             cursor: pointer;
             padding: 5px 15px;
@@ -222,31 +332,31 @@
         }
         
         .flashcard-hint {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.8;
-            margin-top: 15px;
+            margin-top: 12px;
         }
         
         /* 播放按钮组 */
         .audio-play-controls {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
             justify-content: center;
         }
         
         .play-btn {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 15px;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .play-btn:active {
@@ -265,12 +375,12 @@
         
         .play-btn.playing {
             animation: pulse 1s infinite;
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.6);
+            box-shadow: 0 0 15px rgba(241, 196, 15, 0.6);
         }
         
         /* 按钮组 */
         .btn-group {
-            padding: 15px;
+            padding: 12px;
             background: #FDFEFE;
             border-top: 2px solid var(--paw-light-blue);
         }
@@ -278,7 +388,7 @@
         .btn-row {
             display: flex;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .btn-row:last-child {
@@ -287,14 +397,14 @@
         
         .btn {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             border: none;
-            border-radius: 15px;
-            font-size: 15px;
+            border-radius: 12px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .btn:active {
@@ -311,21 +421,11 @@
             color: white;
         }
         
-        .btn-warning {
-            background: linear-gradient(135deg, var(--paw-yellow) 0%, #F4D03F 100%);
-            color: var(--text-primary);
-        }
-        
-        .btn-info {
-            background: linear-gradient(135deg, var(--paw-purple) 0%, #BB8FCE 100%);
-            color: white;
-        }
-        
         /* 统计栏 */
         .stats-bar {
             display: flex;
             justify-content: space-around;
-            padding: 15px;
+            padding: 12px;
             background: linear-gradient(135deg, var(--paw-light-blue) 0%, #D6EAF8 100%);
             border-top: 3px solid var(--paw-blue);
         }
@@ -335,21 +435,21 @@
         }
         
         .stat-value {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: var(--paw-red);
         }
         
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         /* 动画 */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
         }
         
         @keyframes pulse {
@@ -359,10 +459,12 @@
         
         /* 响应式 */
         @media (max-width: 380px) {
-            .header h1 { font-size: 22px; }
-            .flashcard-word { font-size: 32px; }
-            .play-btn { min-width: 120px; padding: 10px 15px; font-size: 14px; }
-            .stat-value { font-size: 20px; }
+            .header h1 { font-size: 20px; }
+            .theme-card { padding: 15px 10px; }
+            .theme-emoji { font-size: 40px; }
+            .flashcard-word { font-size: 28px; }
+            .play-btn { min-width: 100px; padding: 8px 12px; font-size: 12px; }
+            .stat-value { font-size: 18px; }
         }
     </style>
 </head>
@@ -372,9 +474,9 @@
         <div class="header">
             <h1>🐾 汪汪队英语乐园 🔊</h1>
             <p>点击单词听发音，狗狗们陪你学英语！</p>
-            <div class="paw-print" style="top: 10px; left: 10px;">🐾</div>
-            <div class="paw-print" style="top: 15px; right: 20px; animation-delay: 0.5s;">🐶</div>
-            <div class="paw-print" style="bottom: 10px; left: 30px; animation-delay: 1s;">🦴</div>
+            <div class="paw-print" style="top: 8px; left: 8px;">🐾</div>
+            <div class="paw-print" style="top: 10px; right: 15px; animation-delay: 0.5s;">🐶</div>
+            <div class="paw-print" style="bottom: 8px; left: 20px; animation-delay: 1s;">🦴</div>
         </div>
         
         <!-- 音频控制栏 -->
@@ -398,10 +500,10 @@
                 <div class="welcome-title">汪汪队立大功！</div>
                 <div class="welcome-text">
                     莱德队长和狗狗们等你来学英语！<br>
-                    <strong>点击单词可以听发音</strong>，每学一个单词都能获得汪汪徽章！
+                    <strong>点击单词可以听发音</strong>，选择主题开始学习！
                 </div>
-                <button class="start-btn" onclick="startGame()">开始学习 🚀</button>
-                <div class="audio-play-controls" style="margin-top: 25px;">
+                <button class="start-btn" onclick="showThemeSelection()">选择主题 🎨</button>
+                <div class="audio-play-controls" style="margin-top: 20px;">
                     <button class="play-btn play-english" onclick="testAudio('en')">
                         <span>🔊</span> 试听英语
                     </button>
@@ -411,32 +513,56 @@
                 </div>
             </div>
             
-            <!-- 闪卡模式 -->
-            <div class="flashcard" id="flashcard" style="display: none;">
-                <div class="flashcard-emoji" id="currentEmoji" onclick="playCurrentWord()">🐱</div>
-                <div class="flashcard-word" id="currentWord" onclick="playCurrentWord()">cat</div>
-                <div class="flashcard-translation" id="currentTranslation" onclick="playCurrentTranslation()">猫</div>
-                <div class="flashcard-hint">👆 点击单词或狗狗头像听发音</div>
-                <div class="audio-play-controls">
-                    <button class="play-btn play-english" onclick="playCurrentWord()">
-                        <span>🔊</span> 播放英语
-                    </button>
-                    <button class="play-btn play-chinese" onclick="playCurrentTranslation()">
-                        <span>🔊</span> 播放中文
-                    </button>
+            <!-- 主题选择界面 -->
+            <div class="theme-selection" id="themeSelection">
+                <div class="theme-title">🎨 选择学习主题</div>
+                <div class="theme-grid" id="themeGrid">
+                    <!-- 动态生成主题卡片 -->
+                </div>
+            </div>
+            
+            <!-- 学习界面 -->
+            <div class="learning-view" id="learningView">
+                <!-- 当前主题信息 -->
+                <div class="current-theme-header">
+                    <div class="theme-info">
+                        <span class="theme-info-emoji" id="currentThemeEmoji">🐾</span>
+                        <span class="theme-info-text" id="currentThemeName">动物朋友</span>
+                    </div>
+                    <button class="back-btn" onclick="backToThemes()">返回主题 🏠</button>
+                </div>
+                
+                <!-- 闪卡 -->
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-emoji" id="currentEmoji" onclick="playCurrentWord()">🐱</div>
+                    <div class="flashcard-word" id="currentWord" onclick="playCurrentWord()">cat</div>
+                    <div class="flashcard-translation" id="currentTranslation" onclick="playCurrentTranslation()">猫</div>
+                    <div class="flashcard-hint">👆 点击单词或狗狗头像听发音</div>
+                    <div class="audio-play-controls">
+                        <button class="play-btn play-english" onclick="playCurrentWord()">
+                            <span>🔊</span> 播放英语
+                        </button>
+                        <button class="play-btn play-chinese" onclick="playCurrentTranslation()">
+                            <span>🔊</span> 播放中文
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 进度条 -->
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-text" id="progressText">第 1 个单词，共 12 个</div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill" style="width: 8.33%"></div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- 按钮组 -->
+        <!-- 按钮组（学习界面） -->
         <div class="btn-group" id="btnGroup" style="display: none;">
             <div class="btn-row">
                 <button class="btn btn-primary" onclick="nextWord()">下一个 ▶️</button>
                 <button class="btn btn-success" onclick="repeatWord()">重复 🔁</button>
-            </div>
-            <div class="btn-row">
-                <button class="btn btn-warning" onclick="changeTheme()">切换主题 🎨</button>
-                <button class="btn btn-info" onclick="showProgress()">学习进度 📊</button>
             </div>
         </div>
         
@@ -456,6 +582,39 @@
             </div>
         </div>
     </div>
+    
+    <style>
+        /* 进度条样式 */
+        .progress-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .progress-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .progress-track {
+            height: 8px;
+            background: #E8E8E8;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--paw-blue) 0%, var(--paw-green) 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+    </style>
+    
     <script>
         // ==================== 音频系统核心 ====================
         class AudioSystem {
@@ -480,10 +639,6 @@
                     alert('您的浏览器不支持语音合成功能，请使用 Chrome、Safari 或 Edge 浏览器');
                     return false;
                 }
-                setTimeout(() => {
-                    const voices = this.speechSynthesis.getVoices();
-                    console.log('可用语音:', voices.length);
-                }, 100);
                 return true;
             }
             
@@ -597,6 +752,7 @@
                     id: 'animals',
                     name: '动物朋友',
                     emoji: '🐾',
+                    color: 'orange',
                     words: [
                         { word: 'dog', chinese: '狗', emoji: '🐶' },
                         { word: 'cat', chinese: '猫', emoji: '🐱' },
@@ -616,6 +772,7 @@
                     id: 'fruits',
                     name: '美味水果',
                     emoji: '🍎',
+                    color: 'green',
                     words: [
                         { word: 'apple', chinese: '苹果', emoji: '🍎' },
                         { word: 'banana', chinese: '香蕉', emoji: '🍌' },
@@ -635,6 +792,7 @@
                     id: 'colors',
                     name: '多彩世界',
                     emoji: '🎨',
+                    color: 'purple',
                     words: [
                         { word: 'red', chinese: '红色', emoji: '🔴' },
                         { word: 'blue', chinese: '蓝色', emoji: '🔵' },
@@ -654,6 +812,7 @@
                     id: 'numbers',
                     name: '快乐数字',
                     emoji: '🔢',
+                    color: 'blue',
                     words: [
                         { word: 'one', chinese: '一', emoji: '1️⃣' },
                         { word: 'two', chinese: '二', emoji: '2️⃣' },
@@ -671,6 +830,7 @@
                     id: 'body',
                     name: '身体部位',
                     emoji: '👂',
+                    color: 'pink',
                     words: [
                         { word: 'eye', chinese: '眼睛', emoji: '👁️' },
                         { word: 'ear', chinese: '耳朵', emoji: '👂' },
@@ -690,6 +850,7 @@
                     id: 'food',
                     name: '美食天地',
                     emoji: '🍕',
+                    color: 'yellow',
                     words: [
                         { word: 'rice', chinese: '米饭', emoji: '🍚' },
                         { word: 'bread', chinese: '面包', emoji: '🍞' },
@@ -709,6 +870,7 @@
                     id: 'vehicles',
                     name: '交通工具',
                     emoji: '🚗',
+                    color: 'red',
                     words: [
                         { word: 'car', chinese: '汽车', emoji: '🚗' },
                         { word: 'bus', chinese: '公交车', emoji: '🚌' },
@@ -728,6 +890,7 @@
                     id: 'nature',
                     name: '大自然',
                     emoji: '🌞',
+                    color: 'light-blue',
                     words: [
                         { word: 'sun', chinese: '太阳', emoji: '🌞' },
                         { word: 'moon', chinese: '月亮', emoji: '🌙' },
@@ -749,7 +912,7 @@
                 wordsLearned: 0,
                 correctAnswers: 0,
                 badgesEarned: 0,
-                currentTheme: 0,
+                currentTheme: null,
                 currentWordIndex: 0
             }
         };
@@ -762,7 +925,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             audioSystem = new AudioSystem();
             initButtons();
-            initGame();
+            generateThemeCards();
         });
         
         function initButtons() {
@@ -785,23 +948,83 @@
             });
         }
         
-        function initGame() {
-            currentWordData = gameData.themes[0].words[0];
-            updateCurrentWord();
+        // ==================== 生成主题卡片 ====================
+        function generateThemeCards() {
+            const themeGrid = document.getElementById('themeGrid');
+            themeGrid.innerHTML = '';
+            
+            gameData.themes.forEach((theme, index) => {
+                const card = document.createElement('div');
+                card.className = `theme-card ${theme.id}`;
+                card.onclick = () => selectTheme(index);
+                
+                card.innerHTML = `
+                    <span class="theme-emoji">${theme.emoji}</span>
+                    <div class="theme-name">${theme.name}</div>
+                    <div class="theme-count">${theme.words.length} 个单词</div>
+                `;
+                
+                themeGrid.appendChild(card);
+            });
         }
         
-        // ==================== 界面控制 ====================
-        function startGame() {
+        // ==================== 界面切换 ====================
+        function showThemeSelection() {
             document.getElementById('welcomeCard').style.display = 'none';
-            document.getElementById('flashcard').style.display = 'flex';
+            document.getElementById('themeSelection').style.display = 'block';
+            document.getElementById('learningView').style.display = 'none';
+            document.getElementById('btnGroup').style.display = 'none';
+            document.getElementById('statsBar').style.display = 'none';
+            
+            // 播放提示音
+            audioSystem.speakChinese('请选择你想学习的主题！');
+        }
+        
+        function selectTheme(themeIndex) {
+            gameData.stats.currentTheme = themeIndex;
+            gameData.stats.currentWordIndex = 0;
+            
+            const theme = gameData.themes[themeIndex];
+            
+            // 更新主题信息
+            document.getElementById('currentThemeEmoji').textContent = theme.emoji;
+            document.getElementById('currentThemeName').textContent = theme.name;
+            
+            // 显示学习界面
+            document.getElementById('welcomeCard').style.display = 'none';
+            document.getElementById('themeSelection').style.display = 'none';
+            document.getElementById('learningView').style.display = 'block';
             document.getElementById('btnGroup').style.display = 'block';
             document.getElementById('statsBar').style.display = 'flex';
             
+            // 更新单词
+            updateCurrentWord();
+            updateProgress();
+            
+            // 播放提示音
+            audioSystem.speakChinese(`开始学习${theme.name}主题！`);
+            
+            // 自动播放第一个单词
             if (audioSystem.autoPlay) {
-                setTimeout(() => playCurrentWord(), 500);
+                setTimeout(() => playCurrentWord(), 800);
             }
         }
         
+        function backToThemes() {
+            document.getElementById('welcomeCard').style.display = 'none';
+            document.getElementById('themeSelection').style.display = 'block';
+            document.getElementById('learningView').style.display = 'none';
+            document.getElementById('btnGroup').style.display = 'none';
+            document.getElementById('statsBar').style.display = 'none';
+            
+            // 停止播放
+            audioSystem.stop();
+            
+            // 播放提示音
+            audioSystem.speakChinese('返回主题选择，请选择下一个主题！');
+        }
+        
+        // ==================== 单词控制 ====================
         function updateCurrentWord() {
             const theme = gameData.themes[gameData.stats.currentTheme];
             currentWordData = theme.words[gameData.stats.currentWordIndex];
@@ -809,6 +1032,16 @@
             document.getElementById('currentEmoji').textContent = currentWordData.emoji;
             document.getElementById('currentWord').textContent = currentWordData.word;
             document.getElementById('currentTranslation').textContent = currentWordData.chinese;
+        }
+        
+        function updateProgress() {
+            const theme = gameData.themes[gameData.stats.currentTheme];
+            const current = gameData.stats.currentWordIndex + 1;
+            const total = theme.words.length;
+            const percentage = (current / total) * 100;
+            
+            document.getElementById('progressText').textContent = `第 ${current} 个单词，共 ${total} 个`;
+            document.getElementById('progressFill').style.width = `${percentage}%`;
         }
         
         function playCurrentWord() {
@@ -821,14 +1054,24 @@
         
         function nextWord() {
             const theme = gameData.themes[gameData.stats.currentTheme];
-            gameData.stats.currentWordIndex = (gameData.stats.currentWordIndex + 1) % theme.words.length;
+            gameData.stats.currentWordIndex++;
             
-            if (gameData.stats.currentWordIndex === 0) {
-                gameData.stats.currentTheme = (gameData.stats.currentTheme + 1) % gameData.themes.length;
+            // 检查是否完成当前主题
+            if (gameData.stats.currentWordIndex >= theme.words.length) {
+                // 主题完成
                 showBadge('theme_complete', '主题完成', '🏆');
+                
+                // 返回主题选择
+                setTimeout(() => {
+                    audioSystem.speakChinese(`恭喜你完成了${theme.name}主题！请选择下一个主题！`);
+                    backToThemes();
+                }, 1500);
+                
+                return;
             }
             
             updateCurrentWord();
+            updateProgress();
             updateStats();
             
             if (audioSystem.autoPlay) {
@@ -839,24 +1082,6 @@
         function repeatWord() {
             playCurrentWord();
             setTimeout(() => playCurrentTranslation(), 1500);
-        }
-        
-        function changeTheme() {
-            gameData.stats.currentTheme = (gameData.stats.currentTheme + 1) % gameData.themes.length;
-            gameData.stats.currentWordIndex = 0;
-            updateCurrentWord();
-            
-            const theme = gameData.themes[gameData.stats.currentTheme];
-            audioSystem.speakChinese(`切换到${theme.name}主题`);
-        }
-        
-        function showProgress() {
-            const total = gameData.themes.reduce((sum, theme) => sum + theme.words.length, 0);
-            const learned = gameData.stats.wordsLearned;
-            const percentage = Math.round((learned / total) * 100);
-            
-            audioSystem.speakChinese(`你已经学习了${learned}个单词，总共${total}个，完成率${percentage}%`);
-            alert(`📊 学习进度\n\n已学单词：${learned}/${total}\n完成率：${percentage}%\n\n继续加油！汪汪队为你骄傲！🐾`);
         }
         
         function updateStats() {
