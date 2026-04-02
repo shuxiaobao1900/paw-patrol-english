@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐾 汪汪队英语大冒险 - Paw Patrol English Adventure</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        /* 首页 - 主题卡片页 */
+        .home-page {
+            display: block;
+        }
+        .home-page.hidden {
+            display: none;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            color: #FF6B6B;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header p {
+            color: #666;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .theme-card {
+            border-radius: 20px;
+            padding: 30px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 5px solid transparent;
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+        .theme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255,255,255,0.8);
+        }
+        .theme-card:active {
+            transform: translateY(-5px);
+        }
+        .theme-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .theme-card p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            opacity: 0.95;
+            font-size: 1.1rem;
+        }
+        .word-count {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            align-self: flex-start;
+        }
+        /* 学习页 - 主题详情页 */
+        .learning-page {
+            display: none;
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            margin-top: 30px;
+        }
+        .learning-page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .learning-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #eee;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .learning-header h2 {
+            color: #FF6B6B;
+            font-size: 2.2rem;
+        }
+        .back-home-btn {
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            padding: 15px 28px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        .back-home-btn:hover {
+            background: #FF5252;
+            transform: scale(1.05);
+        }
+        .back-home-btn:active {
+            transform: scale(0.98);
+        }
+        /* 单词卡片 - 一个单词一个单词呈现 */
+        .word-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            padding: 50px 30px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+        .current-word {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        .current-translation {
+            font-size: 2rem;
+            opacity: 0.95;
+            font-weight: normal;
+        }
+        /* 发音按钮 - 独立中英文点读按钮 */
+        .sound-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+        .sound-btn {
+            padding: 20px 40px;
+            border-radius: 20px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .sound-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+        .sound-btn:active {
+            transform: scale(0.98);
+        }
+        .sound-btn.english {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+        }
+        .sound-btn.english:hover {
+            background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+        }
+        .sound-btn.chinese {
+            background: linear-gradient(135deg, #2196F3 0%, #0b7dda 100%);
+            color: white;
+        }
+        .sound-btn.chinese:hover {
+            background: linear-gradient(135deg, #0b7dda 0%, #0961a8 100%);
+        }
+        /* 导航按钮 */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            margin-top: 35px;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            flex: 1;
+            max-width: 220px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #F57C00 0%, #E65100 100%);
+        }
+        .nav-btn:active {
+            transform: scale(0.98);
+        }
+        .nav-btn:disabled {
+            background: #ccc !important;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        /* 进度条 */
+        .progress-section {
+            margin-top: 35px;
+            text-align: center;
+        }
+        .progress-text {
+            color: #666;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #eee;
+            border-radius: 9px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
+            border-radius: 9px;
+            transition: width 0.5s ease;
+        }
+        /* 响应式 - 移动端适配 */
+        @media (max-width: 768px) {
+            .theme-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .current-word {
+                font-size: 3.2rem;
+            }
+            .current-translation {
+                font-size: 1.6rem;
+            }
+            .sound-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .sound-btn {
+                justify-content: center;
+            }
+            .nav-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav-btn {
+                max-width: 100%;
+            }
+            .learning-page {
+                padding: 25px 20px;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .learning-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .back-home-btn {
+                width: 100%;
+            }
+            .word-card {
+                padding: 35px 20px;
+            }
+        }
+        /* 儿童友好优化：大点击区域 */
+        button {
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 第一页：主题卡片页 (首页) -->
+        <div class="home-page" id="homePage">
+            <div class="header">
+                <h1>🐾 汪汪队英语大冒险</h1>
+                <p>欢迎来到汪汪队的英语世界！这里有 <strong style="color: #FF6B6B; font-size: 1.5rem;">234</strong> 个有趣的单词等着你来探索！</p>
+                <div class="stats">
+                    <div class="stat-item">📚 18 个主题分类</div>
+                    <div class="stat-item">🎯 234 个核心单词</div>
+                    <div class="stat-item">✨ 适合幼儿园小朋友</div>
+                </div>
+                <p style="margin-top: 25px; font-size: 1.2rem;">👆 点击主题卡片开始学习吧！</p>
+            </div>
+            <div class="theme-grid" id="themeGrid">
+                <!-- 主题卡片将动态生成 -->
+            </div>
+        </div>
+        <!-- 第二页：主题详情页 (学习页面) -->
+        <div class="learning-page" id="learningPage">
+            <div class="learning-header">
+                <h2 id="currentThemeName">主题名称</h2>
+                <button class="back-home-btn" onclick="backToHome()">🏠 返回主题选择</button>
+            </div>
+            <!-- 单词卡片：一个单词一个单词呈现 -->
+            <div class="word-card">
+                <div class="current-word" id="currentWord">Hello</div>
+                <div class="current-translation" id="currentTranslation">你好</div>
+            </div>
+            <!-- 独立中英文点读按钮 -->
+            <div class="sound-buttons">
+                <button class="sound-btn english" onclick="playEnglish()">
+                    🔊 英语发音
+                </button>
+                <button class="sound-btn chinese" onclick="playChinese()">
+                    🔊 中文发音
+                </button>
+            </div>
+            <!-- 导航按钮 -->
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="prevWord()" id="prevBtn">⬅️ 上一个</button>
+                <button class="nav-btn" onclick="nextWord()" id="nextBtn">➡️ 下一个</button>
+            </div>
+            <!-- 进度条 -->
+            <div class="progress-section">
+                <div class="progress-text" id="progressText">进度：1 / 10</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 完整单词数据
+        const wordsData = [{"name": "🐾 动物世界", "category": "animals", "description": "学习20个动物世界相关单词", "color": "#FF6B6B", "words": [{"english": "Cat", "chinese": "猫"}, {"english": "Dog", "chinese": "狗"}, {"english": "Rabbit", "chinese": "兔子"}, {"english": "Bird", "chinese": "鸟"}, {"english": "Fish", "chinese": "鱼"}, {"english": "Duck", "chinese": "鸭子"}, {"english": "Pig", "chinese": "猪"}, {"english": "Cow", "chinese": "奶牛"}, {"english": "Sheep", "chinese": "绵羊"}, {"english": "Horse", "chinese": "马"}, {"english": "Tiger", "chinese": "老虎"}, {"english": "Lion", "chinese": "狮子"}, {"english": "Bear", "chinese": "熊"}, {"english": "Elephant", "chinese": "大象"}, {"english": "Monkey", "chinese": "猴子"}, {"english": "Panda", "chinese": "熊猫"}, {"english": "Fox", "chinese": "狐狸"}, {"english": "Wolf", "chinese": "狼"}, {"english": "Giraffe", "chinese": "长颈鹿"}, {"english": "Zebra", "chinese": "斑马"}]}, {"name": "🍎 水果乐园", "category": "fruits", "description": "学习16个水果乐园相关单词", "color": "#4ECDC4", "words": [{"english": "Apple", "chinese": "苹果"}, {"english": "Banana", "chinese": "香蕉"}, {"english": "Orange", "chinese": "橙子"}, {"english": "Grape", "chinese": "葡萄"}, {"english": "Strawberry", "chinese": "草莓"}, {"english": "Watermelon", "chinese": "西瓜"}, {"english": "Mango", "chinese": "芒果"}, {"english": "Peach", "chinese": "桃子"}, {"english": "Pear", "chinese": "梨"}, {"english": "Pineapple", "chinese": "菠萝"}, {"english": "Lemon", "chinese": "柠檬"}, {"english": "Kiwi", "chinese": "猕猴桃"}, {"english": "Cherry", "chinese": "樱桃"}, {"english": "Blueberry", "chinese": "蓝莓"}, {"english": "Papaya", "chinese": "木瓜"}, {"english": "Durian", "chinese": "榴莲"}]}, {"name": "🥬 蔬菜园地", "category": "vegetables", "description": "学习12个蔬菜园地相关单词", "color": "#2ECC71", "words": [{"english": "Carrot", "chinese": "胡萝卜"}, {"english": "Potato", "chinese": "土豆"}, {"english": "Tomato", "chinese": "西红柿"}, {"english": "Onion", "chinese": "洋葱"}, {"english": "Cabbage", "chinese": "卷心菜"}, {"english": "Broccoli", "chinese": "西兰花"}, {"english": "Cucumber", "chinese": "黄瓜"}, {"english": "Mushroom", "chinese": "蘑菇"}, {"english": "Corn", "chinese": "玉米"}, {"english": "Eggplant", "chinese": "茄子"}, {"english": "Spinach", "chinese": "菠菜"}, {"english": "Pumpkin", "chinese": "南瓜"}]}, {"name": "🎨 颜色认知", "category": "colors", "description": "学习14个颜色认知相关单词", "color": "#F39C12", "words": [{"english": "Red", "chinese": "红色"}, {"english": "Blue", "chinese": "蓝色"}, {"english": "Yellow", "chinese": "黄色"}, {"english": "Green", "chinese": "绿色"}, {"english": "Orange", "chinese": "橙色"}, {"english": "Purple", "chinese": "紫色"}, {"english": "Pink", "chinese": "粉色"}, {"english": "Brown", "chinese": "棕色"}, {"english": "Black", "chinese": "黑色"}, {"english": "White", "chinese": "白色"}, {"english": "Gray", "chinese": "灰色"}, {"english": "Gold", "chinese": "金色"}, {"english": "Silver", "chinese": "银色"}, {"english": "Cyan", "chinese": "青色"}]}, {"name": "🔢 数字王国", "category": "numbers", "description": "学习19个数字王国相关单词", "color": "#3498DB", "words": [{"english": "One", "chinese": "一"}, {"english": "Two", "chinese": "二"}, {"english": "Three", "chinese": "三"}, {"english": "Four", "chinese": "四"}, {"english": "Five", "chinese": "五"}, {"english": "Six", "chinese": "六"}, {"english": "Seven", "chinese": "七"}, {"english": "Eight", "chinese": "八"}, {"english": "Nine", "chinese": "九"}, {"english": "Ten", "chinese": "十"}, {"english": "Eleven", "chinese": "十一"}, {"english": "Twelve", "chinese": "十二"}, {"english": "Thirteen", "chinese": "十三"}, {"english": "Fourteen", "chinese": "十四"}, {"english": "Fifteen", "chinese": "十五"}, {"english": "Twenty", "chinese": "二十"}, {"english": "Thirty", "chinese": "三十"}, {"english": "Fifty", "chinese": "五十"}, {"english": "One hundred", "chinese": "一百"}]}, {"name": "👦 身体部位", "category": "body", "description": "学习16个身体部位相关单词", "color": "#9B59B6", "words": [{"english": "Head", "chinese": "头"}, {"english": "Eye", "chinese": "眼睛"}, {"english": "Nose", "chinese": "鼻子"}, {"english": "Mouth", "chinese": "嘴巴"}, {"english": "Ear", "chinese": "耳朵"}, {"english": "Hand", "chinese": "手"}, {"english": "Foot", "chinese": "脚"}, {"english": "Leg", "chinese": "腿"}, {"english": "Arm", "chinese": "手臂"}, {"english": "Hair", "chinese": "头发"}, {"english": "Face", "chinese": "脸"}, {"english": "Shoulder", "chinese": "肩膀"}, {"english": "Knee", "chinese": "膝盖"}, {"english": "Finger", "chinese": "手指"}, {"english": "Tooth", "chinese": "牙齿"}, {"english": "Tongue", "chinese": "舌头"}]}, {"name": "🚗 交通工具", "category": "vehicles", "description": "学习12个交通工具相关单词", "color": "#E74C3C", "words": [{"english": "Car", "chinese": "汽车"}, {"english": "Bus", "chinese": "公交车"}, {"english": "Train", "chinese": "火车"}, {"english": "Bike", "chinese": "自行车"}, {"english": "Boat", "chinese": "船"}, {"english": "Plane", "chinese": "飞机"}, {"english": "Ship", "chinese": "轮船"}, {"english": "Truck", "chinese": "卡车"}, {"english": "Motorcycle", "chinese": "摩托车"}, {"english": "Taxi", "chinese": "出租车"}, {"english": "Subway", "chinese": "地铁"}, {"english": "Sailboat", "chinese": "帆船"}]}, {"name": "🍔 美味食物", "category": "food", "description": "学习17个美味食物相关单词", "color": "#1ABC9C", "words": [{"english": "Bread", "chinese": "面包"}, {"english": "Rice", "chinese": "米饭"}, {"english": "Noodle", "chinese": "面条"}, {"english": "Cake", "chinese": "蛋糕"}, {"english": "Milk", "chinese": "牛奶"}, {"english": "Egg", "chinese": "鸡蛋"}, {"english": "Chicken", "chinese": "鸡肉"}, {"english": "Beef", "chinese": "牛肉"}, {"english": "Fish", "chinese": "鱼肉"}, {"english": "Pizza", "chinese": "披萨"}, {"english": "Hamburger", "chinese": "汉堡"}, {"english": "Ice cream", "chinese": "冰淇淋"}, {"english": "Chocolate", "chinese": "巧克力"}, {"english": "Cookie", "chinese": "饼干"}, {"english": "Soup", "chinese": "汤"}, {"english": "Salt", "chinese": "盐"}, {"english": "Sugar", "chinese": "糖"}]}, {"name": "👨‍👩‍👧 家庭成员", "category": "family", "description": "学习12个家庭成员相关单词", "color": "#E67E22", "words": [{"english": "Mom", "chinese": "妈妈"}, {"english": "Dad", "chinese": "爸爸"}, {"english": "Brother", "chinese": "兄弟"}, {"english": "Sister", "chinese": "姐妹"}, {"english": "Grandpa", "chinese": "爷爷"}, {"english": "Grandma", "chinese": "奶奶"}, {"english": "Baby", "chinese": "宝宝"}, {"english": "Family", "chinese": "家庭"}, {"english": "Uncle", "chinese": "叔叔"}, {"english": "Aunt", "chinese": "阿姨"}, {"english": "Cousin", "chinese": "表亲"}, {"english": "Child", "chinese": "孩子"}]}, {"name": "👕 服装鞋帽", "category": "clothes", "description": "学习12个服装鞋帽相关单词", "color": "#34495E", "words": [{"english": "Shirt", "chinese": "衬衫"}, {"english": "T-shirt", "chinese": "T恤"}, {"english": "Pants", "chinese": "裤子"}, {"english": "Shorts", "chinese": "短裤"}, {"english": "Dress", "chinese": "连衣裙"}, {"english": "Skirt", "chinese": "裙子"}, {"english": "Sock", "chinese": "袜子"}, {"english": "Shoe", "chinese": "鞋子"}, {"english": "Hat", "chinese": "帽子"}, {"english": "Coat", "chinese": "外套"}, {"english": "Jacket", "chinese": "夹克"}, {"english": "Sweater", "chinese": "毛衣"}]}, {"name": "🧸 玩具乐园", "category": "toys", "description": "学习9个玩具乐园相关单词", "color": "#FD79A8", "words": [{"english": "Bear", "chinese": "玩具熊"}, {"english": "Ball", "chinese": "球"}, {"english": "Doll", "chinese": "娃娃"}, {"english": "Car", "chinese": "玩具车"}, {"english": "Train", "chinese": "玩具火车"}, {"english": "Puzzle", "chinese": "拼图"}, {"english": "Block", "chinese": "积木"}, {"english": "Kite", "chinese": "风筝"}, {"english": "Balloon", "chinese": "气球"}]}, {"name": "🌳 自然风光", "category": "nature", "description": "学习12个自然风光相关单词", "color": "#27AE60", "words": [{"english": "Tree", "chinese": "树"}, {"english": "Flower", "chinese": "花"}, {"english": "River", "chinese": "河"}, {"english": "Mountain", "chinese": "山"}, {"english": "Sun", "chinese": "太阳"}, {"english": "Moon", "chinese": "月亮"}, {"english": "Star", "chinese": "星星"}, {"english": "Cloud", "chinese": "云"}, {"english": "Grass", "chinese": "草"}, {"english": "Ocean", "chinese": "海洋"}, {"english": "Forest", "chinese": "森林"}, {"english": "Rock", "chinese": "石头"}]}, {"name": "🎒 校园学习", "category": "school", "description": "学习12个校园学习相关单词", "color": "#2980B9", "words": [{"english": "Book", "chinese": "书"}, {"english": "Pen", "chinese": "笔"}, {"english": "Pencil", "chinese": "铅笔"}, {"english": "Bag", "chinese": "书包"}, {"english": "Desk", "chinese": "桌子"}, {"english": "Chair", "chinese": "椅子"}, {"english": "School", "chinese": "学校"}, {"english": "Teacher", "chinese": "老师"}, {"english": "Student", "chinese": "学生"}, {"english": "Eraser", "chinese": "橡皮"}, {"english": "Ruler", "chinese": "尺子"}, {"english": "Notebook", "chinese": "笔记本"}]}, {"name": "🔷 形状认知", "category": "shapes", "description": "学习8个形状认知相关单词", "color": "#8E44AD", "words": [{"english": "Circle", "chinese": "圆形"}, {"english": "Square", "chinese": "正方形"}, {"english": "Triangle", "chinese": "三角形"}, {"english": "Rectangle", "chinese": "长方形"}, {"english": "Star", "chinese": "星形"}, {"english": "Heart", "chinese": "心形"}, {"english": "Oval", "chinese": "椭圆形"}, {"english": "Diamond", "chinese": "菱形"}]}, {"name": "☀️ 天气季节", "category": "weather", "description": "学习11个天气季节相关单词", "color": "#F1C40F", "words": [{"english": "Sunny", "chinese": "晴天"}, {"english": "Rainy", "chinese": "雨天"}, {"english": "Cloudy", "chinese": "多云"}, {"english": "Snowy", "chinese": "下雪"}, {"english": "Windy", "chinese": "刮风"}, {"english": "Hot", "chinese": "热"}, {"english": "Cold", "chinese": "冷"}, {"english": "Spring", "chinese": "春天"}, {"english": "Summer", "chinese": "夏天"}, {"english": "Autumn", "chinese": "秋天"}, {"english": "Winter", "chinese": "冬天"}]}, {"name": "🏃 动作词汇", "category": "actions", "description": "学习14个动作词汇相关单词", "color": "#16A085", "words": [{"english": "Run", "chinese": "跑"}, {"english": "Walk", "chinese": "走"}, {"english": "Jump", "chinese": "跳"}, {"english": "Swim", "chinese": "游泳"}, {"english": "Sing", "chinese": "唱歌"}, {"english": "Dance", "chinese": "跳舞"}, {"english": "Eat", "chinese": "吃"}, {"english": "Drink", "chinese": "喝"}, {"english": "Play", "chinese": "玩"}, {"english": "Read", "chinese": "读"}, {"english": "Write", "chinese": "写"}, {"english": "Draw", "chinese": "画画"}, {"english": "Stop", "chinese": "停止"}, {"english": "Go", "chinese": "走"}]}, {"name": "😊 情绪感受", "category": "feelings", "description": "学习9个情绪感受相关单词", "color": "#D35400", "words": [{"english": "Happy", "chinese": "开心"}, {"english": "Sad", "chinese": "伤心"}, {"english": "Angry", "chinese": "生气"}, {"english": "Scared", "chinese": "害怕"}, {"english": "Tired", "chinese": "累"}, {"english": "Hungry", "chinese": "饿"}, {"english": "Thirsty", "chinese": "渴"}, {"english": "Sleepy", "chinese": "困"}, {"english": "Excited", "chinese": "兴奋"}]}, {"name": "🏠 地点场所", "category": "places", "description": "学习9个地点场所相关单词", "color": "#C0392B", "words": [{"english": "Home", "chinese": "家"}, {"english": "School", "chinese": "学校"}, {"english": "Park", "chinese": "公园"}, {"english": "Zoo", "chinese": "动物园"}, {"english": "Hospital", "chinese": "医院"}, {"english": "Store", "chinese": "商店"}, {"english": "Bank", "chinese": "银行"}, {"english": "Library", "chinese": "图书馆"}, {"english": "Museum", "chinese": "博物馆"}]}];
+        // 全局状态
+        let currentThemeIndex = -1;
+        let currentWordIndex = 0;
+        let currentWords = [];
+        // 颜色亮度调整
+        function adjustBrightness(hex, percent) {
+            let num = parseInt(hex.replace("#",""), 16),
+            amt = Math.round(2.55 * percent),
+            R = (num >> 16) + amt,
+            G = (num >> 8 & 0x00FF) + amt,
+            B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+        }
+        // 初始化首页 - 生成主题卡片
+        function initHomePage() {
+            const themeGrid = document.getElementById('themeGrid');
+            themeGrid.innerHTML = '';
+            wordsData.forEach((theme, index) => {
+                const card = document.createElement('div');
+                card.className = 'theme-card';
+                const baseColor = theme.color || '#667eea';
+                card.style.background = `linear-gradient(135deg, ${baseColor} 0%, ${adjustBrightness(baseColor, -40)} 100%)`;
+                card.innerHTML = `
+                    <h3>${theme.name}</h3>
+                    <p>${theme.description}</p>
+                    <span class="word-count">${theme.words.length} 个单词</span>
+                `;
+                card.onclick = () => startLearning(index);
+                themeGrid.appendChild(card);
+            });
+        }
+        // 开始学习 - 进入主题详情页
+        function startLearning(themeIndex) {
+            currentThemeIndex = themeIndex;
+            currentWordIndex = 0;
+            currentWords = wordsData[themeIndex].words;
+            // 切换页面显示
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('learningPage').classList.add('active');
+            // 更新标题
+            document.getElementById('currentThemeName').textContent = wordsData[themeIndex].name;
+            // 更新单词显示
+            updateWordDisplay();
+            // 自动播放第一个单词的英语发音
+            setTimeout(() => playEnglish(), 500);
+        }
+        // 返回主页 - 导航返回功能
+        function backToHome() {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+            }
+            document.getElementById('learningPage').classList.remove('active');
+            document.getElementById('homePage').classList.remove('hidden');
+            currentThemeIndex = -1;
+            currentWordIndex = 0;
+        }
+        // 更新单词显示
+        function updateWordDisplay() {
+            if (currentWords.length === 0) return;
+            const word = currentWords[currentWordIndex];
+            document.getElementById('currentWord').textContent = word.english;
+            document.getElementById('currentTranslation').textContent = word.chinese;
+            // 更新进度
+            document.getElementById('progressText').textContent = 
+                `进度：${currentWordIndex + 1} / ${currentWords.length}`;
+            const progressPercent = ((currentWordIndex + 1) / currentWords.length) * 100;
+            document.getElementById('progressFill').style.width = `${progressPercent}%`;
+            // 更新导航按钮状态
+            document.getElementById('prevBtn').disabled = currentWordIndex === 0;
+            document.getElementById('nextBtn').disabled = currentWordIndex === currentWords.length - 1;
+        }
+        // 播放英语发音 - 甜美女生设置
+        function playEnglish() {
+            if (currentWords.length === 0 || currentWordIndex >= currentWords.length) return;
+            const word = currentWords[currentWordIndex];
+            // 甜美女生：提高音调 (pitch=1.4), 语速稍慢 (rate=0.9)
+            speak(word.english, 'en-US', 0.9, 1.4);
+        }
+        // 播放中文发音
+        function playChinese() {
+            if (currentWords.length === 0 || currentWordIndex >= currentWords.length) return;
+            const word = currentWords[currentWordIndex];
+            // 中文女生：音调适中 (pitch=1.2)
+            speak(word.chinese, 'zh-CN', 0.9, 1.2);
+        }
+        // 语音合成 - 儿童友好甜美女生优化
+        function speak(text, lang, rate = 0.9, pitch = 1.2) {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                utterance.rate = rate;         // 语速适中
+                utterance.pitch = pitch;      // 音调偏高 -> 甜美女生
+                utterance.volume = 1.0;       // 音量最大
+                // 优先选择女生声音
+                const voices = speechSynthesis.getVoices();
+                let selectedVoice = null;
+                // 策略：先找包含 Female 的女生声音
+                selectedVoice = voices.find(v => 
+                    v.lang.includes(lang) && 
+                    (v.name.includes('Female') || v.name.toLowerCase().includes('female'))
+                );
+                // 如果没找到，找语言匹配的任何声音
+                if (!selectedVoice) {
+                    selectedVoice = voices.find(v => v.lang.includes(lang));
+                }
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                }
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('您的浏览器不支持语音合成功能，请使用 Chrome 或 Edge 浏览器。');
+            }
+        }
+        // 上一个单词
+        function prevWord() {
+            if (currentWordIndex > 0) {
+                currentWordIndex--;
+                updateWordDisplay();
+                setTimeout(() => playEnglish(), 300);
+            }
+        }
+        // 下一个单词
+        function nextWord() {
+            if (currentWordIndex < currentWords.length - 1) {
+                currentWordIndex++;
+                updateWordDisplay();
+                setTimeout(() => playEnglish(), 300);
+            }
+        }
+        // 页面加载完成初始化
+        window.onload = function() {
+            initHomePage();
+            // 预加载语音列表
+            if ('speechSynthesis' in window) {
+                speechSynthesis.getVoices();
+                // 有些浏览器需要一点时间加载语音
+                setTimeout(() => speechSynthesis.getVoices(), 100);
+            }
+        };
+    </script>
+</body>
+</html>
